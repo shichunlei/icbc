@@ -5,7 +5,7 @@ class HomeBottomView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+    return Column(children: [
       Container(
           margin: const EdgeInsets.symmetric(horizontal: 15),
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.white),

@@ -9,6 +9,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:icbc/router/router.dart';
 
+import 'global/tools.dart';
+
 void main() {
   try {
     runZonedGuarded(() async {
@@ -40,8 +42,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtils.init(context);
     return GetMaterialApp(
-        title: 'Flutter Demo',
+        title: '中国工商银行',
         theme: ThemeData.light().copyWith(
             scaffoldBackgroundColor: const Color(0xffF3F4F6),
             highlightColor: Colors.transparent,
@@ -62,6 +65,7 @@ class MyApp extends StatelessWidget {
         locale: const Locale("zh", "CN"),
         fallbackLocale: const Locale("zh", "CN"),
         builder: (BuildContext context, Widget? child) {
+          ScreenUtils.init(context);
           return MediaQuery(
               data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
               child: FlutterEasyLoading(child: child!));

@@ -10,12 +10,16 @@ class HomeLogic extends GetxController with GetSingleTickerProviderStateMixin {
 
   var appBarOpacity = .0.obs;
 
+  var isTop = true.obs;
+
   HomeLogic() {
     controller = ScrollController()
       ..addListener(() {
         double offset = controller.offset;
         double opacity = (offset / 100).clamp(0.0, 1.0);
         appBarOpacity.value = opacity;
+
+        isTop.value = controller.position.pixels <= 0;
       });
 
     tabController = TabController(length: 2, vsync: this)

@@ -3,6 +3,7 @@ import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_f
 import 'package:get/get.dart';
 import 'package:icbc/modules/home/logic.dart';
 import 'package:icbc/modules/webview/page.dart';
+import 'package:icbc/router/router.dart';
 import 'package:icbc/widgets/home_bottom.dart';
 import 'package:icbc/widgets/icon_text.dart';
 import 'package:icbc/widgets/rect_indicator.dart';
@@ -28,20 +29,32 @@ class CommonView extends StatelessWidget {
               child: Column(children: [
                 Row(children: [
                   Expanded(
-                      child: Image.asset("assets/images/home/biz_groupview_kingten_account_1.webp",
-                          width: double.infinity, fit: BoxFit.fitWidth)),
+                      child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(AppRouter.minePages.accountRoute.name);
+                          },
+                          child: Image.asset("assets/images/home/biz_groupview_kingten_account_1.webp",
+                              width: double.infinity, fit: BoxFit.fitWidth))),
                   const SizedBox(width: 15),
                   Expanded(
-                      child: Image.asset("assets/images/home/biz_groupview_kingten_personalacctsearch.webp",
-                          width: double.infinity, fit: BoxFit.fitWidth)),
+                      child: GestureDetector(
+                          onTap: () {
+                            //
+                          },
+                          child: Image.asset("assets/images/home/biz_groupview_kingten_personalacctsearch.webp",
+                              width: double.infinity, fit: BoxFit.fitWidth))),
                   const SizedBox(width: 15),
                   Expanded(
-                      child: Image.asset("assets/images/home/biz_groupview_kingten_t0combination.webp",
-                          width: double.infinity, fit: BoxFit.fitWidth)),
+                      child: GestureDetector(
+                          onTap: () {},
+                          child: Image.asset("assets/images/home/biz_groupview_kingten_t0combination.webp",
+                              width: double.infinity, fit: BoxFit.fitWidth))),
                   const SizedBox(width: 15),
                   Expanded(
-                      child: Image.asset("assets/images/home/biz_groupview_kingten_mypaymenu.webp",
-                          width: double.infinity, fit: BoxFit.fitWidth))
+                      child: GestureDetector(
+                          onTap: () {},
+                          child: Image.asset("assets/images/home/biz_groupview_kingten_mypaymenu.webp",
+                              width: double.infinity, fit: BoxFit.fitWidth)))
                 ]),
                 Container(
                     width: double.infinity,
@@ -64,21 +77,34 @@ class CommonView extends StatelessWidget {
                                     activeColor: const Color(0xffCD0200)))),
                         itemBuilder: (_, index) {
                           return index == 0
-                              ? const Column(children: [
-                                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                              ? Column(children: [
+                                  const Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                                     IconTextView(text: "存款", imagePath: "assets/images/icons/icon_存款.png"),
                                     IconTextView(text: "e通办", imagePath: "assets/images/icons/icon_e通办.png"),
                                     IconTextView(text: "天天盈", imagePath: "assets/images/icons/icon_天天盈.png"),
                                     IconTextView(text: "贷款", imagePath: "assets/images/icons/icon_贷款.png"),
                                     IconTextView(text: "生活缴费", imagePath: "assets/images/icons/icon_生活缴费.png")
                                   ]),
-                                  SizedBox(height: 8),
+                                  const SizedBox(height: 8),
                                   Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                    IconTextView(text: "资产", imagePath: "assets/images/icons/icon_资产.png"),
-                                    IconTextView(text: "薪管家", imagePath: "assets/images/icons/icon_薪管家.png"),
-                                    IconTextView(text: "\"工\"迎新春", imagePath: "assets/images/icons/icon_工迎新春.png"),
-                                    IconTextView(text: "养老金融", imagePath: "assets/images/icons/icon_养老金融.png"),
-                                    IconTextView(text: "贵金属", imagePath: "assets/images/icons/icon_贵金属.png")
+                                    IconTextView(
+                                        text: "资产",
+                                        imagePath: "assets/images/icons/icon_资产.png",
+                                        onTap: () {
+                                          Get.to(() => AppRouter.minePages.assetsRoute.name);
+                                        }),
+                                    const IconTextView(text: "薪管家", imagePath: "assets/images/icons/icon_薪管家.png"),
+                                    IconTextView(
+                                        text: "\"工\"迎新春",
+                                        imagePath: "assets/images/icons/icon_工迎新春.png",
+                                        onTap: () {
+                                          Get.to(() => WebViewPage(
+                                              url:
+                                                  "https://m.icbc.com.cn/column/1005533151336026113.html?srcchannel=F-WAPB&transitionid=113d48f25121c073&srcpageurl=standard-favorite",
+                                              title: "\"工\"迎新春"));
+                                        }),
+                                    const IconTextView(text: "养老金融", imagePath: "assets/images/icons/icon_养老金融.png"),
+                                    const IconTextView(text: "贵金属", imagePath: "assets/images/icons/icon_贵金属.png")
                                   ])
                                 ])
                               : Column(children: [
@@ -95,19 +121,60 @@ class CommonView extends StatelessWidget {
                                     const IconTextView(text: "投诉咨询", imagePath: "assets/images/icons/icon_投诉咨询.png"),
                                     const IconTextView(text: "自动归集", imagePath: "assets/images/icons/icon_自动归集.png"),
                                     const IconTextView(text: "外汇买卖", imagePath: "assets/images/icons/icon_外汇买卖.png"),
-                                    IconTextView(text: "更多", imagePath: "assets/images/icons/icon_更多.png", onTap: () {})
+                                    IconTextView(
+                                        text: "更多",
+                                        imagePath: "assets/images/icons/icon_更多.png",
+                                        onTap: () {
+                                          Get.toNamed(AppRouter.minePages.categoryRoute.name);
+                                        })
                                   ])
                                 ]);
                         },
                         itemCount: 2))
               ])),
-          // todo
           Container(
               decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
-              height: 130,
+              height: (MediaQuery.of(context).size.width - 30) / 1100 * 330,
               width: double.infinity,
               margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-              padding: const EdgeInsets.symmetric(horizontal: 10)),
+              child: Swiper(
+                  autoplay: true,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Image.asset("assets/images/home/banner_00${index + 1}.webp",
+                        width: double.infinity, fit: BoxFit.fitWidth);
+                  },
+                  itemCount: 3,
+                  onTap: (index) {
+                    if (index == 0) {
+                      Get.to(() => WebViewPage(
+                          url:
+                              "https://m.icbc.com.cn/column/992097422295633921.html?srcchannel=F-WAPB&transitionid=113d48f25121c073&srcpageurl=standard-favorite",
+                          title: "个人养老金“冬日存暖意”"));
+                    } else if (index == 1) {
+                      Get.to(() => WebViewPage(
+                          url:
+                              "https://m.icbc.com.cn/column/1005533151336026113.html?srcchannel=F-WAPB&transitionid=113d48f25121c073&srcpageurl=standard-favorite",
+                          title: "\"工\"迎新春"));
+                    } else {
+                      Get.to(() => WebViewPage(
+                          url:
+                              "https://m.icbc.com.cn/page/1043214620178960384.html?srcchannel=F-WAPB&transitionid=113d48f25121c073&srcpageurl=standard-favorite",
+                          title: "中国工商银行手机网站"));
+                    }
+                  },
+                  pagination: SwiperCustomPagination(
+                      builder: (BuildContext context, SwiperPluginConfig config) => Container(
+                          alignment: Alignment.bottomCenter,
+                          padding: const EdgeInsets.only(bottom: 5),
+                          child: RectIndicator(
+                              count: 3,
+                              height: 3,
+                              position: config.activeIndex,
+                              width: 3,
+                              gap: 5,
+                              activeWidth: 10,
+                              color: const Color(0xff999999),
+                              activeColor: const Color(0xffCD0200)))))),
           Container(
               margin: const EdgeInsets.symmetric(horizontal: 15),
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
@@ -115,18 +182,42 @@ class CommonView extends StatelessWidget {
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
                 const Row(children: [
                   Text("工银财富", style: TextStyle(fontSize: 15, color: Colors.black)),
-                  const Spacer(),
+                  Spacer(),
                   Text("更多", style: TextStyle(fontSize: 13, color: Color(0xff666666)))
                 ]),
                 const SizedBox(height: 10),
                 Row(children: [
                   Expanded(
-                      child:
-                          Image.asset("assets/images/home/bg_普惠金融.png", width: double.infinity, fit: BoxFit.fitWidth)),
+                      child: Stack(children: [
+                    Image.asset("assets/images/home/icon_布局2025.webp", width: double.infinity, fit: BoxFit.fitWidth),
+                    Container(
+                        alignment: Alignment.centerLeft,
+                        padding: const EdgeInsets.only(left: 10, top: 10),
+                        child: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text("布局2025",
+                                  style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500)),
+                              Text("瓜分199998份红包", style: TextStyle(color: Color(0xff666666), fontSize: 10))
+                            ]))
+                  ])),
                   const SizedBox(width: 10),
                   Expanded(
-                      child:
-                          Image.asset("assets/images/home/bg_普惠金融.png", width: double.infinity, fit: BoxFit.fitWidth)),
+                      child: Stack(children: [
+                    Image.asset("assets/images/home/icon_指数吸金榜.webp", width: double.infinity, fit: BoxFit.fitWidth),
+                    Container(
+                        alignment: Alignment.centerLeft,
+                        padding: const EdgeInsets.only(left: 10, top: 10),
+                        child: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text("指数吸金榜",
+                                  style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500)),
+                              Text("资金热捧TOP10", style: TextStyle(color: Color(0xff666666), fontSize: 10))
+                            ]))
+                  ]))
                 ]),
                 const SizedBox(height: 10),
                 Container(
@@ -192,14 +283,14 @@ class CommonView extends StatelessWidget {
                                 Expanded(
                                     flex: 2,
                                     child: Row(children: [
-                                      const Text("最高七日年化收益率", style: TextStyle(color: Color(0xff999999), fontSize: 12)),
-                                      const SizedBox(width: 4),
-                                      Image.asset("assets/images/tip_image_m.png", width: 11)
+                                      const Text("最高七日年化收益率", style: TextStyle(color: Color(0xff999999), fontSize: 10)),
+                                      const SizedBox(width: 2),
+                                      Image.asset("assets/images/tip_image_blue.png", width: 10)
                                     ])),
                                 const Expanded(
                                     flex: 3,
                                     child: Text("随用随取 | 1分起购 | 低风险",
-                                        style: TextStyle(color: Color(0xff999999), fontSize: 11)))
+                                        style: TextStyle(color: Color(0xff999999), fontSize: 10)))
                               ]),
                               const SizedBox(height: 5),
                               Container(
@@ -242,11 +333,11 @@ class CommonView extends StatelessWidget {
                                     Expanded(
                                         flex: 2,
                                         child:
-                                            Text("七日年化收益率", style: TextStyle(color: Color(0xff999999), fontSize: 11))),
+                                            Text("七日年化收益率", style: TextStyle(color: Color(0xff999999), fontSize: 10))),
                                     Expanded(
                                         flex: 3,
                                         child: Text("1元起购 | 低风险 | 代销",
-                                            style: TextStyle(color: Color(0xff999999), fontSize: 11)))
+                                            style: TextStyle(color: Color(0xff999999), fontSize: 10)))
                                   ]),
                                   const SizedBox(height: 5),
                                   const Text("业绩周期 2024.12.19-2024.12.25",
@@ -427,10 +518,8 @@ class CommonView extends StatelessWidget {
                                                 style: TextStyle(color: Color(0xff999999), fontSize: 11)))
                                       ])
                                     ]))
-                            : Container(
-                                // todo
-                                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                                child: const SizedBox(height: 80)))
+                            : Image.asset("assets/images/home/icon_全年医疗享无忧.webp",
+                                width: double.infinity, fit: BoxFit.fitWidth))
               ])),
           Container(
               margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),

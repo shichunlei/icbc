@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:icbc/router/router.dart';
 
 class LaunchLogic extends GetxController {
-  final AssetImage image = const AssetImage("assets/images/sta_8_caifu_press.png");
+  final AssetImage image = const AssetImage("assets/images/loading_icbcbank_bg.webp");
 
   @override
   void onInit() {

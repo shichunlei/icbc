@@ -8,6 +8,7 @@ import 'package:icbc/modules/launch/page.dart';
 import 'package:icbc/modules/life/binding.dart';
 import 'package:icbc/modules/mine/binding.dart';
 import 'package:icbc/modules/wealth/binding.dart';
+import 'package:icbc/router/page/mine_pages.dart';
 
 class AppRouter {
   static AppRouter? _instance;
@@ -17,15 +18,17 @@ class AppRouter {
   AppRouter._();
 
   /// 默认路由动画
-  static const defaultTransition = Transition.rightToLeft;
+  static const defaultTransition = Transition.native;
 
   /// 默认路由动画时间
   static const defaultTransitionDuration = Duration(milliseconds: 180);
 
-  ///默认路由
+  /// 默认路由
   static const String initialRoutePath = "/";
 
-  ///启动页面
+  static MinePages minePages = MinePages();
+
+  /// 启动页面
   final GetPage initialRoute = GetPage(
       name: initialRoutePath,
       binding: LaunchBinding(),
@@ -33,7 +36,7 @@ class AppRouter {
       transitionDuration: Duration.zero,
       transition: Transition.noTransition);
 
-  ///主入口
+  /// 主入口
   GetPage indexRoute = GetPage(
       name: '/index',
       bindings: [IndexBinding(), HomeBinding(), WealthBinding(), CreditBinding(), LifeBinding(), MineBinding()],
@@ -41,6 +44,6 @@ class AppRouter {
       transition: Transition.fadeIn);
 
   List<GetPage> routes() {
-    return [initialRoute, indexRoute];
+    return [initialRoute, indexRoute, minePages.accountRoute];
   }
 }

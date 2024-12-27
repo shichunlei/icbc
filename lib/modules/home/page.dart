@@ -22,8 +22,9 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
     return Scaffold(
         backgroundColor: const Color(0xffF3F4F6),
         body: Stack(children: [
-          Image.asset("assets/images/home/top_1.png", width: double.infinity, fit: BoxFit.fitWidth),
-          Image.asset("assets/images/home/top_2.png", width: double.infinity, fit: BoxFit.fitWidth),
+          Obx(() => logic.selectIndex.value == 0
+              ? Image.asset("assets/images/home/top_1.png", width: double.infinity, fit: BoxFit.fitWidth)
+              : Image.asset("assets/images/home/top_2.png", width: double.infinity, fit: BoxFit.fitWidth)),
           NestedScrollView(
               controller: logic.controller,
               headerSliverBuilder: (_, __) {

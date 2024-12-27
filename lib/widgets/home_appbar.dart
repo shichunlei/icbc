@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icbc/global/tools.dart';
 
 class HomeAppBar extends StatelessWidget {
   final double opacity;
@@ -14,11 +15,11 @@ class HomeAppBar extends StatelessWidget {
     return Column(children: [
       Container(
           color: Colors.white.withOpacity(opacity),
-          height: kToolbarHeight + MediaQuery.of(context).padding.top,
-          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+          height: kToolbarHeight + ScreenUtils.statusBarHeight,
+          padding: EdgeInsets.only(top: ScreenUtils.statusBarHeight),
           child: Row(children: [
             Image.asset("assets/images/location_mine_black.png", width: 40, height: 40),
-            const Text("全国", style: TextStyle(fontSize: 14, color: Colors.black)),
+            const Text("上海", style: TextStyle(fontSize: 14, color: Colors.black)),
             Expanded(
                 child: Container(
                     margin: const EdgeInsets.only(left: 8),
@@ -43,7 +44,9 @@ class HomeAppBar extends StatelessWidget {
           opacity: opacity,
           child: Container(
               height: 40,
+              width: double.infinity,
               color: Colors.white,
+              alignment: Alignment.centerLeft,
               child: TabBar(
                   tabs: const [Tab(text: "常用"), Tab(text: "消息")],
                   controller: tabController,
