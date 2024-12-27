@@ -23,7 +23,7 @@ class IconTextView extends StatelessWidget {
             behavior: HitTestBehavior.translucent,
             child: Column(mainAxisSize: MainAxisSize.min, children: [
               Image.asset(imagePath, width: size.width, height: size.height),
-              SizedBox(height: 3),
+              const SizedBox(height: 3),
               Text("$text\n",
                   style: TextStyle(color: Colors.black, fontSize: fontSize, fontWeight: FontWeight.w500),
                   textAlign: TextAlign.center,

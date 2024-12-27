@@ -17,18 +17,18 @@ class WebViewPage extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: NormalAppbar(title: title, actions: [
           Image.asset("assets/images/base_im_icon_share.png", width: 25),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Image.asset("assets/images/base_im_icon_more.png", width: 25),
-          SizedBox(width: 10)
+          const SizedBox(width: 10)
         ]),
         body: Padding(
-            padding: EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: Builder(builder: (BuildContext context) {
               return Column(children: [
                 Obx(() => showLoading.value
-                    ? SizedBox(
+                    ? const SizedBox(
                         height: 1,
-                        child: const LinearProgressIndicator(
+                        child: LinearProgressIndicator(
                             valueColor: AlwaysStoppedAnimation<Color>(Colors.grey), backgroundColor: Colors.blue))
                     : const SizedBox.shrink()),
                 Expanded(

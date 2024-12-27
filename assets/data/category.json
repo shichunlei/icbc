@@ -1,0 +1,783 @@
+{
+  "mine": [
+    {
+      "title": "第一屏",
+      "items": [
+        {
+          "id": "19",
+          "title": "存款",
+          "imagePath": "assets/images/icons/icon_存款.png",
+          "routeName": ""
+        },
+        {
+          "id": "67",
+          "title": "e通办",
+          "imagePath": "assets/images/icons/icon_e通办.png",
+          "routeName": ""
+        },
+        {
+          "id": "30",
+          "title": "天天盈",
+          "imagePath": "assets/images/icons/icon_天天盈.png",
+          "routeName": ""
+        },
+        {
+          "id": "39",
+          "title": "贷款",
+          "imagePath": "assets/images/icons/icon_贷款.png",
+          "routeName": ""
+        },
+        {
+          "id": "46",
+          "title": "生活缴费",
+          "imagePath": "assets/images/icons/icon_生活缴费.png",
+          "routeName": ""
+        },
+        {
+          "id": "18",
+          "title": "资产",
+          "imagePath": "assets/images/icons/icon_资产.png",
+          "routeName": ""
+        },
+        {
+          "id": "57",
+          "title": "薪管家",
+          "imagePath": "assets/images/icons/icon_薪管家.png",
+          "routeName": ""
+        },
+        {
+          "id": "53",
+          "title": "\"工\"迎新春",
+          "imagePath": "assets/images/icons/icon_工迎新春.png",
+          "routeName": ""
+        },
+        {
+          "id": "47",
+          "title": "养老金融",
+          "imagePath": "assets/images/icons/icon_养老金融.png",
+          "routeName": ""
+        },
+        {
+          "id": "27",
+          "title": "贵金属",
+          "imagePath": "assets/images/icons/icon_贵金属.png",
+          "routeName": ""
+        }
+      ]
+    },
+    {
+      "title": "第二屏",
+      "items": [
+        {
+          "id": "17",
+          "title": "财富",
+          "imagePath": "assets/images/icons/icon_财富.png",
+          "routeName": ""
+        },
+        {
+          "id": "64",
+          "title": "家庭财富",
+          "imagePath": "assets/images/icons/icon_家庭财富.png",
+          "routeName": ""
+        },
+        {
+          "id": "56",
+          "title": "任务中心",
+          "imagePath": "assets/images/icons/icon_任务中心.png",
+          "routeName": ""
+        },
+        {
+          "id": "36",
+          "title": "分期付款",
+          "imagePath": "assets/images/icons/icon_分期付款.png",
+          "routeName": ""
+        },
+        {
+          "id": "16",
+          "title": "一键绑卡",
+          "imagePath": "assets/images/icons/icon_一键绑卡.png",
+          "routeName": ""
+        },
+        {
+          "id": "68",
+          "title": "安全中心",
+          "imagePath": "assets/images/icons/icon_安全中心.png",
+          "routeName": ""
+        },
+        {
+          "id": "70",
+          "title": "投诉咨询",
+          "imagePath": "assets/images/icons/icon_投诉咨询.png",
+          "routeName": ""
+        },
+        {
+          "id": "11",
+          "title": "自动归集",
+          "imagePath": "assets/images/icons/icon_自动归集.png",
+          "routeName": ""
+        },
+        {
+          "id": "12",
+          "title": "他行卡转入",
+          "imagePath": "assets/images/icons/icon_他行卡转入.png",
+          "routeName": ""
+        },
+        {
+          "id": "100",
+          "title": "更多",
+          "imagePath": "assets/images/icons/icon_更多.png",
+          "routeName": ""
+        }
+      ]
+    }
+  ],
+  "common": {
+    "title": "常用",
+    "items": [
+      {
+        "id": "19",
+        "title": "存款",
+        "imagePath": "assets/images/icons/icon_存款.png",
+        "routeName": ""
+      },
+      {
+        "id": "1",
+        "title": "账户",
+        "imagePath": "assets/images/icons/icon_账户.png",
+        "routeName": ""
+      },
+      {
+        "id": "2",
+        "title": "收支",
+        "imagePath": "assets/images/icons/icon_收支.png",
+        "routeName": ""
+      },
+      {
+        "id": "6",
+        "title": "数字人民币",
+        "imagePath": "assets/images/icons/icon_数字人民币.png",
+        "routeName": ""
+      },
+      {
+        "id": "13",
+        "title": "支付",
+        "imagePath": "assets/images/icons/icon_支付.png",
+        "routeName": ""
+      },
+      {
+        "id": "14",
+        "title": "收款",
+        "imagePath": "assets/images/icons/icon_收款.png",
+        "routeName": ""
+      }
+    ]
+  },
+  "recommend": {
+    "title": "为您推荐",
+    "items": [
+      {
+        "id": "52",
+        "title": "个人养老金",
+        "imagePath": "assets/images/icons/icon_个人养老金.png",
+        "routeName": ""
+      },
+      {
+        "id": "53",
+        "title": "\"工\"迎新春",
+        "imagePath": "assets/images/icons/icon_工迎新春.png",
+        "routeName": ""
+      },
+      {
+        "id": "66",
+        "title": "远程办",
+        "imagePath": "assets/images/icons/icon_远程办.png",
+        "routeName": ""
+      },
+      {
+        "id": "67",
+        "title": "e通办",
+        "imagePath": "assets/images/icons/icon_e通办.png",
+        "routeName": ""
+      }
+    ]
+  },
+  "category": [
+    {
+      "title": "账户",
+      "items": [
+        {
+          "id": "1",
+          "title": "账户",
+          "imagePath": "assets/images/icons/icon_账户.png",
+          "routeName": ""
+        },
+        {
+          "id": "2",
+          "title": "收支",
+          "imagePath": "assets/images/icons/icon_收支.png",
+          "routeName": ""
+        },
+        {
+          "id": "3",
+          "title": "信使服务",
+          "imagePath": "assets/images/icons/icon_信使服务.png",
+          "routeName": ""
+        },
+        {
+          "id": "4",
+          "title": "电子工资单",
+          "imagePath": "assets/images/icons/icon_电子工资单.png",
+          "routeName": ""
+        },
+        {
+          "id": "5",
+          "title": "e钱包",
+          "imagePath": "assets/images/icons/icon_e钱包.png",
+          "routeName": ""
+        },
+        {
+          "id": "6",
+          "title": "数字人民币",
+          "imagePath": "assets/images/icons/icon_数字人民币.png",
+          "routeName": ""
+        }
+      ]
+    },
+    {
+      "title": "转账",
+      "items": [
+        {
+          "id": "7",
+          "title": "转账汇款",
+          "imagePath": "assets/images/icons/icon_转账汇款.png",
+          "routeName": ""
+        },
+        {
+          "id": "8",
+          "title": "境内汇款",
+          "imagePath": "assets/images/icons/icon_境内汇款.png",
+          "routeName": ""
+        },
+        {
+          "id": "9",
+          "title": "跨境汇款",
+          "imagePath": "assets/images/icons/icon_跨境汇款.png",
+          "routeName": ""
+        },
+        {
+          "id": "10",
+          "title": "我的收款人",
+          "imagePath": "assets/images/icons/icon_我的收款人.png",
+          "routeName": ""
+        },
+        {
+          "id": "11",
+          "title": "自动归集",
+          "imagePath": "assets/images/icons/icon_自动归集.png",
+          "routeName": ""
+        },
+        {
+          "id": "12",
+          "title": "他行卡转入",
+          "imagePath": "assets/images/icons/icon_他行卡转入.png",
+          "routeName": ""
+        }
+      ]
+    },
+    {
+      "title": "支付",
+      "items": [
+        {
+          "id": "13",
+          "title": "支付",
+          "imagePath": "assets/images/icons/icon_支付.png",
+          "routeName": ""
+        },
+        {
+          "id": "14",
+          "title": "收款",
+          "imagePath": "assets/images/icons/icon_收款.png",
+          "routeName": ""
+        },
+        {
+          "id": "15",
+          "title": "e支付",
+          "imagePath": "assets/images/icons/icon_e支付.png",
+          "routeName": ""
+        },
+        {
+          "id": "16",
+          "title": "一键绑卡",
+          "imagePath": "assets/images/icons/icon_一键绑卡.png",
+          "routeName": ""
+        }
+      ]
+    },
+    {
+      "title": "财富",
+      "items": [
+        {
+          "id": "17",
+          "title": "财富",
+          "imagePath": "assets/images/icons/icon_财富.png",
+          "routeName": ""
+        },
+        {
+          "id": "18",
+          "title": "资产",
+          "imagePath": "assets/images/icons/icon_资产.png",
+          "routeName": ""
+        },
+        {
+          "id": "19",
+          "title": "存款",
+          "imagePath": "assets/images/icons/icon_存款.png",
+          "routeName": ""
+        },
+        {
+          "id": "20",
+          "title": "理财",
+          "imagePath": "assets/images/icons/icon_理财.png",
+          "routeName": ""
+        },
+        {
+          "id": "21",
+          "title": "基金",
+          "imagePath": "assets/images/icons/icon_基金.png",
+          "routeName": ""
+        },
+        {
+          "id": "22",
+          "title": "保险",
+          "imagePath": "assets/images/icons/icon_保险.png",
+          "routeName": ""
+        },
+        {
+          "id": "23",
+          "title": "证券",
+          "imagePath": "assets/images/icons/icon_证券.png",
+          "routeName": ""
+        },
+        {
+          "id": "24",
+          "title": "期货",
+          "imagePath": "assets/images/icons/icon_期货.png",
+          "routeName": ""
+        },
+        {
+          "id": "25",
+          "title": "结授汇",
+          "imagePath": "assets/images/icons/icon_结授汇.png",
+          "routeName": ""
+        },
+        {
+          "id": "26",
+          "title": "外币兑换",
+          "imagePath": "assets/images/icons/icon_外币兑换.png",
+          "routeName": ""
+        },
+        {
+          "id": "27",
+          "title": "贵金属",
+          "imagePath": "assets/images/icons/icon_贵金属.png",
+          "routeName": ""
+        },
+        {
+          "id": "28",
+          "title": "储蓄国债",
+          "imagePath": "assets/images/icons/icon_储蓄国债.png",
+          "routeName": ""
+        },
+        {
+          "id": "29",
+          "title": "柜台债券",
+          "imagePath": "assets/images/icons/icon_柜台债券.png",
+          "routeName": ""
+        },
+        {
+          "id": "30",
+          "title": "天天盈",
+          "imagePath": "assets/images/icons/icon_天天盈.png",
+          "routeName": ""
+        },
+        {
+          "id": "31",
+          "title": "添益快线",
+          "imagePath": "assets/images/icons/icon_添益快线.png",
+          "routeName": ""
+        }
+      ]
+    },
+    {
+      "title": "信用卡",
+      "items": [
+        {
+          "id": "32",
+          "title": "信用卡",
+          "imagePath": "assets/images/icons/icon_信用卡.png",
+          "routeName": ""
+        },
+        {
+          "id": "33",
+          "title": "自动还款",
+          "imagePath": "assets/images/icons/icon_自动还款.png",
+          "routeName": ""
+        },
+        {
+          "id": "34",
+          "title": "申请办卡",
+          "imagePath": "assets/images/icons/icon_申请办卡.png",
+          "routeName": ""
+        },
+        {
+          "id": "35",
+          "title": "卡片启用",
+          "imagePath": "assets/images/icons/icon_卡片启用.png",
+          "routeName": ""
+        },
+        {
+          "id": "36",
+          "title": "分期付款",
+          "imagePath": "assets/images/icons/icon_分期付款.png",
+          "routeName": ""
+        },
+        {
+          "id": "37",
+          "title": "急用钱",
+          "imagePath": "assets/images/icons/icon_急用钱.png",
+          "routeName": ""
+        },
+        {
+          "id": "38",
+          "title": "数字卡",
+          "imagePath": "assets/images/icons/icon_数字卡.png",
+          "routeName": ""
+        }
+      ]
+    },
+    {
+      "title": "贷款",
+      "items": [
+        {
+          "id": "39",
+          "title": "贷款",
+          "imagePath": "assets/images/icons/icon_贷款.png",
+          "routeName": ""
+        },
+        {
+          "id": "40",
+          "title": "信用贷款",
+          "imagePath": "assets/images/icons/icon_信用贷款.png",
+          "routeName": ""
+        },
+        {
+          "id": "41",
+          "title": "购房贷款",
+          "imagePath": "assets/images/icons/icon_购房贷款.png",
+          "routeName": ""
+        },
+        {
+          "id": "42",
+          "title": "房产抵押贷",
+          "imagePath": "assets/images/icons/icon_房产抵押贷.png",
+          "routeName": ""
+        },
+        {
+          "id": "43",
+          "title": "金融资产贷",
+          "imagePath": "assets/images/icons/icon_金融资产贷.png",
+          "routeName": ""
+        },
+        {
+          "id": "44",
+          "title": "小微e贷",
+          "imagePath": "assets/images/icons/icon_小微e贷.png",
+          "routeName": ""
+        },
+        {
+          "id": "45",
+          "title": "房管家账户",
+          "imagePath": "assets/images/icons/icon_房管家账户.png",
+          "routeName": ""
+        }
+      ]
+    },
+    {
+      "title": "生活",
+      "items": [
+        {
+          "id": "46",
+          "title": "生活缴费",
+          "imagePath": "assets/images/icons/icon_生活缴费.png",
+          "routeName": ""
+        },
+        {
+          "id": "47",
+          "title": "养老金融",
+          "imagePath": "assets/images/icons/icon_养老金融.png",
+          "routeName": ""
+        },
+        {
+          "id": "48",
+          "title": "社保",
+          "imagePath": "assets/images/icons/icon_社保.png",
+          "routeName": ""
+        },
+        {
+          "id": "49",
+          "title": "医保",
+          "imagePath": "assets/images/icons/icon_医保.png",
+          "routeName": ""
+        },
+        {
+          "id": "50",
+          "title": "公积金",
+          "imagePath": "assets/images/icons/icon_公积金.png",
+          "routeName": ""
+        },
+        {
+          "id": "51",
+          "title": "企业年金",
+          "imagePath": "assets/images/icons/icon_企业年金.png",
+          "routeName": ""
+        },
+        {
+          "id": "52",
+          "title": "个人养老金",
+          "imagePath": "assets/images/icons/icon_个人养老金.png",
+          "routeName": ""
+        },
+        {
+          "id": "53",
+          "title": "\"工\"迎新春",
+          "imagePath": "assets/images/icons/icon_工迎新春.png",
+          "routeName": ""
+        },
+        {
+          "id": "54",
+          "title": "收益中心",
+          "imagePath": "assets/images/icons/icon_收益中心.png",
+          "routeName": ""
+        },
+        {
+          "id": "55",
+          "title": "工行消费季",
+          "imagePath": "assets/images/icons/icon_工行消费季.png",
+          "routeName": ""
+        },
+        {
+          "id": "56",
+          "title": "任务中心",
+          "imagePath": "assets/images/icons/icon_任务中心.png",
+          "routeName": ""
+        }
+      ]
+    },
+    {
+      "title": "专属",
+      "items": [
+        {
+          "id": "57",
+          "title": "薪管家",
+          "imagePath": "assets/images/icons/icon_薪管家.png",
+          "routeName": ""
+        },
+        {
+          "id": "58",
+          "title": "全球金融服务",
+          "imagePath": "assets/images/icons/icon_全球金融服务.png",
+          "routeName": ""
+        },
+        {
+          "id": "59",
+          "title": "随军行",
+          "imagePath": "assets/images/icons/icon_随军行.png",
+          "routeName": ""
+        },
+        {
+          "id": "60",
+          "title": "爱宝贝",
+          "imagePath": "assets/images/icons/icon_爱宝贝.png",
+          "routeName": ""
+        },
+        {
+          "id": "61",
+          "title": "新市民",
+          "imagePath": "assets/images/icons/icon_新市民.png",
+          "routeName": ""
+        },
+        {
+          "id": "62",
+          "title": "私人银行",
+          "imagePath": "assets/images/icons/icon_私人银行.png",
+          "routeName": ""
+        },
+        {
+          "id": "63",
+          "title": "小微金融",
+          "imagePath": "assets/images/icons/icon_小微金融.png",
+          "routeName": ""
+        },
+        {
+          "id": "64",
+          "title": "家庭财富",
+          "imagePath": "assets/images/icons/icon_家庭财富.png",
+          "routeName": ""
+        },
+        {
+          "id": "65",
+          "title": "成长嘉年华",
+          "imagePath": "assets/images/icons/icon_成长嘉年华.png",
+          "routeName": ""
+        }
+      ]
+    },
+    {
+      "title": "网点",
+      "items": [
+        {
+          "id": "75",
+          "title": "云网办",
+          "imagePath": "assets/images/icons/icon_云网办.png",
+          "routeName": ""
+        },
+        {
+          "id": "76",
+          "title": "扫码取款",
+          "imagePath": "assets/images/icons/icon_扫码取款.png",
+          "routeName": ""
+        },
+        {
+          "id": "77",
+          "title": "纪念币预约",
+          "imagePath": "assets/images/icons/icon_纪念币预约.png",
+          "routeName": ""
+        },
+        {
+          "id": "78",
+          "title": "外币预约",
+          "imagePath": "assets/images/icons/icon_外币预约.png",
+          "routeName": ""
+        },
+        {
+          "id": "79",
+          "title": "大额人民\n币预约",
+          "imagePath": "assets/images/icons/icon_大额人民币预约.png",
+          "routeName": ""
+        },
+        {
+          "id": "80",
+          "title": "资信证明",
+          "imagePath": "assets/images/icons/icon_资信证明.png",
+          "routeName": ""
+        },
+        {
+          "id": "81",
+          "title": "财富继承",
+          "imagePath": "assets/images/icons/icon_财富继承.png",
+          "routeName": ""
+        }
+      ]
+    },
+    {
+      "title": "助手",
+      "items": [
+        {
+          "id": "66",
+          "title": "远程办",
+          "imagePath": "assets/images/icons/icon_远程办.png",
+          "routeName": ""
+        },
+        {
+          "id": "67",
+          "title": "e通办",
+          "imagePath": "assets/images/icons/icon_e通办.png",
+          "routeName": ""
+        },
+        {
+          "id": "68",
+          "title": "安全中心",
+          "imagePath": "assets/images/icons/icon_安全中心.png",
+          "routeName": ""
+        },
+        {
+          "id": "69",
+          "title": "云保管",
+          "imagePath": "assets/images/icons/icon_云保管.png",
+          "routeName": ""
+        },
+        {
+          "id": "70",
+          "title": "投诉咨询",
+          "imagePath": "assets/images/icons/icon_投诉咨询.png",
+          "routeName": ""
+        },
+        {
+          "id": "71",
+          "title": "存贷利率",
+          "imagePath": "assets/images/icons/icon_存贷利率.png",
+          "routeName": ""
+        },
+        {
+          "id": "72",
+          "title": "计算器",
+          "imagePath": "assets/images/icons/icon_计算器.png",
+          "routeName": ""
+        },
+        {
+          "id": "73",
+          "title": "扫一扫",
+          "imagePath": "assets/images/icons/icon_扫一扫.png",
+          "routeName": ""
+        },
+        {
+          "id": "74",
+          "title": "升级柜面\n注册",
+          "imagePath": "assets/images/icons/icon_升级柜面注册.png",
+          "routeName": ""
+        }
+      ]
+    },
+    {
+      "title": "其他",
+      "items": [
+        {
+          "id": "82",
+          "title": "微应用",
+          "imagePath": "assets/images/icons/icon_微应用.png",
+          "routeName": ""
+        },
+        {
+          "id": "83",
+          "title": "我的场景号",
+          "imagePath": "assets/images/icons/icon_我的场景号.png",
+          "routeName": ""
+        },
+        {
+          "id": "84",
+          "title": "金融教育",
+          "imagePath": "assets/images/icons/icon_金融教育.png",
+          "routeName": ""
+        },
+        {
+          "id": "85",
+          "title": "手机网站",
+          "imagePath": "assets/images/icons/icon_手机网站.png",
+          "routeName": ""
+        },
+        {
+          "id": "86",
+          "title": "碳空间",
+          "imagePath": "assets/images/icons/icon_碳空间.png",
+          "routeName": ""
+        },
+        {
+          "id": "87",
+          "title": "数字藏品",
+          "imagePath": "assets/images/icons/icon_数字藏品.png",
+          "routeName": ""
+        }
+      ]
+    }
+  ]
+}

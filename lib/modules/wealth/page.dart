@@ -22,7 +22,7 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-        backgroundColor: Color(0xffF3F4F6),
+        backgroundColor:const  Color(0xffF3F4F6),
         body: Stack(children: [
           // ExtendedNestedScrollView(
           //     controller: logic.controller,
@@ -743,14 +743,14 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
                                             Expanded(
                                                 flex: 3,
                                                 child: RichText(
-                                                    text: TextSpan(
+                                                    text: const TextSpan(
                                                         children: [
                                                       TextSpan(text: "+5.43", style: TextStyle(fontSize: 18)),
                                                       TextSpan(text: "%", style: TextStyle(fontSize: 14))
                                                     ],
                                                         style: TextStyle(
                                                             color: Color(0xffC63138), fontWeight: FontWeight.w500)))),
-                                            Expanded(
+                                            const Expanded(
                                                 flex: 5,
                                                 child: Text("五星闪耀，专注纯债不投股",
                                                     style: TextStyle(
@@ -758,8 +758,8 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
                                                         fontSize: 15,
                                                         fontWeight: FontWeight.w500)))
                                           ]),
-                                          SizedBox(height: 5),
-                                          Row(children: [
+                                          const SizedBox(height: 5),
+                                          const Row(children: [
                                             Expanded(
                                                 flex: 3,
                                                 child: Text("近一年涨跌幅",
@@ -776,38 +776,38 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
                                     Image.asset("assets/images/wealth/third_money.png",
                                         width: double.infinity, fit: BoxFit.fitWidth),
                                     Container(
-                                        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                                         child: Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
-                                              Text("紧跟市场形势，兼顾景气度和估值安全边际",
+                                              const Text("紧跟市场形势，兼顾景气度和估值安全边际",
                                                   style: TextStyle(color: Color(0xff685141), fontSize: 14)),
-                                              SizedBox(height: 20),
+                                              const SizedBox(height: 20),
                                               RichText(
                                                   text: TextSpan(children: [
-                                                TextSpan(text: "易方达人工智能ETF联接C "),
+                                                const TextSpan(text: "易方达人工智能ETF联接C "),
                                                 WidgetSpan(
                                                     child: Row(mainAxisSize: MainAxisSize.min, children: [
                                                   Container(
                                                       alignment: Alignment.center,
-                                                      padding: EdgeInsets.symmetric(horizontal: 5),
+                                                      padding: const EdgeInsets.symmetric(horizontal: 5),
                                                       decoration: BoxDecoration(
-                                                          color: Color(0xffFBEEEF),
+                                                          color: const Color(0xffFBEEEF),
                                                           borderRadius: BorderRadius.circular(4)),
-                                                      child: Text("基金",
+                                                      child: const Text("基金",
                                                           style: TextStyle(
                                                               color: Color(0xffB63B47),
                                                               fontSize: 12,
                                                               fontWeight: FontWeight.w500)))
                                                 ]))
-                                              ], style: TextStyle(color: Colors.black, height: 1.8))),
-                                              SizedBox(height: 15),
+                                              ], style: const TextStyle(color: Colors.black, height: 1.8))),
+                                              const SizedBox(height: 15),
                                               Row(children: [
                                                 Expanded(
                                                     flex: 3,
                                                     child: RichText(
-                                                        text: TextSpan(
+                                                        text: const TextSpan(
                                                             children: [
                                                           TextSpan(text: "+27.07", style: TextStyle(fontSize: 18)),
                                                           TextSpan(text: "%", style: TextStyle(fontSize: 14))
@@ -815,7 +815,7 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
                                                             style: TextStyle(
                                                                 color: Color(0xffC63138),
                                                                 fontWeight: FontWeight.w500)))),
-                                                Expanded(
+                                                const Expanded(
                                                     flex: 5,
                                                     child: Text("人工智能，引领数字大时代",
                                                         style: TextStyle(
@@ -823,8 +823,8 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
                                                             fontSize: 15,
                                                             fontWeight: FontWeight.w500)))
                                               ]),
-                                              SizedBox(height: 5),
-                                              Row(children: [
+                                              const SizedBox(height: 5),
+                                              const Row(children: [
                                                 Expanded(
                                                     flex: 3,
                                                     child: Text("近一年涨跌幅",
@@ -834,33 +834,33 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
                                                     child: Text("1元起购 | 股票型 | 较高风险",
                                                         style: TextStyle(color: Color(0xff999999), fontSize: 13)))
                                               ]),
-                                              SizedBox(height: 10),
-                                              Divider(height: 0, color: Color(0xffeeeeee)),
-                                              SizedBox(height: 5),
+                                              const SizedBox(height: 10),
+                                              const Divider(height: 0, color: Color(0xffeeeeee)),
+                                              const SizedBox(height: 5),
                                               RichText(
                                                   text: TextSpan(children: [
-                                                TextSpan(text: "工银科创50联接C "),
+                                                const TextSpan(text: "工银科创50联接C "),
                                                 WidgetSpan(
                                                     child: Row(mainAxisSize: MainAxisSize.min, children: [
                                                   Container(
                                                       alignment: Alignment.center,
-                                                      padding: EdgeInsets.symmetric(horizontal: 5),
+                                                      padding: const EdgeInsets.symmetric(horizontal: 5),
                                                       decoration: BoxDecoration(
-                                                          color: Color(0xffFBEEEF),
+                                                          color: const Color(0xffFBEEEF),
                                                           borderRadius: BorderRadius.circular(4)),
-                                                      child: Text("基金",
+                                                      child: const Text("基金",
                                                           style: TextStyle(
                                                               color: Color(0xffB63B47),
                                                               fontSize: 12,
                                                               fontWeight: FontWeight.w500)))
                                                 ]))
-                                              ], style: TextStyle(color: Colors.black, height: 1.8))),
-                                              SizedBox(height: 15),
+                                              ], style: const TextStyle(color: Colors.black, height: 1.8))),
+                                              const SizedBox(height: 15),
                                               Row(children: [
                                                 Expanded(
                                                     flex: 3,
                                                     child: RichText(
-                                                        text: TextSpan(
+                                                        text: const TextSpan(
                                                             children: [
                                                           TextSpan(text: "+15.54", style: TextStyle(fontSize: 18)),
                                                           TextSpan(text: "%", style: TextStyle(fontSize: 14))
@@ -868,7 +868,7 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
                                                             style: TextStyle(
                                                                 color: Color(0xffC63138),
                                                                 fontWeight: FontWeight.w500)))),
-                                                Expanded(
+                                                const Expanded(
                                                     flex: 5,
                                                     child: Text("聚焦科创龙头",
                                                         style: TextStyle(
@@ -876,8 +876,8 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
                                                             fontSize: 15,
                                                             fontWeight: FontWeight.w500)))
                                               ]),
-                                              SizedBox(height: 5),
-                                              Row(children: [
+                                              const SizedBox(height: 5),
+                                              const Row(children: [
                                                 Expanded(
                                                     flex: 3,
                                                     child: Text("近一年涨跌幅",
@@ -893,8 +893,8 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
                                     Image.asset("assets/images/wealth/fourth_money.png",
                                         width: double.infinity, fit: BoxFit.fitWidth),
                                     Container(
-                                        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                                        child: Column(
+                                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                                        child: const Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
@@ -911,19 +911,19 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
                                   ]))
                   ])),
               Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
-                  padding: EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 10),
+                  padding: const EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 10),
                   child: Column(mainAxisSize: MainAxisSize.min, children: [
-                    Row(children: [
+                    const Row(children: [
                       Text("财富活动", style: TextStyle(fontSize: 15, color: Colors.black)),
-                      const Spacer(),
+                      Spacer(),
                       Text("更多活动 快来参加", style: TextStyle(fontSize: 13, color: Color(0xff666666)))
                     ]),
 
                     /// 轮播
                     Container(
-                        margin: EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10),
                         alignment: Alignment.centerLeft,
                         height: (MediaQuery.of(context).size.width - 50) * 240 / 1027 + 10,
                         child: Swiper(
@@ -937,8 +937,8 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
                                         width: 3,
                                         gap: 5,
                                         activeWidth: 10,
-                                        color: Color(0xff999999),
-                                        activeColor: Color(0xffCD0200)))),
+                                        color: const Color(0xff999999),
+                                        activeColor: const Color(0xffCD0200)))),
                             itemBuilder: (_, index) {
                               return Container(
                                   alignment: Alignment.topCenter,
@@ -950,40 +950,40 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
                             itemCount: 3))
                   ])),
               Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                  margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   child: Column(mainAxisSize: MainAxisSize.min, children: [
-                    Row(children: [
+                    const Row(children: [
                       Text("财富聚焦", style: TextStyle(fontSize: 16, color: Colors.black)),
-                      const Spacer(),
+                      Spacer(),
                       Text("更多精彩 快来社区", style: TextStyle(fontSize: 14, color: Color(0xff666666)))
                     ]),
                     Container(
-                        margin: EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10),
                         alignment: Alignment.centerLeft,
                         child: Row(children: [
                           Expanded(
                               child: Image.asset("assets/images/wealth/left_card.png",
                                   width: double.infinity, fit: BoxFit.fitWidth)),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           Expanded(
                               child: Image.asset("assets/images/wealth/right_card.png",
                                   width: double.infinity, fit: BoxFit.fitWidth))
                         ]))
                   ])),
               Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   child: Column(mainAxisSize: MainAxisSize.min, children: [
-                    Row(children: [
+                    const Row(children: [
                       Text("财富学苑", style: TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w600)),
-                      const Spacer(),
+                      Spacer(),
                       Text("更多知识 快来学习", style: TextStyle(fontSize: 14, color: Color(0xff666666)))
                     ]),
                     Container(
-                        margin: EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10),
                         alignment: Alignment.centerLeft,
                         child: Stack(children: [
                           Image.asset("assets/images/wealth/签到.png", width: double.infinity, fit: BoxFit.fitWidth),
@@ -991,43 +991,43 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
                               left: 10,
                               bottom: 10,
                               child: Text("${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}",
-                                  style: TextStyle(fontSize: 17, color: Color(0xff666666))))
+                                  style: const TextStyle(fontSize: 17, color: Color(0xff666666))))
                         ])),
                     ListView.builder(
                         itemBuilder: (_, index) {
                           return Container(
-                              padding: EdgeInsets.symmetric(vertical: 10),
+                              padding: const EdgeInsets.symmetric(vertical: 10),
                               child: Row(children: [
                                 Image.asset("assets/images/wealth/icon_皇冠.png", width: 25),
-                                SizedBox(width: 10),
+                                const SizedBox(width: 10),
                                 Expanded(
                                     child: Text(logic.titles[index],
-                                        style:
-                                            TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black))),
-                                Icon(Icons.arrow_right)
+                                        style: const TextStyle(
+                                            fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black))),
+                                const Icon(Icons.arrow_right)
                               ]));
                         },
                         itemCount: logic.titles.length,
-                        padding: EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.only(top: 10),
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true)
                   ])),
-              SizedBox(height: 15)
+              const SizedBox(height: 15)
             ])),
             SliverPersistentHeader(
                 delegate: CustomSliverPersistentHeaderDelegate(
-                    secondColor: Color(0xffF3F4F6),
+                    secondColor: const Color(0xffF3F4F6),
                     child: Container(
                         height: 60,
-                        decoration: BoxDecoration(color: Colors.transparent),
+                        decoration: const BoxDecoration(color: Colors.transparent),
                         child: TabBar(
                             dividerColor: Colors.transparent,
                             indicatorColor: Colors.transparent,
                             dividerHeight: 60,
                             tabs: logic.tabs,
                             controller: logic.tabController,
-                            unselectedLabelStyle: TextStyle(fontSize: 15, color: Color(0xff666666)),
-                            labelStyle: TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.w600),
+                            unselectedLabelStyle: const TextStyle(fontSize: 15, color: Color(0xff666666)),
+                            labelStyle: const TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.w600),
                             indicatorSize: TabBarIndicatorSize.label,
                             tabAlignment: TabAlignment.fill))),
                 pinned: true),

@@ -8,7 +8,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.white.withValues(alpha: opacity),
+        color: Colors.white.withOpacity(opacity),
         height: kToolbarHeight + MediaQuery.of(context).padding.top,
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         child: Row(children: [
@@ -21,17 +21,17 @@ class CustomAppBar extends StatelessWidget {
                       (255 * (1 - opacity)).floor()))),
           Expanded(
               child: Container(
-                  margin: EdgeInsets.only(left: 8),
+                  margin: const EdgeInsets.only(left: 8),
                   height: 30,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Color(0xffF2F2F2).withValues(alpha: opacity),
-                      border: Border.all(width: .5, color: Colors.white.withValues(alpha: 1 - opacity))),
+                      color: const Color(0xffF2F2F2).withOpacity(opacity),
+                      border: Border.all(width: .5, color: Colors.white.withOpacity(1 - opacity))),
                   child: Row(children: [
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Image.asset(opacity > .5 ? "assets/images/icon_search_b.png" : "assets/images/icon_search_w.png",
                         width: 15, height: 15),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Expanded(
                         child: Text("搜功能  搜产品",
                             style: TextStyle(
@@ -40,7 +40,7 @@ class CustomAppBar extends StatelessWidget {
                                 fontSize: 12))),
                     Image.asset(opacity > .5 ? "assets/images/icon_mic_b.png" : "assets/images/icon_mic_w.png",
                         width: 15, height: 15),
-                    SizedBox(width: 8)
+                    const  SizedBox(width: 8)
                   ]))),
           Image.asset(
               opacity > .5

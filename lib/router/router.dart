@@ -29,7 +29,7 @@ class AppRouter {
   final GetPage initialRoute = GetPage(
       name: initialRoutePath,
       binding: LaunchBinding(),
-      page: () => LaunchPage(),
+      page: () => const LaunchPage(),
       transitionDuration: Duration.zero,
       transition: Transition.noTransition);
 

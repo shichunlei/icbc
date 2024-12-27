@@ -19,17 +19,17 @@ class NormalAppbar extends StatelessWidget implements PreferredSizeWidget {
                 child: Image.asset("assets/images/base_im_icon_back.png", width: 25))),
         elevation: 0,
         backgroundColor: Colors.white,
-        title: Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Color(0xff5F7484))),
+        title: Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Color(0xff5F7484))),
         actions: actions ??
             [
               Image.asset("assets/images/base_im_icon_service.png", width: 25),
-              SizedBox(width: 15),
+              const SizedBox(width: 15),
               Image.asset("assets/images/base_im_icon_more.png", width: 25),
-              SizedBox(width: 10)
+              const SizedBox(width: 10)
             ],
         centerTitle: true);
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

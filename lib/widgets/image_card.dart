@@ -13,11 +13,11 @@ class ImageCardView extends StatelessWidget {
         child: Stack(children: [
       Image.asset(imagePath, width: double.infinity, fit: BoxFit.fitWidth),
       Container(
-          padding: EdgeInsets.only(left: 10, top: 10),
+          padding: const EdgeInsets.only(left: 10, top: 10),
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(text, style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.w600)),
-            SizedBox(height: 3),
-            Text(subText, style: TextStyle(fontSize: 12, color: Color(0xff666666)))
+            Text(text, style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.w600)),
+            const SizedBox(height: 3),
+            Text(subText, style: const TextStyle(fontSize: 12, color: Color(0xff666666)))
           ]))
     ]));
   }

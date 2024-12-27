@@ -23,7 +23,7 @@ class _CreditPageState extends State<CreditPage> with AutomaticKeepAliveClientMi
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-        backgroundColor: Color(0xffF3F4F6),
+        backgroundColor: const Color(0xffF3F4F6),
         body: Stack(children: [
           SingleChildScrollView(
               controller: logic.controller,
@@ -42,27 +42,27 @@ class _CreditPageState extends State<CreditPage> with AutomaticKeepAliveClientMi
                   Container(
                       height: 200,
                       color: Colors.white,
-                      padding: EdgeInsets.only(left: 20, right: 20),
+                      padding: const EdgeInsets.only(left: 20, right: 20),
                       alignment: Alignment.bottomCenter,
                       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                        Text("真回馈、真减费、真让利"),
-                        SizedBox(height: 5),
-                        Text("多平台消费立减"),
+                        const Text("真回馈、真减费、真让利"),
+                        const SizedBox(height: 5),
+                        const Text("多平台消费立减"),
                         Container(
-                            margin: EdgeInsets.only(top: 20),
+                            margin: const EdgeInsets.only(top: 20),
                             width: 200,
                             height: 40,
                             decoration:
-                                BoxDecoration(color: Color(0xffCD0200), borderRadius: BorderRadius.circular(40)),
+                                BoxDecoration(color: const Color(0xffCD0200), borderRadius: BorderRadius.circular(40)),
                             alignment: Alignment.center,
-                            child: Text("申请信用卡", style: TextStyle(color: Colors.white)))
+                            child: const Text("申请信用卡", style: TextStyle(color: Colors.white)))
                       ]))
                 ]),
                 Container(
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    padding: const EdgeInsets.only(top: 10, bottom: 10),
                     width: double.infinity,
                     height: 170,
-                    margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                    margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.white),
                     child: Swiper(
                         loop: false,
@@ -76,11 +76,11 @@ class _CreditPageState extends State<CreditPage> with AutomaticKeepAliveClientMi
                                     width: 3,
                                     gap: 5,
                                     activeWidth: 10,
-                                    color: Color(0xff999999),
-                                    activeColor: Color(0xffCD0200)))),
+                                    color: const Color(0xff999999),
+                                    activeColor: const Color(0xffCD0200)))),
                         itemBuilder: (_, index) {
                           return index == 0
-                              ? Column(children: [
+                              ? const Column(children: [
                                   Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                                     IconTextView(text: "申请办卡", imagePath: "assets/images/icons/icon_申请办卡.png"),
                                     IconTextView(text: "申请进度", imagePath: "assets/images/icons/icon_申请进度.png"),
@@ -98,19 +98,19 @@ class _CreditPageState extends State<CreditPage> with AutomaticKeepAliveClientMi
                                   ])
                                 ])
                               : Column(children: [
-                                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                  const Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                                     IconTextView(text: "自动还款", imagePath: "assets/images/icons/icon_自动还款.png"),
                                     IconTextView(text: "数字卡", imagePath: "assets/images/icons/icon_数字卡.png"),
                                     IconTextView(text: "账户安全锁", imagePath: "assets/images/icons/icon_账户安全锁.png"),
                                     IconTextView(text: "查额度", imagePath: "assets/images/icons/icon_查额度.png"),
                                     IconTextView(text: "年费查询", imagePath: "assets/images/icons/icon_年费查询.png")
                                   ]),
-                                  SizedBox(height: 8),
+                                  const SizedBox(height: 8),
                                   Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                    IconTextView(text: "急用钱", imagePath: "assets/images/icons/icon_急用钱.png"),
-                                    IconTextView(text: "e分期", imagePath: "assets/images/icons/icon_e分期.png"),
-                                    IconTextView(text: "信用报告", imagePath: "assets/images/icons/icon_信用报告.png"),
-                                    IconTextView(text: "分期甄选", imagePath: "assets/images/icons/icon_分期甄选.png"),
+                                    const IconTextView(text: "急用钱", imagePath: "assets/images/icons/icon_急用钱.png"),
+                                    const IconTextView(text: "e分期", imagePath: "assets/images/icons/icon_e分期.png"),
+                                    const IconTextView(text: "信用报告", imagePath: "assets/images/icons/icon_信用报告.png"),
+                                    const IconTextView(text: "分期甄选", imagePath: "assets/images/icons/icon_分期甄选.png"),
                                     IconTextView(
                                         text: "更多",
                                         imagePath: "assets/images/icons/icon_更多.png",
@@ -122,20 +122,21 @@ class _CreditPageState extends State<CreditPage> with AutomaticKeepAliveClientMi
                         },
                         itemCount: 2)),
                 Container(
-                    padding: EdgeInsets.only(top: 20, bottom: 20, left: 15, right: 15),
+                    padding: const EdgeInsets.only(top: 20, bottom: 20, left: 15, right: 15),
                     width: double.infinity,
-                    margin: EdgeInsets.symmetric(horizontal: 15),
+                    margin: const EdgeInsets.symmetric(horizontal: 15),
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.white),
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      Text("借款专区", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black)),
+                      const Text("借款专区",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black)),
                       Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage("assets/images/card/bg_111.png"), fit: BoxFit.fitWidth)),
-                          margin: EdgeInsets.only(top: 15, bottom: 15),
-                          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                          margin: const EdgeInsets.only(top: 15, bottom: 15),
+                          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                           child: Row(children: [
-                            Expanded(
+                            const Expanded(
                                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                               Text("账单分期",
                                   style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.w600)),
@@ -145,9 +146,9 @@ class _CreditPageState extends State<CreditPage> with AutomaticKeepAliveClientMi
                                 height: 25,
                                 width: 80,
                                 alignment: Alignment.center,
-                                decoration:
-                                    BoxDecoration(color: Color(0xffF1B878), borderRadius: BorderRadius.circular(30)),
-                                child: Text("立即办理",
+                                decoration: BoxDecoration(
+                                    color: const Color(0xffF1B878), borderRadius: BorderRadius.circular(30)),
+                                child: const Text("立即办理",
                                     style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w600))),
                           ])),
                       Row(children: [
@@ -155,41 +156,41 @@ class _CreditPageState extends State<CreditPage> with AutomaticKeepAliveClientMi
                             child: Column(children: [
                           Row(children: [
                             Image.asset("assets/images/card/现金分期.png", width: 20),
-                            SizedBox(width: 10),
-                            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                            const SizedBox(width: 10),
+                            const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                               Text("现金分期",
                                   style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w600)),
                               Text("最高5万元", style: TextStyle(color: Color(0xff666666), fontSize: 10))
                             ])
                           ]),
-                          SizedBox(height: 15),
+                          const SizedBox(height: 15),
                           Row(children: [
                             Image.asset("assets/images/card/一键家装.png", width: 20),
-                            SizedBox(width: 10),
-                            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                            const SizedBox(width: 10),
+                            const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                               Text("一键家装",
                                   style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w600)),
                               Text("尊享服务 利率优惠", style: TextStyle(color: Color(0xff666666), fontSize: 10))
                             ])
                           ])
                         ])),
-                        Container(width: .5, height: 80, color: Colors.grey, margin: EdgeInsets.only(right: 15)),
+                        Container(width: .5, height: 80, color: Colors.grey, margin: const  EdgeInsets.only(right: 15)),
                         Expanded(
                             child: Column(children: [
                           Row(children: [
                             Image.asset("assets/images/card/e分期.png", width: 20),
-                            SizedBox(width: 10),
-                            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                            const SizedBox(width: 10),
+                            const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                               Text("e分期",
                                   style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w600)),
                               Text("5折优惠 随心花", style: TextStyle(color: Color(0xff666666), fontSize: 10))
                             ])
                           ]),
-                          SizedBox(height: 15),
+                          const SizedBox(height: 15),
                           Row(children: [
                             Image.asset("assets/images/card/分期甄选.png", width: 20),
-                            SizedBox(width: 10),
-                            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                            const SizedBox(width: 10),
+                            const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                               Text("分期甄选",
                                   style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w600)),
                               Text("好物推荐 免息分期", style: TextStyle(color: Color(0xff666666), fontSize: 10))
@@ -218,14 +219,15 @@ class _CreditPageState extends State<CreditPage> with AutomaticKeepAliveClientMi
                             },
                             itemCount: 3))),
                 Container(
-                    padding: EdgeInsets.only(top: 20, bottom: 20, left: 15, right: 15),
+                    padding: const EdgeInsets.only(top: 20, bottom: 20, left: 15, right: 15),
                     width: double.infinity,
-                    margin: EdgeInsets.symmetric(horizontal: 15),
+                    margin: const EdgeInsets.symmetric(horizontal: 15),
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.white),
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      Text("卡片推荐", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black)),
+                      const Text("卡片推荐",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black)),
                       Container(
-                          margin: EdgeInsets.only(top: 15, bottom: 15),
+                          margin: const EdgeInsets.only(top: 15, bottom: 15),
                           child: Image.asset("assets/images/card/bg_222.png",
                               width: double.infinity, fit: BoxFit.fitWidth)),
                       Row(children: [
@@ -233,57 +235,58 @@ class _CreditPageState extends State<CreditPage> with AutomaticKeepAliveClientMi
                             child: Column(children: [
                           Image.asset("assets/images/card/card_001.png",
                               width: MediaQuery.of(context).size.width / 4.9, fit: BoxFit.fitWidth),
-                          SizedBox(height: 3),
-                          Text("牡丹超惠信用卡",
+                          const SizedBox(height: 3),
+                          const Text("牡丹超惠信用卡",
                               textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontSize: 12)),
-                          Text("6折透支 6折分期",
+                          const Text("6折透支 6折分期",
                               textAlign: TextAlign.center, style: TextStyle(color: Color(0xff666666), fontSize: 12))
                         ])),
                         Expanded(
                             child: Column(children: [
                           Image.asset("assets/images/card/card_002.png",
                               width: MediaQuery.of(context).size.width / 4.9, fit: BoxFit.fitWidth),
-                          SizedBox(height: 3),
-                          Text("宇宙星座信用卡",
+                          const SizedBox(height: 3),
+                          const Text("宇宙星座信用卡",
                               textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontSize: 12)),
-                          Text("解锁你的星座权益",
+                          const Text("解锁你的星座权益",
                               textAlign: TextAlign.center, style: TextStyle(color: Color(0xff666666), fontSize: 12))
                         ])),
                         Expanded(
                             child: Column(children: [
                           Image.asset("assets/images/card/card_003.png",
                               width: MediaQuery.of(context).size.width / 4.9, fit: BoxFit.fitWidth),
-                          SizedBox(height: 3),
-                          Text("无界白金数字卡",
+                          const SizedBox(height: 3),
+                          const Text("无界白金数字卡",
                               textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontSize: 12)),
-                          Text("1元停车",
+                          const Text("1元停车",
                               textAlign: TextAlign.center, style: TextStyle(color: Color(0xff666666), fontSize: 12))
                         ])),
                       ])
                     ])),
                 Container(
-                    padding: EdgeInsets.only(top: 20, bottom: 20, left: 15, right: 15),
+                    padding: const EdgeInsets.only(top: 20, bottom: 20, left: 15, right: 15),
                     width: double.infinity,
-                    margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                    margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.white),
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      Text("活动权益", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black)),
+                      const Text("活动权益",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black)),
                       Container(
-                          margin: EdgeInsets.only(top: 15, bottom: 15),
+                          margin: const EdgeInsets.only(top: 15, bottom: 15),
                           child: Image.asset("assets/images/card/bg_333.png",
                               width: double.infinity, fit: BoxFit.fitWidth)),
                       Row(children: [
                         Expanded(
                             child: Column(children: [
                           Image.asset("assets/images/card/bg_3331.png", width: double.infinity, fit: BoxFit.fitWidth),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Image.asset("assets/images/card/bg_3333.png", width: double.infinity, fit: BoxFit.fitWidth),
                         ])),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Expanded(
                             child: Column(children: [
                           Image.asset("assets/images/card/bg_3332.png", width: double.infinity, fit: BoxFit.fitWidth),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Image.asset("assets/images/card/bg_3334.png", width: double.infinity, fit: BoxFit.fitWidth),
                         ]))
                       ])

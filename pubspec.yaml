@@ -39,15 +39,17 @@ dependencies:
   #loding
   flutter_easyloading: ^3.0.5
   #持久化
-  shared_preferences: ^2.3.4
+  shared_preferences: ^2.3.3
   # 启动图
-  flutter_native_splash: ^2.4.3
+  flutter_native_splash: ^2.4.1
   flutter_swiper_null_safety_flutter3: ^4.0.3
   extended_nested_scroll_view: ^6.2.1
 
   device_info_plus: ^11.2.0
   # webview
   webview_flutter: ^4.8.0
+  # json 注解
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:
@@ -58,8 +60,11 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^5.0.0
+  flutter_lints: ^4.0.0
   flutter_launcher_icons: ^0.14.2
+  build_runner: ^2.4.11
+  # json 序列化
+  json_serializable: ^6.8.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

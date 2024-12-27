@@ -43,14 +43,14 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData.light().copyWith(
-            scaffoldBackgroundColor: Colors.white,
+            scaffoldBackgroundColor: const Color(0xffF3F4F6),
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
             bottomNavigationBarTheme: const BottomNavigationBarThemeData(backgroundColor: Colors.white)),
         getPages: AppRouter().routes(),
         themeMode: ThemeMode.light,
         initialRoute: AppRouter.initialRoutePath,
-        navigatorObservers: [],
+        navigatorObservers: const [],
         debugShowCheckedModeBanner: false,
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,

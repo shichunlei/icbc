@@ -11,12 +11,12 @@ class CardMorePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: NormalAppbar(title: "更多"),
+        appBar: const NormalAppbar(title: "更多"),
         body: GridView.builder(
-            padding: EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(top: 10),
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 5, mainAxisSpacing: 0, crossAxisSpacing: 0, childAspectRatio: 1),
             itemBuilder: (BuildContext context, int index) {
               return IconTextView(text: list[index]["title"], imagePath: list[index]["imagePath"]);

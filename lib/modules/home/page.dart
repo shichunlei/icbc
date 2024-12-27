@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-        backgroundColor: Color(0xffF3F4F6),
+        backgroundColor: const Color(0xffF3F4F6),
         body: Stack(children: [
           Image.asset("assets/images/home/top_1.png", width: double.infinity, fit: BoxFit.fitWidth),
           Image.asset("assets/images/home/top_2.png", width: double.infinity, fit: BoxFit.fitWidth),
@@ -31,12 +31,12 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
                   SliverToBoxAdapter(child: SizedBox(height: kToolbarHeight + MediaQuery.of(context).padding.top)),
                   SliverToBoxAdapter(
                       child: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius:
                                   BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10))),
                           width: double.infinity,
-                          margin: EdgeInsets.symmetric(horizontal: 15),
+                          margin: const EdgeInsets.symmetric(horizontal: 15),
                           child: Column(children: [
                             SizedBox(
                                 height: 50,
@@ -44,19 +44,21 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
                                   Container(
                                       width: 80,
                                       alignment: Alignment.center,
-                                      child: Text("通用", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500))),
+                                      child: const Text("通用",
+                                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500))),
                                   Container(
                                       width: 80,
                                       alignment: Alignment.center,
-                                      child: Text("消息", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500))),
+                                      child: const Text("消息",
+                                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500))),
                                   const Spacer(),
-                                  Icon(Icons.more_vert, color: Colors.black),
-                                  SizedBox(width: 10)
+                                  const Icon(Icons.more_vert, color: Colors.black),
+                                  const SizedBox(width: 10)
                                 ]))
                           ])))
                 ];
               },
-              body: TabBarView(controller: logic.tabController, children: [CommonView(), MessageView()])),
+              body: TabBarView(controller: logic.tabController, children: const [CommonView(), MessageView()])),
           Obx(() {
             return HomeAppBar(
                 tabController: logic.tabController,

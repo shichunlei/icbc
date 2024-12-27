@@ -18,7 +18,7 @@ class IndexPage extends StatelessWidget {
         body: PageView(
             physics: const NeverScrollableScrollPhysics(),
             controller: logic.pageController,
-            children: [HomePage(), CreditPage(), WealthPage(), LifePage(), MinePage()]),
+            children: const [HomePage(), CreditPage(), WealthPage(), LifePage(), MinePage()]),
         bottomNavigationBar: Obx(() {
           return BottomNavigationBar(
               // 底部导航
@@ -44,8 +44,8 @@ class IndexPage extends StatelessWidget {
                     label: "我的",
                     activeIcon: Image.asset("assets/images/sta_8_mine_press.png", width: 25, height: 25)),
               ],
-              selectedLabelStyle: TextStyle(fontSize: 12, color: Color(0xffCF0001)),
-              unselectedLabelStyle: TextStyle(fontSize: 12, color: Color(0xff333333)),
+              selectedLabelStyle: const TextStyle(fontSize: 12, color: Color(0xffCF0001)),
+              unselectedLabelStyle: const TextStyle(fontSize: 12, color: Color(0xff333333)),
               currentIndex: logic.currentIndex.value,
               type: BottomNavigationBarType.fixed,
               fixedColor: Theme.of(context).primaryColor,
