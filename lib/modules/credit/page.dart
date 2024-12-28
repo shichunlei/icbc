@@ -115,7 +115,7 @@ class _CreditPageState extends State<CreditPage> with AutomaticKeepAliveClientMi
                                         text: "更多",
                                         imagePath: "assets/images/icons/icon_更多.png",
                                         onTap: () {
-                                          Get.to(() => CardMorePage(list: logic.list));
+                                          Get.to(() => CardMorePage(list: logic.items));
                                         })
                                   ])
                                 ]);
@@ -174,7 +174,7 @@ class _CreditPageState extends State<CreditPage> with AutomaticKeepAliveClientMi
                             ])
                           ])
                         ])),
-                        Container(width: .5, height: 80, color: Colors.grey, margin: const  EdgeInsets.only(right: 15)),
+                        Container(width: .5, height: 80, color: Colors.grey, margin: const EdgeInsets.only(right: 15)),
                         Expanded(
                             child: Column(children: [
                           Row(children: [

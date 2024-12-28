@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:icbc/beans/category_bean.dart';
 
 class CreditLogic extends GetxController {
   late ScrollController controller;
@@ -34,6 +35,8 @@ class CreditLogic extends GetxController {
     {"title": "密码管理", "imagePath": "assets/images/icon_密码管理.png"}
   ];
 
+  List<ItemsEntity> items = [];
+
   CreditLogic() {
     controller = ScrollController()
       ..addListener(() {
@@ -41,6 +44,8 @@ class CreditLogic extends GetxController {
         double opacity = (offset / 100).clamp(0.0, 1.0);
         appBarOpacity.value = opacity;
       });
+
+    items = list.map((item) => ItemsEntity.fromJson(item)).toList();
   }
 
   @override

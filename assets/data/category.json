@@ -366,8 +366,8 @@
         },
         {
           "id": "25",
-          "title": "结授汇",
-          "imagePath": "assets/images/icons/icon_结授汇.png",
+          "title": "结售汇",
+          "imagePath": "assets/images/icons/icon_结售汇.png",
           "routeName": ""
         },
         {
@@ -555,8 +555,8 @@
         },
         {
           "id": "54",
-          "title": "收益中心",
-          "imagePath": "assets/images/icons/icon_收益中心.png",
+          "title": "权益中心",
+          "imagePath": "assets/images/icons/icon_权益中心.png",
           "routeName": ""
         },
         {
@@ -637,8 +637,8 @@
       "items": [
         {
           "id": "75",
-          "title": "云网办",
-          "imagePath": "assets/images/icons/icon_云网办.png",
+          "title": "云网点",
+          "imagePath": "assets/images/icons/icon_云网点.png",
           "routeName": ""
         },
         {

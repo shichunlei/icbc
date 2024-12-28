@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:icbc/beans/category_bean.dart';
 import 'package:icbc/widgets/icon_text.dart';
 import 'package:icbc/widgets/normal_appbar.dart';
 
 class CardMorePage extends StatelessWidget {
-  final List<Map<String, dynamic>> list;
+  final List<ItemsEntity> list;
 
   const CardMorePage({super.key, this.list = const []});
 
@@ -19,7 +20,7 @@ class CardMorePage extends StatelessWidget {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 5, mainAxisSpacing: 0, crossAxisSpacing: 0, childAspectRatio: 1),
             itemBuilder: (BuildContext context, int index) {
-              return IconTextView(text: list[index]["title"], imagePath: list[index]["imagePath"]);
+              return IconTextView(text: "${list[index].title}", imagePath: "${list[index].imagePath}");
             },
             itemCount: list.length));
   }

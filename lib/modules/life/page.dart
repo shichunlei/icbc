@@ -97,7 +97,7 @@ class _LifePageState extends State<LifePage> with AutomaticKeepAliveClientMixin 
                       elevation: 0,
                       backgroundColor: Colors.transparent,
                       automaticallyImplyLeading: false,
-                      expandedHeight: (1.sw - 60) / 2 * 173 / 497 * 2 + 25 + 25,
+                      expandedHeight: (1.sw - 60) / 2 * 173 / 497 * 2 + 25 + 30,
                       flexibleSpace: FlexibleSpaceBar(
                           background: Container(
                               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
@@ -138,6 +138,7 @@ class _LifePageState extends State<LifePage> with AutomaticKeepAliveClientMixin 
                               decoration: const BoxDecoration(color: Colors.transparent),
                               child: TabBar(
                                   dividerColor: Colors.transparent,
+                                  indicatorColor: Colors.black,
                                   dividerHeight: 45,
                                   tabs: const [Tab(text: '本地'), Tab(text: '好物'), Tab(text: '购车')],
                                   controller: logic.tabController,
@@ -205,7 +206,11 @@ class _LifePageState extends State<LifePage> with AutomaticKeepAliveClientMixin 
                     child: Image.asset("assets/images/life/tab_car.jpg", width: double.infinity, fit: BoxFit.fitWidth))
               ])),
           Obx(() {
-            return CustomAppBar(opacity: logic.appBarOpacity.value);
+            return CustomAppBar(
+                opacity: logic.appBarOpacity.value,
+                isLife: true,
+                imagePathB: "assets/images/icon_list_b.png",
+                imagePathW: "assets/images/icon_list_w.png");
           })
         ]));
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
 import 'package:get/get.dart';
+import 'package:icbc/modules/more/page.dart';
 import 'package:icbc/widgets/appbar.dart';
 import 'package:icbc/widgets/custom_sticky_header_delegate.dart';
 import 'package:icbc/widgets/icon_text.dart';
@@ -368,7 +369,12 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
                                   const IconTextView(text: "积存贵金属", imagePath: "assets/images/icons/icon_积存贵金属.png"),
                                   const IconTextView(
                                       text: "账户基本\n金属", imagePath: "assets/images/icons/icon_账户基本金属.png"),
-                                  IconTextView(text: "更多", imagePath: "assets/images/icons/icon_更多.png", onTap: () {})
+                                  IconTextView(
+                                      text: "更多",
+                                      imagePath: "assets/images/icons/icon_更多.png",
+                                      onTap: () {
+                                        Get.to(() => CardMorePage(list: logic.items));
+                                      })
                                 ])
                               ]);
                       },

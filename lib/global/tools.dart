@@ -36,4 +36,8 @@ extension ScreenUtilsExtension on num {
   ///屏幕宽度的倍数
   ///Multiple of screen width
   double get sw => ScreenUtils.screenWidth * this;
+
+  ///屏幕宽度的倍数
+  ///Multiple of screen width
+  double get sh => ScreenUtils.screenHeight * this;
 }
