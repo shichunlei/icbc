@@ -55,6 +55,8 @@ class MineLogic extends GetxController {
   var showLeftButton = true.obs;
   var showRightButton = false.obs;
 
+  var time = DateTime.now().obs;
+
   @override
   void onClose() {
     controller.dispose();

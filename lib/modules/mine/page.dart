@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icbc/global/tools.dart';
 import 'package:icbc/modules/more/page.dart';
+import 'package:icbc/router/router.dart';
 import 'package:icbc/widgets/appbar.dart';
 import 'package:icbc/widgets/icon_text.dart';
 
@@ -286,7 +287,10 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                   gradient: LinearGradient(colors: [Color(0xffF5F6F7), Color(0xffF5F6F8)])),
               padding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
               alignment: Alignment.centerLeft,
-              child: const Text("时间2024-12-23 09:09:33", style: TextStyle(fontSize: 10, color: Color(0xff999999)))),
+              child: Text(
+                  "时间:${logic.time.value.year}-${logic.time.value.month.toString().padLeft(2, '0')}-${logic.time.value.day.toString().padLeft(2, '0')} "
+                  "${logic.time.value.hour.toString().padLeft(2, '0')}:${logic.time.value.minute.toString().padLeft(2, '0')}:${logic.time.value.second.toString().padLeft(2, '0')}",
+                  style: const TextStyle(fontSize: 10, color: Color(0xff999999)))),
           Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               child: Row(children: [
@@ -303,7 +307,10 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                 })),
                 const Spacer(),
                 GestureDetector(
-                    onTap: () {}, child: const Text("详情", style: TextStyle(color: Color(0xff999999), fontSize: 12)))
+                    onTap: () {
+                      Get.toNamed(AppRouter.minePages.assetsRoute.name);
+                    },
+                    child: const Text("详情", style: TextStyle(color: Color(0xff999999), fontSize: 12)))
               ])),
           Container(
               decoration: BoxDecoration(
@@ -428,7 +435,7 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                                         Image.asset("assets/images/icbc_arrow_right.webp", width: 15)
                                       ]),
                                       Row(children: [
-                                        Text(logic.showAssetsValue.value ? "100%" : "****",
+                                        Text(logic.showAssetsValue.value ? "100.00%" : "****",
                                             style: const TextStyle(color: Color(0xffCD0000), fontSize: 12)),
                                         const SizedBox(width: 5),
                                         Expanded(
@@ -437,7 +444,7 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                                                 width: double.infinity,
                                                 color: logic.showAssetsValue.value
                                                     ? const Color(0xffCD0000)
-                                                    : const Color(0xff999999)))
+                                                    : const Color(0xffdddddd)))
                                       ])
                                     ]))
                                 : Container(
@@ -451,6 +458,7 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
                         child: Row(children: [
                           Image.asset("assets/images/mine/icon_mine_assets_diagnosis.png", width: 25),
+                          const SizedBox(width: 3),
                           const Expanded(
                               child: Text("给资产做个诊断，实现财富增值", style: TextStyle(color: Color(0xff999999), fontSize: 12))),
                           Container(
