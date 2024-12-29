@@ -6,6 +6,9 @@ class IconTextView extends StatelessWidget {
   final Size size;
   final double fontSize;
   final VoidCallback? onTap;
+  final int maxLines;
+  final FontWeight? fontWeight;
+  final Color textColor;
 
   const IconTextView(
       {super.key,
@@ -13,7 +16,10 @@ class IconTextView extends StatelessWidget {
       required this.imagePath,
       this.onTap,
       this.size = const Size(30, 30),
-      this.fontSize = 13});
+      this.fontSize = 13,
+      this.maxLines = 2,
+      this.fontWeight,
+      this.textColor = Colors.black});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +31,9 @@ class IconTextView extends StatelessWidget {
               Image.asset(imagePath, width: size.width, height: size.height),
               const SizedBox(height: 3),
               Text("$text\n",
-                  style: TextStyle(color: Colors.black, fontSize: fontSize, fontWeight: FontWeight.w500),
+                  style: TextStyle(color: textColor, fontSize: fontSize, fontWeight: fontWeight ?? FontWeight.w500),
                   textAlign: TextAlign.center,
-                  maxLines: 2)
+                  maxLines: maxLines)
             ])));
   }
 }

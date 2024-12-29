@@ -1,0 +1,338 @@
+[
+  {
+    "year": 2024,
+    "income": 2003.02,
+    "expenditure": 5000.23,
+    "months": [
+      {
+        "year": 2024,
+        "month": 12,
+        "income": 7655.45,
+        "expenditure": 7660.42,
+        "monthIcon": "assets/images/detail/monthicon12.webp",
+        "monthBgImage": "assets/images/detail/my_detail_12ths_bg_max.webp",
+        "days": [
+          {
+            "year": 2024,
+            "month": 12,
+            "day": 22,
+            "date": "2024-12-22",
+            "income": 7655.45,
+            "expenditure": 7660.42,
+            "items": [
+              {
+                "id": "0001",
+                "title": "充值",
+                "type": "income",
+                "subType": "alipay",
+                "subTypeText": "转账给他",
+                "icon": "icon_支付宝.png",
+                "money": 10.00,
+                "balance": 6.98,
+                "account": "3400****3455",
+                "mineCardNumber": "6217****0554",
+                "mineName": "包汉林",
+                "bankName": "工银借记卡0554",
+                "time": "2024-12-22 12:23:43",
+                "counterpartAccount": "6217****0554",
+                "counterpartCardNumber": "6217****0554",
+                "counterpartName": "支付宝（中国）网络技术有限公司",
+                "counterpartBankName": "支付宝-备付金账户",
+                "country": "CHN",
+                "currency": "人民币",
+                "isOrder": false,
+                "includedIncomeExpenditure": false,
+                "summary": "消费",
+                "place": "支付宝-转账",
+                "accountingAmount": 10.00,
+                "remark": "这里是备注",
+                "remarkImages": [
+                  "https://www.baidu.com"
+                ],
+                "recommend": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "year": 2024,
+        "month": 11,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon11.webp",
+        "monthBgImage": "assets/images/detail/my_detail_11ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2024,
+        "month": 10,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon10.webp",
+        "monthBgImage": "assets/images/detail/my_detail_10ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2024,
+        "month": 9,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon9.webp",
+        "monthBgImage": "assets/images/detail/my_detail_9ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2024,
+        "month": 8,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon8.webp",
+        "monthBgImage": "assets/images/detail/my_detail_8ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2024,
+        "month": 7,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon7.webp",
+        "monthBgImage": "assets/images/detail/my_detail_7ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2024,
+        "month": 6,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon6.webp",
+        "monthBgImage": "assets/images/detail/my_detail_6ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2024,
+        "month": 5,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon5.webp",
+        "monthBgImage": "assets/images/detail/my_detail_5ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2024,
+        "month": 4,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon4.webp",
+        "monthBgImage": "assets/images/detail/my_detail_4ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2024,
+        "month": 3,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon3.webp",
+        "monthBgImage": "assets/images/detail/my_detail_3ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2024,
+        "month": 2,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon2.webp",
+        "monthBgImage": "assets/images/detail/my_detail_2ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2024,
+        "month": 1,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon1.webp",
+        "monthBgImage": "assets/images/detail/my_detail_1ths_bg_max.webp",
+        "days": [
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "income": 2003.02,
+    "expenditure": 5000.23,
+    "months": [
+      {
+        "year": 2023,
+        "month": 12,
+        "income": 7655.45,
+        "expenditure": 7660.42,
+        "monthIcon": "assets/images/detail/monthicon12.webp",
+        "monthBgImage": "assets/images/detail/my_detail_12ths_bg_max.webp",
+        "days": [
+          {
+            "year": 2023,
+            "month": 12,
+            "day": 22,
+            "date": "2023-12-22",
+            "income": 7655.45,
+            "expenditure": 7660.42,
+            "items": [
+              {
+                "id": "0001",
+                "title": "充值",
+                "type": "income",
+                "subType": "alipay",
+                "subTypeText": "转账给他",
+                "icon": "icon_支付宝.png",
+                "money": 10.00,
+                "balance": 6.98,
+                "account": "3400****3455",
+                "mineCardNumber": "6217****0554",
+                "mineName": "包汉林",
+                "bankName": "工银借记卡0554",
+                "time": "2023-12-22 12:23:43",
+                "counterpartCardNumber": "6217****0554",
+                "counterpartAccount": "6217****0554",
+                "counterpartName": "支付宝（中国）网络技术有限公司",
+                "counterpartBankName": "支付宝-备付金账户",
+                "country": "CHN",
+                "currency": "人民币",
+                "isOrder": false,
+                "includedIncomeExpenditure": false,
+                "summary": "消费",
+                "place": "支付宝-转账",
+                "accountingAmount": 10.00,
+                "remark": "这里是备注",
+                "remarkImages": [
+                  "https://www.baidu.com"
+                ],
+                "recommend": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "year": 2023,
+        "month": 11,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon11.webp",
+        "monthBgImage": "assets/images/detail/my_detail_11ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2023,
+        "month": 10,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon10.webp",
+        "monthBgImage": "assets/images/detail/my_detail_10ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2023,
+        "month": 9,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon9.webp",
+        "monthBgImage": "assets/images/detail/my_detail_9ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2023,
+        "month": 8,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon8.webp",
+        "monthBgImage": "assets/images/detail/my_detail_8ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2023,
+        "month": 7,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon7.webp",
+        "monthBgImage": "assets/images/detail/my_detail_7ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2023,
+        "month": 6,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon6.webp",
+        "monthBgImage": "assets/images/detail/my_detail_6ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2023,
+        "month": 5,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon5.webp",
+        "monthBgImage": "assets/images/detail/my_detail_5ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2023,
+        "month": 4,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon4.webp",
+        "monthBgImage": "assets/images/detail/my_detail_4ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2023,
+        "month": 3,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon3.webp",
+        "monthBgImage": "assets/images/detail/my_detail_3ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2023,
+        "month": 2,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon2.webp",
+        "monthBgImage": "assets/images/detail/my_detail_2ths_bg_max.webp",
+        "days": [
+        ]
+      },
+      {
+        "year": 2023,
+        "month": 1,
+        "income": 0,
+        "expenditure": 0,
+        "monthIcon": "assets/images/detail/monthicon1.webp",
+        "monthBgImage": "assets/images/detail/my_detail_1ths_bg_max.webp",
+        "days": [
+        ]
+      }
+    ]
+  }
+]

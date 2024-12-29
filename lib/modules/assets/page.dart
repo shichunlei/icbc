@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:icbc/main.dart';
 import 'package:icbc/widgets/icon_text.dart';
 import 'package:icbc/widgets/normal_appbar.dart';
+import 'package:intl/intl.dart';
 
 import 'logic.dart';
 
@@ -27,9 +29,7 @@ class AssetsPage extends StatelessWidget {
                         Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
                       Row(children: [
                         Obx(() {
-                          return Text(
-                              "时间:${logic.time.value.year}-${logic.time.value.month.toString().padLeft(2, '0')}-${logic.time.value.day.toString().padLeft(2, '0')} "
-                              "${logic.time.value.hour.toString().padLeft(2, '0')}:${logic.time.value.minute.toString().padLeft(2, '0')}:${logic.time.value.second.toString().padLeft(2, '0')}",
+                          return Text("时间:${DateFormat("yyyy-MM-dd HH:mm:ss").format(logic.time.value)}",
                               style: const TextStyle(color: Color(0xff999999), fontSize: 12));
                         }),
                         const SizedBox(width: 5),
@@ -68,7 +68,8 @@ class AssetsPage extends StatelessWidget {
                                 Padding(
                                     padding: const EdgeInsets.only(left: 5),
                                     child: Obx(() {
-                                      return Text(logic.showMoney.value ? "123,452.03" : "****",
+                                      return Text(
+                                          logic.showMoney.value ? "${Get.find<GlobalController>().balanceStr}" : "****",
                                           style: const TextStyle(fontSize: 26, color: Colors.black));
                                     })),
                                 Obx(() {
@@ -144,7 +145,9 @@ class AssetsPage extends StatelessWidget {
                                       Row(children: [
                                         const Text("存款"),
                                         const Spacer(),
-                                        Text(logic.showMoney.value ? "123,452.03" : "****"),
+                                        Text(logic.showMoney.value
+                                            ? "${Get.find<GlobalController>().balanceStr}"
+                                            : "****"),
                                         Image.asset("assets/images/icbc_arrow_right.webp", width: 15)
                                       ]),
                                       Row(children: [

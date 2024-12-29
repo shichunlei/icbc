@@ -8,6 +8,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:icbc/router/router.dart';
+import 'package:intl/intl.dart';
 
 import 'global/tools.dart';
 
@@ -50,10 +51,12 @@ class MyApp extends StatelessWidget {
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
             bottomNavigationBarTheme: const BottomNavigationBarThemeData(backgroundColor: Colors.white),
-            appBarTheme: const AppBarTheme(backgroundColor: Colors.white, scrolledUnderElevation: 0,centerTitle: true)),
+            appBarTheme:
+                const AppBarTheme(backgroundColor: Colors.white, scrolledUnderElevation: 0, centerTitle: true)),
         getPages: AppRouter().routes(),
         themeMode: ThemeMode.light,
         initialRoute: AppRouter.initialRoutePath,
+        initialBinding: InitialBinding(),
         navigatorObservers: const [],
         debugShowCheckedModeBanner: false,
         localizationsDelegates: const [
@@ -71,5 +74,40 @@ class MyApp extends StatelessWidget {
               data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
               child: FlutterEasyLoading(child: child!));
         });
+  }
+}
+
+class InitialBinding implements Bindings {
+  @override
+  void dependencies() {
+    Get.put<GlobalController>(GlobalController(), permanent: true);
+  }
+}
+
+class GlobalController extends GetxController {
+  var isLogin = false.obs;
+
+  num _balance = 123452.03;
+
+  var balanceStr = "0.00".obs;
+
+  GlobalController() {
+    balanceStr.value = NumberFormat("#,##0.00", "en_US").format(_balance);
+  }
+
+  void updateBalance(double value) {
+    balanceStr.value = NumberFormat("#,##0.00", "en_US").format(value);
+  }
+
+  Rx<DateTime?> loginTime = Rx<DateTime?>(null);
+
+  void login() {
+    isLogin.value = true;
+    loginTime.value = DateTime.now();
+  }
+
+  void logout() {
+    isLogin.value = false;
+    loginTime.value = null;
   }
 }

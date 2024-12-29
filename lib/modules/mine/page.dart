@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icbc/global/tools.dart';
+import 'package:icbc/main.dart';
 import 'package:icbc/modules/more/page.dart';
 import 'package:icbc/router/router.dart';
 import 'package:icbc/widgets/appbar.dart';
 import 'package:icbc/widgets/icon_text.dart';
+import 'package:intl/intl.dart';
 
 import 'logic.dart';
 
@@ -28,7 +30,7 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
           controller: logic.controller,
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Obx(() {
-              return logic.isLogin.value
+              return Get.find<GlobalController>().isLogin.value
                   ? Container(
                       padding: const EdgeInsets.only(top: 10, left: 8, right: 8),
                       child: Column(children: [
@@ -49,8 +51,9 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                               Image.asset("assets/images/icbc_arrow_right.webp", width: 10)
                             ]),
                             const SizedBox(height: 7),
-                            const Text("上次登录:2024-12-28 08:23:23",
-                                style: TextStyle(fontSize: 10, color: Color(0xff666666)))
+                            Text(
+                                "上次登录:${DateFormat("yyyy-MM-dd HH:mm:ss").format(Get.find<GlobalController>().loginTime.value!)}",
+                                style: const TextStyle(fontSize: 10, color: Color(0xff666666)))
                           ]))
                         ]),
                         Container(
@@ -108,7 +111,7 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                         Center(
                             child: GestureDetector(
                                 onTap: () {
-                                  logic.isLogin.value = true;
+                                  Get.find<GlobalController>().login();
                                 },
                                 child: Container(
                                     decoration: BoxDecoration(
@@ -136,88 +139,8 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                         Get.to(() => CardMorePage(list: logic.items));
                       })
                 ])),
-            Obx(() => logic.isLogin.value
-                ? Column(children: [
-                    buildZhenduan(),
-                    Container(
-                        margin: const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
-                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                          Row(children: [
-                            const Text("本月支出",
-                                textAlign: TextAlign.start, style: TextStyle(color: Colors.black, fontSize: 15)),
-                            const SizedBox(width: 5),
-                            Image.asset("assets/images/tip_image_blue.png", width: 15),
-                            const SizedBox(width: 10),
-                            GestureDetector(onTap: () {
-                              logic.showExpenditureValue.toggle();
-                            }, child: Obx(() {
-                              return Image.asset(
-                                  logic.showExpenditureValue.value
-                                      ? "assets/images/eye_open.png"
-                                      : "assets/images/eye_close.png",
-                                  width: 18);
-                            }))
-                          ]),
-                          const SizedBox(height: 10),
-                          const Row(children: [
-                            Expanded(
-                                child: Text("本月收入(元)",
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(color: Color(0xff999999), fontSize: 12))),
-                            Expanded(
-                                child: Text("本月支出(元)",
-                                    textAlign: TextAlign.end, style: TextStyle(color: Color(0xff999999), fontSize: 12)))
-                          ]),
-                          const SizedBox(height: 5),
-                          Obx(() {
-                            return Row(children: [
-                              Expanded(
-                                  child: Text(logic.showExpenditureValue.value ? "${logic.inComeMoney}" : "****",
-                                      textAlign: TextAlign.start,
-                                      style: const TextStyle(color: Colors.black, fontSize: 20))),
-                              Expanded(
-                                  child: Text(logic.showExpenditureValue.value ? "${logic.expenditureMoney}" : "****",
-                                      textAlign: TextAlign.end,
-                                      style: const TextStyle(color: Colors.black, fontSize: 20)))
-                            ]);
-                          }),
-                          logic.showExpenditureValue.value
-                              ? Container(
-                                  margin: const EdgeInsets.symmetric(vertical: 5),
-                                  height: 2,
-                                  width: double.infinity,
-                                  color: const Color(0xffCD0000),
-                                  child: Row(children: [
-                                    Container(
-                                        height: 2,
-                                        width: (1.sw - 50) /
-                                            (logic.inComeMoney + logic.expenditureMoney) *
-                                            logic.inComeMoney,
-                                        color: const Color(0xffCD0000)),
-                                    Expanded(
-                                        child: Container(
-                                            height: 2, width: double.infinity, color: const Color(0xff378179)))
-                                  ]))
-                              : const SizedBox.shrink(),
-                          logic.showExpenditureValue.value
-                              ? Align(
-                                  alignment: Alignment.centerRight,
-                                  child: RichText(
-                                      text: TextSpan(children: [
-                                    const TextSpan(text: "本月结余 "),
-                                    TextSpan(
-                                        text: (logic.inComeMoney - logic.expenditureMoney).toStringAsFixed(2),
-                                        style: TextStyle(
-                                            color: logic.inComeMoney - logic.expenditureMoney > 0
-                                                ? const Color(0xffCD0000)
-                                                : const Color(0xff378179),
-                                            fontSize: 14))
-                                  ], style: const TextStyle(color: Color(0xff999999), fontSize: 12))))
-                              : const SizedBox.shrink()
-                        ]))
-                  ])
+            Obx(() => Get.find<GlobalController>().isLogin.value
+                ? Column(children: [buildAssetsAndLiabilities(), buildMonthExpenditure()])
                 : const SizedBox(height: 10)),
             Container(
                 margin: const EdgeInsets.symmetric(horizontal: 15),
@@ -265,7 +188,6 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
           ])),
       Obx(() => CustomAppBar(
           opacity: logic.appBarOpacity.value,
-          isLogin: logic.isLogin.value,
           imagePathB: "assets/images/set_mine_black.png",
           imagePathW: "assets/images/set_mine_light.png",
           isMine: true))
@@ -275,7 +197,80 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
   @override
   bool get wantKeepAlive => true;
 
-  Widget buildZhenduan() {
+  /// 本月支出
+  Widget buildMonthExpenditure() {
+    return Container(
+        margin: const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(children: [
+            const Text("本月支出", textAlign: TextAlign.start, style: TextStyle(color: Colors.black, fontSize: 15)),
+            const SizedBox(width: 5),
+            Image.asset("assets/images/tip_image_blue.png", width: 15),
+            const SizedBox(width: 10),
+            GestureDetector(onTap: () {
+              logic.showExpenditureValue.toggle();
+            }, child: Obx(() {
+              return Image.asset(
+                  logic.showExpenditureValue.value ? "assets/images/eye_open.png" : "assets/images/eye_close.png",
+                  width: 18);
+            }))
+          ]),
+          const SizedBox(height: 10),
+          const Row(children: [
+            Expanded(
+                child: Text("本月收入(元)",
+                    textAlign: TextAlign.start, style: TextStyle(color: Color(0xff999999), fontSize: 12))),
+            Expanded(
+                child:
+                    Text("本月支出(元)", textAlign: TextAlign.end, style: TextStyle(color: Color(0xff999999), fontSize: 12)))
+          ]),
+          const SizedBox(height: 5),
+          Obx(() {
+            return Row(children: [
+              Expanded(
+                  child: Text(logic.showExpenditureValue.value ? "${logic.inComeMoney}" : "****",
+                      textAlign: TextAlign.start, style: const TextStyle(color: Colors.black, fontSize: 20))),
+              Expanded(
+                  child: Text(logic.showExpenditureValue.value ? "${logic.expenditureMoney}" : "****",
+                      textAlign: TextAlign.end, style: const TextStyle(color: Colors.black, fontSize: 20)))
+            ]);
+          }),
+          logic.showExpenditureValue.value
+              ? Container(
+                  margin: const EdgeInsets.symmetric(vertical: 5),
+                  height: 2,
+                  width: double.infinity,
+                  color: const Color(0xffCD0000),
+                  child: Row(children: [
+                    Container(
+                        height: 2,
+                        width: (1.sw - 50) / (logic.inComeMoney + logic.expenditureMoney) * logic.inComeMoney,
+                        color: const Color(0xffCD0000)),
+                    Expanded(child: Container(height: 2, width: double.infinity, color: const Color(0xff378179)))
+                  ]))
+              : const SizedBox.shrink(),
+          logic.showExpenditureValue.value
+              ? Align(
+                  alignment: Alignment.centerRight,
+                  child: RichText(
+                      text: TextSpan(children: [
+                    const TextSpan(text: "本月结余 "),
+                    TextSpan(
+                        text: (logic.inComeMoney - logic.expenditureMoney).toStringAsFixed(2),
+                        style: TextStyle(
+                            color: logic.inComeMoney - logic.expenditureMoney > 0
+                                ? const Color(0xffCD0000)
+                                : const Color(0xff378179),
+                            fontSize: 14))
+                  ], style: const TextStyle(color: Color(0xff999999), fontSize: 12))))
+              : const SizedBox.shrink()
+        ]));
+  }
+
+  /// 资产负债
+  Widget buildAssetsAndLiabilities() {
     return Container(
         padding: const EdgeInsets.only(bottom: 15),
         margin: const EdgeInsets.symmetric(horizontal: 15),
@@ -287,9 +282,7 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                   gradient: LinearGradient(colors: [Color(0xffF5F6F7), Color(0xffF5F6F8)])),
               padding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
               alignment: Alignment.centerLeft,
-              child: Text(
-                  "时间:${logic.time.value.year}-${logic.time.value.month.toString().padLeft(2, '0')}-${logic.time.value.day.toString().padLeft(2, '0')} "
-                  "${logic.time.value.hour.toString().padLeft(2, '0')}:${logic.time.value.minute.toString().padLeft(2, '0')}:${logic.time.value.second.toString().padLeft(2, '0')}",
+              child: Text("时间:${DateFormat("yyyy-MM-dd HH:mm:ss").format(logic.time.value)}",
                   style: const TextStyle(fontSize: 10, color: Color(0xff999999)))),
           Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
@@ -355,7 +348,10 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                                 const SizedBox(height: 5),
                                 Padding(
                                     padding: const EdgeInsets.only(left: 5),
-                                    child: Text(logic.showAssetsValue.value ? "123,452.03" : "****",
+                                    child: Text(
+                                        logic.showAssetsValue.value
+                                            ? "${Get.find<GlobalController>().balanceStr}"
+                                            : "****",
                                         textAlign: TextAlign.start,
                                         style: const TextStyle(color: Colors.black, fontSize: 20))),
                                 Visibility(
@@ -431,7 +427,9 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                                       Row(children: [
                                         const Text("存款"),
                                         const Spacer(),
-                                        Text(logic.showAssetsValue.value ? "123,452.03" : "****"),
+                                        Text(logic.showAssetsValue.value
+                                            ? "${Get.find<GlobalController>().balanceStr}"
+                                            : "****"),
                                         Image.asset("assets/images/icbc_arrow_right.webp", width: 15)
                                       ]),
                                       Row(children: [

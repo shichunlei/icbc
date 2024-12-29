@@ -39,7 +39,7 @@ class CommonView extends StatelessWidget {
                   Expanded(
                       child: GestureDetector(
                           onTap: () {
-                            // TODO 收支
+                            Get.toNamed(AppRouter.minePages.incomeExpenditureRoute.name);
                           },
                           child: Image.asset("assets/images/home/biz_groupview_kingten_personalacctsearch.webp",
                               width: double.infinity, fit: BoxFit.fitWidth))),

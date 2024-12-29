@@ -1,0 +1,100 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'income_expenditure_record.g.dart';
+
+@JsonSerializable()
+class RecordDateTime {
+  final int year;
+  final int month;
+  final int day;
+  final String? date;
+  final num income;
+  final num expenditure;
+  final String? monthIcon;
+  final String? monthBgImage;
+  final List<RecordDateTime> months;
+  final List<RecordDateTime> days;
+  final List<IncomeExpenditureRecord> items;
+
+  const RecordDateTime(
+      {this.year = 2024,
+      this.month = 1,
+      this.day = 1,
+      this.date,
+      this.income = .0,
+      this.expenditure = .0,
+      this.items = const [],
+      this.months = const [],
+      this.days = const [],
+      this.monthBgImage,
+      this.monthIcon});
+
+  factory RecordDateTime.fromJson(Map<String, dynamic> json) => _$RecordDateTimeFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RecordDateTimeToJson(this);
+}
+
+@JsonSerializable()
+class IncomeExpenditureRecord {
+  final String? id;
+  final String? title;
+  final String? type;
+  final String? subType;
+  final String? subTypeText;
+  final String? icon;
+  final num money;
+  final num balance;
+  final String? account;
+  final String? mineCardNumber;
+  final String? mineName;
+  final String? bankName;
+  final String? time;
+  final String? counterpartAccount;
+  final String? counterpartCardNumber;
+  final String? counterpartName;
+  final String? counterpartBankName;
+  final String? country;
+  final String? currency;
+  final bool isOrder;
+  final bool includedIncomeExpenditure;
+  final String? summary;
+  final String? place;
+  final num accountingAmount;
+  final String? remark;
+  final List<String> remarkImages;
+  final List<dynamic> recommend;
+
+  const IncomeExpenditureRecord({
+    this.id,
+    this.title,
+    this.type,
+    this.subType,
+    this.subTypeText,
+    this.icon,
+    this.money = .0,
+    this.balance = .0,
+    this.account,
+    this.mineCardNumber,
+    this.mineName,
+    this.bankName,
+    this.time,
+    this.counterpartCardNumber,
+    this.counterpartAccount,
+    this.counterpartName,
+    this.counterpartBankName,
+    this.country,
+    this.currency,
+    this.isOrder = false,
+    this.includedIncomeExpenditure = false,
+    this.summary,
+    this.place,
+    this.accountingAmount = .0,
+    this.remark,
+    this.remarkImages = const [],
+    this.recommend = const [],
+  });
+
+  factory IncomeExpenditureRecord.fromJson(Map<String, dynamic> json) => _$IncomeExpenditureRecordFromJson(json);
+
+  Map<String, dynamic> toJson() => _$IncomeExpenditureRecordToJson(this);
+}

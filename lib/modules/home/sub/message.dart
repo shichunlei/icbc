@@ -40,14 +40,14 @@ class MessageView extends StatelessWidget {
                       Row(children: [
                         Image.asset("assets/images/message/chat_header_account.png", width: 25),
                         const SizedBox(width: 3),
-                        const Text("您近期暂无动账通知",
+                        const Text("您暂未定制余额变动提醒",
                             style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500))
                       ]),
                       const SizedBox(height: 10),
                       Row(children: [
                         const Expanded(
                             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                          Text("前往消息中心",
+                          Text("定制余额变动提醒",
                               style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500)),
                           Text("查看全部动账通知", style: TextStyle(color: Color(0xff666666), fontSize: 11))
                         ])),
@@ -61,7 +61,7 @@ class MessageView extends StatelessWidget {
                                 width: 80,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(30), color: const Color(0xffCD0200)),
-                                child: const Text("立即查看", style: TextStyle(color: Colors.white, fontSize: 14))))
+                                child: const Text("立即定制", style: TextStyle(color: Colors.white, fontSize: 14))))
                       ])
                     ]))
               ])),

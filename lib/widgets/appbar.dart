@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:icbc/main.dart';
 
 class CustomAppBar extends StatelessWidget {
   final double opacity;
-  final bool isLogin;
   final String? imagePathW;
   final String? imagePathB;
   final bool isLife;
   final bool isMine;
 
   const CustomAppBar(
-      {super.key,
-      required this.opacity,
-      this.isLogin = false,
-      this.imagePathB,
-      this.imagePathW,
-      this.isLife = false,
-      this.isMine = false});
+      {super.key, required this.opacity, this.imagePathB, this.imagePathW, this.isLife = false, this.isMine = false});
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +22,7 @@ class CustomAppBar extends StatelessWidget {
           GestureDetector(
               onTap: () {
                 if (isLife) {
-
-                } else {
-
-                }
+                } else {}
               },
               child: Row(mainAxisSize: MainAxisSize.min, children: [
                 Image.asset(
@@ -41,15 +33,17 @@ class CustomAppBar extends StatelessWidget {
                         : isLife
                             ? "assets/images/location_small_icon_6.webp"
                             : "assets/images/location_mine_light.png",
-                    width: 40,
+                    width: 35,
                     height: 40),
-                Text(isLogin ? "北京" : "全国",
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: isMine
-                            ? Colors.black
-                            : Color.fromARGB(255, (255 * (1 - opacity)).floor(), (255 * (1 - opacity)).floor(),
-                                (255 * (1 - opacity)).floor())))
+                Obx(() {
+                  return Text(Get.find<GlobalController>().isLogin.value ? "北京" : "全国",
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: isMine
+                              ? Colors.black
+                              : Color.fromARGB(255, (255 * (1 - opacity)).floor(), (255 * (1 - opacity)).floor(),
+                                  (255 * (1 - opacity)).floor())));
+                })
               ])),
           Expanded(
               child: isMine

@@ -44,6 +44,15 @@ class AppRouter {
       transition: Transition.fadeIn);
 
   List<GetPage> routes() {
-    return [initialRoute, indexRoute, minePages.accountRoute, minePages.assetsRoute, minePages.categoryRoute];
+    return [
+      initialRoute,
+      indexRoute,
+      minePages.accountRoute,
+      minePages.assetsRoute,
+      minePages.categoryRoute,
+      minePages.incomeExpenditureRoute,
+      minePages.incomeExpenditureDetailRoute,
+      minePages.queryDetailsRoute
+    ];
   }
 }

@@ -3,13 +3,9 @@ import 'package:get/get.dart';
 import 'package:icbc/beans/category_bean.dart';
 
 class MineLogic extends GetxController {
-  var isLogin = false.obs;
-
   late ScrollController controller;
 
   var appBarOpacity = .0.obs;
-
-  int loginTime = 0;
 
   late List<ItemsEntity> items;
 
@@ -20,8 +16,6 @@ class MineLogic extends GetxController {
         double opacity = (offset / 100).clamp(0.0, 1.0);
         appBarOpacity.value = opacity;
       });
-
-    loginTime = DateTime.now().millisecondsSinceEpoch;
 
     items = const [
       ItemsEntity(title: "月度账单", imagePath: "assets/images/icons/icon_月度账单.png", routeName: "", id: ""),
