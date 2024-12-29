@@ -280,14 +280,38 @@ class _CreditPageState extends State<CreditPage> with AutomaticKeepAliveClientMi
                             child: Column(children: [
                           Image.asset("assets/images/card/bg_3331.png", width: double.infinity, fit: BoxFit.fitWidth),
                           const SizedBox(height: 10),
-                          Image.asset("assets/images/card/bg_3333.png", width: double.infinity, fit: BoxFit.fitWidth),
+                          GestureDetector(
+                              onTap: () {
+                                Get.to(() => WebViewPage(
+                                    url:
+                                        "https://m.icbc.com.cn/page/953328306642784256.html?srcchannel=F-WAPB&transitionid=EWFNFKGHHNDYAPADAFAPHDCFANICGIJKABDAHIIK&srcpageurl=%5Cicbc%5Caperson%5CcardNew%5CclientNew_creditcard_new_v8.jsp",
+                                    title: "工银信用卡推荐有奖"));
+                              },
+                              child: Image.asset("assets/images/card/bg_3333.png",
+                                  width: double.infinity, fit: BoxFit.fitWidth)),
                         ])),
                         const SizedBox(width: 10),
                         Expanded(
                             child: Column(children: [
-                          Image.asset("assets/images/card/bg_3332.png", width: double.infinity, fit: BoxFit.fitWidth),
+                          GestureDetector(
+                              onTap: () {
+                                Get.to(() => WebViewPage(
+                                    url:
+                                        "https://m.icbc.com.cn/page/918150652407177216.html?srcchannel=F-WAPB&transitionid=EWFNFKGHHNDYAPADAFAPHDCFANICGIJKABDAHIIK&srcpageurl=%5Cicbc%5Caperson%5CcardNew%5CclientNew_creditcard_new_v8.jsp",
+                                    title: "工银爱享礼"));
+                              },
+                              child: Image.asset("assets/images/card/bg_3332.png",
+                                  width: double.infinity, fit: BoxFit.fitWidth)),
                           const SizedBox(height: 10),
-                          Image.asset("assets/images/card/bg_3334.png", width: double.infinity, fit: BoxFit.fitWidth),
+                          GestureDetector(
+                              onTap: () {
+                                Get.to(() => WebViewPage(
+                                    url:
+                                        "https://m.icbc.com.cn/page/923139449272041472.html?srcchannel=F-WAPB&transitionid=EWFNFKGHHNDYAPADAFAPHDCFANICGIJKABDAHIIK&srcpageurl=%5Cicbc%5Caperson%5CcardNew%5CclientNew_creditcard_new_v8.jsp",
+                                    title: "出行权益"));
+                              },
+                              child: Image.asset("assets/images/card/bg_3334.png",
+                                  width: double.infinity, fit: BoxFit.fitWidth)),
                         ]))
                       ])
                     ]))

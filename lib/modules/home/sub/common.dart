@@ -4,9 +4,13 @@ import 'package:get/get.dart';
 import 'package:icbc/modules/home/logic.dart';
 import 'package:icbc/modules/webview/page.dart';
 import 'package:icbc/router/router.dart';
+import 'package:icbc/widgets/filter.dart';
 import 'package:icbc/widgets/home_bottom.dart';
 import 'package:icbc/widgets/icon_text.dart';
 import 'package:icbc/widgets/rect_indicator.dart';
+import 'package:icbc/widgets/select_account.dart';
+import 'package:icbc/widgets/select_time.dart';
+import 'package:icbc/widgets/select_user.dart';
 
 class CommonView extends StatelessWidget {
   const CommonView({super.key});
@@ -31,7 +35,8 @@ class CommonView extends StatelessWidget {
                   Expanded(
                       child: GestureDetector(
                           onTap: () {
-                            Get.toNamed(AppRouter.minePages.accountRoute.name);
+                            // Get.toNamed(AppRouter.minePages.accountRoute.name);
+                            Get.bottomSheet(const FilterDialog(),isScrollControlled: true);
                           },
                           child: Image.asset("assets/images/home/biz_groupview_kingten_account_1.webp",
                               width: double.infinity, fit: BoxFit.fitWidth))),
@@ -46,7 +51,12 @@ class CommonView extends StatelessWidget {
                   const SizedBox(width: 15),
                   Expanded(
                       child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(() => WebViewPage(
+                                url:
+                                    "https://m.icbc.com.cn/column/992097422295633921.html?srcchannel=F-WAPB&transitionid=113d48f25121c073&srcpageurl=standard-favorite",
+                                title: "个人养老金“冬日存暖意”"));
+                          },
                           child: Image.asset("assets/images/home/biz_groupview_kingten_t0combination.webp",
                               width: double.infinity, fit: BoxFit.fitWidth))),
                   const SizedBox(width: 15),
@@ -103,7 +113,15 @@ class CommonView extends StatelessWidget {
                                                   "https://m.icbc.com.cn/column/1005533151336026113.html?srcchannel=F-WAPB&transitionid=113d48f25121c073&srcpageurl=standard-favorite",
                                               title: "\"工\"迎新春"));
                                         }),
-                                    const IconTextView(text: "养老金融", imagePath: "assets/images/icons/icon_养老金融.png"),
+                                    IconTextView(
+                                        text: "养老金融",
+                                        imagePath: "assets/images/icons/icon_养老金融.png",
+                                        onTap: () {
+                                          Get.to(() => WebViewPage(
+                                              url:
+                                                  "https://mywap2.icbc.com.cn/ICBCWAPBank/servlet/WAPBAppInject?injectMenuId=annuityhome",
+                                              title: "养老金融"));
+                                        }),
                                     const IconTextView(text: "贵金属", imagePath: "assets/images/icons/icon_贵金属.png")
                                   ])
                                 ])
@@ -603,18 +621,25 @@ class CommonView extends StatelessWidget {
                   ])),
                   const SizedBox(width: 10),
                   Expanded(
-                      child: Stack(children: [
-                    Image.asset("assets/images/home/bg_养老金融.png", width: double.infinity, fit: BoxFit.fitWidth),
-                    const Positioned(
-                        left: 10,
-                        top: 10,
-                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                          Text("养老金融",
-                              style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 15)),
-                          SizedBox(height: 5),
-                          Text("安心养老 幸福一生", style: TextStyle(color: Color(0xff666666), fontSize: 12))
-                        ]))
-                  ]))
+                      child: GestureDetector(
+                          onTap: () {
+                            Get.to(() => WebViewPage(
+                                url:
+                                    "https://mywap2.icbc.com.cn/ICBCWAPBank/servlet/WAPBAppInject?injectMenuId=annuityhome",
+                                title: "养老金融"));
+                          },
+                          child: Stack(children: [
+                            Image.asset("assets/images/home/bg_养老金融.png", width: double.infinity, fit: BoxFit.fitWidth),
+                            const Positioned(
+                                left: 10,
+                                top: 10,
+                                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                  Text("养老金融",
+                                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 15)),
+                                  SizedBox(height: 5),
+                                  Text("安心养老 幸福一生", style: TextStyle(color: Color(0xff666666), fontSize: 12))
+                                ]))
+                          ])))
                 ])
               ])),
           Container(

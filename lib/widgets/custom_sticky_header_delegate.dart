@@ -21,7 +21,6 @@ class CustomSliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegat
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     headerVisible?.call(overlapsContent);
-    print("-----$shrinkOffset---------------->$overlapsContent");
     return Container(
         alignment: Alignment.centerLeft,
         color: overlapsContent ? firstColor ?? Colors.white : secondColor ?? Colors.white,

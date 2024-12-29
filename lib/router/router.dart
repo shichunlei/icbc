@@ -52,7 +52,8 @@ class AppRouter {
       minePages.categoryRoute,
       minePages.incomeExpenditureRoute,
       minePages.incomeExpenditureDetailRoute,
-      minePages.queryDetailsRoute
+      minePages.queryDetailsRoute,
+      minePages.queryDetailInfoRoute
     ];
   }
 }

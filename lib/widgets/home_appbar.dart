@@ -35,7 +35,7 @@ class HomeAppBar extends StatelessWidget {
                               style: const TextStyle(fontSize: 16, color: Colors.black))))
                   : Row(mainAxisSize: MainAxisSize.min, children: [
                       Image.asset("assets/images/location_mine_black.png", width: 35, height: 40),
-                      Text(Get.find<GlobalController>().isLogin.value ? "北京" : "全国",
+                      Text(Get.find<GlobalController>().isLogin.value ? "大连" : "全国",
                           style: const TextStyle(fontSize: 14, color: Colors.black))
                     ]),
               Expanded(

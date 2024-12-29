@@ -46,7 +46,7 @@ class WealthLogic extends GetxController with GetSingleTickerProviderStateMixin 
     ];
   }
 
-  List<String> tags = ["为您挑选", "随心快餐", "乐享系列", "基金精选", "换金投资"];
+  List<String> tags = ["为您挑选", "随心快餐", "乐享系列", "基金精选", "理财精选", "黄金投资"];
 
   var selectTagIndex = 0.obs;
 

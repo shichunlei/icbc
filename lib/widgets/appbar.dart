@@ -36,7 +36,7 @@ class CustomAppBar extends StatelessWidget {
                     width: 35,
                     height: 40),
                 Obx(() {
-                  return Text(Get.find<GlobalController>().isLogin.value ? "北京" : "全国",
+                  return Text(Get.find<GlobalController>().isLogin.value ? "大连" : "全国",
                       style: TextStyle(
                           fontSize: 14,
                           color: isMine

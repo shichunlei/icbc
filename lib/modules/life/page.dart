@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
 import 'package:get/get.dart';
 import 'package:icbc/global/tools.dart';
+import 'package:icbc/modules/webview/page.dart';
 import 'package:icbc/widgets/appbar.dart';
 import 'package:icbc/widgets/custom_sticky_header_delegate.dart';
 import 'package:icbc/widgets/icon_text.dart';
@@ -103,15 +104,15 @@ class _LifePageState extends State<LifePage> with AutomaticKeepAliveClientMixin 
                               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                               margin: const EdgeInsets.only(left: 15, right: 15, top: 15),
                               decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
-                              child: const Column(children: [
-                                Row(children: [
+                              child: Column(children: [
+                                const Row(children: [
                                   Text("热门活动",
                                       style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15, color: Colors.black)),
                                   Spacer(),
                                   Text("更多", style: TextStyle(fontSize: 13, color: Color(0xff666666)))
                                 ]),
-                                SizedBox(height: 15),
-                                SizedBox(
+                                const SizedBox(height: 15),
+                                const SizedBox(
                                     child: Row(children: [
                                   ImageCardView(
                                       text: "工银星礼遇", subText: "尽享丰富权益", imagePath: "assets/images/life/工银星礼遇.png"),
@@ -119,13 +120,21 @@ class _LifePageState extends State<LifePage> with AutomaticKeepAliveClientMixin 
                                   ImageCardView(
                                       text: "观影优惠季", subText: "立减折扣享不停", imagePath: "assets/images/life/观影优惠季.png")
                                 ])),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 Row(children: [
-                                  ImageCardView(
+                                  const ImageCardView(
                                       text: "定点帮扶消费", subText: "好物精选直达", imagePath: "assets/images/life/定点帮扶消费.png"),
-                                  SizedBox(width: 10),
+                                  const SizedBox(width: 10),
                                   ImageCardView(
-                                      text: "节节侯新", subText: "悦享四时礼遇", imagePath: "assets/images/life/节节侯新.png")
+                                      text: "节节侯新",
+                                      subText: "悦享四时礼遇",
+                                      imagePath: "assets/images/life/节节侯新.png",
+                                      onTap: () {
+                                        Get.to(() => WebViewPage(
+                                            url:
+                                                "https://m.icbc.com.cn/column/854651219367804929.html?shareuser=040800048542241",
+                                            title: "节节侯新"));
+                                      })
                                 ])
                               ])))),
                   SliverPersistentHeader(
@@ -158,16 +167,27 @@ class _LifePageState extends State<LifePage> with AutomaticKeepAliveClientMixin 
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                       margin: const EdgeInsets.only(left: 15, right: 15),
                       decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
-                      child: const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        Text("政务服务", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15, color: Colors.black)),
-                        SizedBox(height: 15),
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        const Text("政务服务",
+                            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15, color: Colors.black)),
+                        const SizedBox(height: 15),
                         Row(children: [
-                          ImageCardView(text: "工银e社保", subText: "电子社保、医保", imagePath: "assets/images/life/工银e社保.png"),
-                          SizedBox(width: 10),
-                          ImageCardView(text: "个人养老金", subText: "养老第三支柱", imagePath: "assets/images/life/个人养老金.png")
+                          const ImageCardView(
+                              text: "工银e社保", subText: "电子社保、医保", imagePath: "assets/images/life/工银e社保.png"),
+                          const SizedBox(width: 10),
+                          ImageCardView(
+                              text: "个人养老金",
+                              subText: "养老第三支柱",
+                              imagePath: "assets/images/life/个人养老金.png",
+                              onTap: () {
+                                Get.to(() => WebViewPage(
+                                    url:
+                                        "https://m.icbc.com.cn/column/992097422295633921.html?srcchannel=F-WAPB&transitionid=113d48f25121c073&srcpageurl=standard-favorite",
+                                    title: "个人养老金“冬日存暖意”"));
+                              })
                         ]),
-                        SizedBox(height: 10),
-                        Row(children: [
+                        const SizedBox(height: 10),
+                        const Row(children: [
                           ImageCardView(text: "住房公积金", subText: "查询公积金明细", imagePath: "assets/images/life/住房公积金.png"),
                           SizedBox(width: 10),
                           ImageCardView(text: "长三角政务", subText: "汇聚政务 一网统办", imagePath: "assets/images/life/长三角政务.png")

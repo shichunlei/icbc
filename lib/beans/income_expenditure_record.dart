@@ -63,6 +63,8 @@ class IncomeExpenditureRecord {
   final String? remark;
   final List<String> remarkImages;
   final List<dynamic> recommend;
+  final String? info;
+  final String? postscript;
 
   const IncomeExpenditureRecord({
     this.id,
@@ -92,6 +94,8 @@ class IncomeExpenditureRecord {
     this.remark,
     this.remarkImages = const [],
     this.recommend = const [],
+    this.info,
+    this.postscript,
   });
 
   factory IncomeExpenditureRecord.fromJson(Map<String, dynamic> json) => _$IncomeExpenditureRecordFromJson(json);

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:icbc/global/tools.dart';
 import 'package:icbc/main.dart';
 import 'package:icbc/modules/more/page.dart';
+import 'package:icbc/modules/webview/page.dart';
 import 'package:icbc/router/router.dart';
 import 'package:icbc/widgets/appbar.dart';
 import 'package:icbc/widgets/icon_text.dart';
@@ -130,7 +131,14 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                 child: Row(children: [
                   const IconTextView(text: "月度账单", imagePath: "assets/images/icons/icon_月度账单.png"),
                   const IconTextView(text: "订单", imagePath: "assets/images/icons/icon_订单.png"),
-                  const IconTextView(text: "成长嘉年华", imagePath: "assets/images/icons/icon_成长嘉年华.png"),
+                  IconTextView(
+                      text: "成长嘉年华",
+                      imagePath: "assets/images/icons/icon_成长嘉年华.png",
+                      onTap: () {
+                        Get.to(() => WebViewPage(
+                            url: "https://m.icbc.com.cn/column/1004789036822515713.html?shareuser=040800048542241",
+                            title: "成长嘉年华"));
+                      }),
                   const IconTextView(text: "投诉咨询", imagePath: "assets/images/icons/icon_投诉咨询.png"),
                   IconTextView(
                       text: "更多",

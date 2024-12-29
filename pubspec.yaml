@@ -34,8 +34,6 @@ dependencies:
     sdk: flutter
 
   get: ^4.6.6
-  #异步加载图片
-  cached_network_image: ^3.4.1
   #loding
   flutter_easyloading: ^3.0.5
   #持久化
@@ -44,6 +42,8 @@ dependencies:
   flutter_native_splash: ^2.4.1
   flutter_swiper_null_safety_flutter3: ^4.0.3
   extended_nested_scroll_view: ^6.2.1
+
+  scroll_date_picker: ^3.8.0
 
   device_info_plus: ^11.2.0
   # webview

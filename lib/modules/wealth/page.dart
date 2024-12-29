@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
 import 'package:get/get.dart';
 import 'package:icbc/modules/more/page.dart';
+import 'package:icbc/modules/webview/page.dart';
 import 'package:icbc/widgets/appbar.dart';
 import 'package:icbc/widgets/custom_sticky_header_delegate.dart';
 import 'package:icbc/widgets/icon_text.dart';
@@ -426,8 +427,21 @@ class _WealthPageState extends State<WealthPage> with AutomaticKeepAliveClientMi
                             },
                             itemCount: logic.tags.length)),
                     Obx(() {
-                      return Image.asset("assets/images/wealth/tag_00${logic.selectTagIndex.value + 1}.jpg",
-                          width: double.infinity, fit: BoxFit.fitWidth);
+                      return GestureDetector(
+                          onTap: () {
+                            if (logic.selectTagIndex.value == 0) {
+                              Get.to(() => WebViewPage(
+                                  url:
+                                      "https://imes.mims.icbc.com.cn/ICBCESCommunityWEB/#/home?pageid=833c03a02c4c41a193843e53b9d4f662&isWechat=1",
+                                  title: "个人养老金可投指数基金啦"));
+                            }
+                            if (logic.selectTagIndex.value == 4) {
+                              Get.to(() => WebViewPage(
+                                  url: "https://m.icbc.com.cn/mpage/finance/detail?productId=21GS2686", title: "产品详情"));
+                            }
+                          },
+                          child: Image.asset("assets/images/wealth/tag_00${logic.selectTagIndex.value + 1}.jpg",
+                              width: double.infinity, fit: BoxFit.fitWidth));
                     })
                   ])),
               Container(
