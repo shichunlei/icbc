@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:icbc/beans/income_expenditure_record.dart';
-import 'package:icbc/router/router.dart';
-import 'package:icbc/widgets/normal_appbar.dart';
+import 'package:icbc/main.dart';
+import 'package:icbc/widgets/filter.dart';
+import 'package:icbc/widgets/filter_bottom.dart';
+import 'package:icbc/widgets/select_account.dart';
+import 'package:icbc/widgets/select_time.dart';
+import 'package:icbc/widgets/select_user.dart';
 
 import 'logic.dart';
 
@@ -13,40 +16,98 @@ class IncomeExpenditurePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: const NormalAppbar(title: ""),
-        body: Column(children: [
-          TextButton(
-              child: Text("查看详情"),
-              onPressed: () {
-                Get.toNamed(AppRouter.minePages.incomeExpenditureDetailRoute.name, arguments: {
-                  "ITEM": const IncomeExpenditureRecord(
-                      id: "001",
-                      title: "消费",
-                      type: "income",
-                      subType: "alipay",
-                      subTypeText: "转给他人",
-                      mineCardNumber: "6217****0554",
-                      account: "6217****0554",
-                      isOrder: true,
-                      includedIncomeExpenditure: false,
-                      mineName: "包汉林",
-                      remark: "",
-                      time: "2024-12-22 02:22:23",
-                      summary: "购物",
-                      remarkImages: [],
-                      accountingAmount: 10.00,
-                      money: 10.00,
-                      balance: 12.09,
-                      country: "CHN",
-                      currency: "人民币",
-                      counterpartAccount: "0021****1223",
-                      counterpartBankName: "支付宝-备付金账户",
-                      counterpartCardNumber: "2155****0690",
-                      counterpartName: "支付宝（中国）网络技术有限公司",
-                      place: "财付通-微信转账")
-                });
-              })
-        ]));
+    return Obx(() {
+      return Scaffold(
+          appBar: AppBar(
+              leading: GestureDetector(
+                  onTap: Get.back,
+                  child: Container(
+                      width: kToolbarHeight,
+                      height: kToolbarHeight,
+                      alignment: Alignment.center,
+                      child: Image.asset("assets/images/base_im_icon_back.png", width: 25))),
+              elevation: 0,
+              backgroundColor: Colors.white,
+              titleSpacing: 0,
+              title: Center(
+                  child: Container(
+                      height: 30,
+                      width: double.infinity,
+                      margin: const EdgeInsets.only(right: 15),
+                      decoration:
+                          BoxDecoration(borderRadius: BorderRadius.circular(30), color: const Color(0xffdddddd)),
+                      child: Row(children: [
+                        const SizedBox(width: 8),
+                        Image.asset("assets/images/icon_search_b.png", width: 15, height: 15),
+                        const SizedBox(width: 5),
+                        const Expanded(child: Text("全部应用", style: TextStyle(color: Color(0xff999999), fontSize: 12)))
+                      ]))),
+              centerTitle: true,
+              actions: [
+                Image.asset("assets/images/base_im_icon_service.png", width: 25),
+                const SizedBox(width: 15),
+                Image.asset("assets/images/base_im_icon_more.png", width: 25),
+                const SizedBox(width: 10)
+              ],
+              bottom: FilterBottomView(
+                  onFilter: () {
+                    logic.selectIndex.value = 1;
+                    Get.bottomSheet(const FilterDialog(), isScrollControlled: true).then((value) {
+                      logic.selectIndex.value = 0;
+                      logic.number.value = 2;
+                    });
+                  },
+                  filterNumber: logic.number.value,
+                  onSelectAccount: () {
+                    logic.selectIndex.value = 2;
+                    Get.bottomSheet(SelectAccountDialog(account: logic.account.value), isScrollControlled: true)
+                        .then((value) {
+                      logic.selectIndex.value = 0;
+                      if (value != null) {
+                        if (value == "") {
+                          logic.account.value = null;
+                        } else {
+                          logic.account.value = value;
+                        }
+                      }
+                    });
+                  },
+                  account: logic.account.value,
+                  onSelectTime: () {
+                    logic.selectIndex.value = 3;
+                    Get.bottomSheet(
+                            SelectTimeDialog(
+                                minTime: logic.minTime.value,
+                                maxTime: logic.maxTime.value,
+                                selectMonth: logic.selectMonth.value),
+                            isScrollControlled: true)
+                        .then((value) {
+                      logic.selectIndex.value = 0;
+                      if (value != null) {
+                        if (value["selectMonth"] != null) {
+                          logic.timeStr.value = value["selectMonth"];
+                          logic.selectMonth.value = value["selectMonth"];
+                          logic.minTime.value = null;
+                          logic.maxTime.value = null;
+                        }
+                        if (value["startDate"] != null && value["stopDate"] != null) {
+                          logic.timeStr.value = "${value["startDate"]}\n${value["stopDate"]}";
+                          logic.selectMonth.value = null;
+                          logic.minTime.value = value["startDate"];
+                          logic.maxTime.value = value["stopDate"];
+                        }
+                      }
+                    });
+                  },
+                  time: logic.timeStr.value,
+                  onSelectUser: () {
+                    logic.selectIndex.value = 0;
+                    Get.bottomSheet(const SelectUserDialog(), isScrollControlled: true).then((value) {
+                      logic.selectIndex.value = 0;
+                    });
+                  },
+                  userName: Get.find<GlobalController>().starName)),
+          body: Column(children: []));
+    });
   }
 }

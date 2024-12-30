@@ -4,13 +4,9 @@ import 'package:get/get.dart';
 import 'package:icbc/modules/home/logic.dart';
 import 'package:icbc/modules/webview/page.dart';
 import 'package:icbc/router/router.dart';
-import 'package:icbc/widgets/filter.dart';
 import 'package:icbc/widgets/home_bottom.dart';
 import 'package:icbc/widgets/icon_text.dart';
 import 'package:icbc/widgets/rect_indicator.dart';
-import 'package:icbc/widgets/select_account.dart';
-import 'package:icbc/widgets/select_time.dart';
-import 'package:icbc/widgets/select_user.dart';
 
 class CommonView extends StatelessWidget {
   const CommonView({super.key});
@@ -35,8 +31,7 @@ class CommonView extends StatelessWidget {
                   Expanded(
                       child: GestureDetector(
                           onTap: () {
-                            // Get.toNamed(AppRouter.minePages.accountRoute.name);
-                            Get.bottomSheet(const FilterDialog(),isScrollControlled: true);
+                            Get.toNamed(AppRouter.minePages.accountRoute.name);
                           },
                           child: Image.asset("assets/images/home/biz_groupview_kingten_account_1.webp",
                               width: double.infinity, fit: BoxFit.fitWidth))),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:icbc/global/date_util.dart';
 import 'package:icbc/global/tools.dart';
 import 'package:icbc/main.dart';
 import 'package:icbc/modules/more/page.dart';
@@ -7,7 +8,6 @@ import 'package:icbc/modules/webview/page.dart';
 import 'package:icbc/router/router.dart';
 import 'package:icbc/widgets/appbar.dart';
 import 'package:icbc/widgets/icon_text.dart';
-import 'package:intl/intl.dart';
 
 import 'logic.dart';
 
@@ -47,13 +47,14 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                           Expanded(
                               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                             Row(children: [
-                              const Text("*汉林", style: TextStyle(fontSize: 15, color: Colors.black)),
+                              Text(Get.find<GlobalController>().starName,
+                                  style: const TextStyle(fontSize: 15, color: Colors.black)),
                               const SizedBox(width: 5),
                               Image.asset("assets/images/icbc_arrow_right.webp", width: 10)
                             ]),
                             const SizedBox(height: 7),
                             Text(
-                                "上次登录:${DateFormat("yyyy-MM-dd HH:mm:ss").format(Get.find<GlobalController>().loginTime.value!)}",
+                                "上次登录:${DateUtil.getDateTimeFromDateTime(Get.find<GlobalController>().loginTime.value!, "yyyy-MM-dd HH:mm:ss")}",
                                 style: const TextStyle(fontSize: 10, color: Color(0xff666666)))
                           ]))
                         ]),
@@ -290,7 +291,7 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                   gradient: LinearGradient(colors: [Color(0xffF5F6F7), Color(0xffF5F6F8)])),
               padding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
               alignment: Alignment.centerLeft,
-              child: Text("时间:${DateFormat("yyyy-MM-dd HH:mm:ss").format(logic.time.value)}",
+              child: Text("时间:${DateUtil.getDateTimeFromDateTime(logic.time.value, "yyyy-MM-dd HH:mm:ss")}",
                   style: const TextStyle(fontSize: 10, color: Color(0xff999999)))),
           Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
@@ -379,7 +380,7 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                                                   fit: BoxFit.fill,
                                                   image: AssetImage(
                                                       "assets/images/mine/icon_assets_floor__asset_unit.9.png"))),
-                                          child: const Text("十万",
+                                          child: const Text("万",
                                               style: TextStyle(color: Color(0xffCD0000), fontSize: 10)))
                                     ]))
                               ]))),

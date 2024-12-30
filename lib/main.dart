@@ -85,9 +85,11 @@ class InitialBinding implements Bindings {
 }
 
 class GlobalController extends GetxController {
+  /// 登录状态
   var isLogin = false.obs;
 
-  num _balance = 123452.03;
+  /// 全局余额
+  num _balance = 13452.00;
 
   var balanceStr = "0.00".obs;
 
@@ -99,6 +101,7 @@ class GlobalController extends GetxController {
     balanceStr.value = NumberFormat("#,##0.00", "en_US").format(value);
   }
 
+  /// 登录时间
   Rx<DateTime?> loginTime = Rx<DateTime?>(null);
 
   void login() {
@@ -110,4 +113,11 @@ class GlobalController extends GetxController {
     isLogin.value = false;
     loginTime.value = null;
   }
+
+  /// 用户名
+  String userName = "包汉林";
+
+  String starName = "*汉林";
+
+  String address = "大连";
 }

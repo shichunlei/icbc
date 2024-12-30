@@ -1,3 +1,4 @@
+import 'package:icbc/global/enum.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'income_expenditure_record.g.dart';
@@ -38,7 +39,7 @@ class RecordDateTime {
 class IncomeExpenditureRecord {
   final String? id;
   final String? title;
-  final String? type;
+  final IncomeExpenditureType? type;
   final String? subType;
   final String? subTypeText;
   final String? icon;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:icbc/main.dart';
 
 class SelectUserDialog extends StatelessWidget {
   const SelectUserDialog({super.key});
@@ -31,7 +32,7 @@ class SelectUserDialog extends StatelessWidget {
                       const SizedBox(width: 15),
                       Image.asset("assets/images/detail/icon_checkbox.webp", width: 20),
                       const SizedBox(width: 5),
-                      const Text("*汉林", style: TextStyle(fontSize: 14, color: Colors.black))
+                       Text(Get.find<GlobalController>().starName, style: const TextStyle(fontSize: 14, color: Colors.black))
                     ])),
                 GestureDetector(
                     onTap: () {

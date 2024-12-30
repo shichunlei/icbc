@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:icbc/global/enum.dart';
 import 'package:icbc/widgets/icon_text.dart';
 import 'package:icbc/widgets/normal_appbar.dart';
 import 'package:intl/intl.dart';
@@ -30,9 +31,9 @@ class IncomeExpenditureDetailPage extends StatelessWidget {
                   builder: (bool? value, Function(bool? newValue) updater) => Column(children: [
                         const SizedBox(height: 30, width: double.infinity),
                         Text(
-                            "${logic.bean!.type == "income" ? "+" : "-"}${NumberFormat("#,##0.00", "en_US").format(logic.bean!.money)}",
+                            "${logic.bean!.type == IncomeExpenditureType.income ? "+" : "-"}${NumberFormat("#,##0.00", "en_US").format(logic.bean!.money)}",
                             style: TextStyle(
-                                color: logic.bean!.type == "income" ? const Color(0xffC84C41) : const Color(0xff3A837A),
+                                color: logic.bean!.type == IncomeExpenditureType.income ? const Color(0xffC84C41) : const Color(0xff3A837A),
                                 fontSize: 32,
                                 fontWeight: FontWeight.w500)),
                         Row(mainAxisAlignment: MainAxisAlignment.center, children: [

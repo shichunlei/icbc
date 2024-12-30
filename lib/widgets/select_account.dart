@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SelectAccountDialog extends StatelessWidget {
-  const SelectAccountDialog({super.key});
+  final String? account;
 
-  SelectAccountController get logic => Get.put(SelectAccountController());
+  const SelectAccountDialog({super.key, this.account});
+
+  SelectAccountController get logic => Get.put(SelectAccountController(this.account));
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +64,7 @@ class SelectAccountDialog extends StatelessWidget {
                               child: Row(children: [
                                 Obx(() {
                                   return Checkbox(
-                                      value: logic.allChecked.value,
+                                      value: !logic.allChecked.value,
                                       onChanged: (value) {
                                         logic.allChecked.value = value!;
                                       },
@@ -86,7 +88,7 @@ class SelectAccountDialog extends StatelessWidget {
                     itemCount: 1),
                 GestureDetector(
                     onTap: () {
-                      Get.back();
+                      Get.back(result: logic.allChecked.value ? "" : "尾号0554");
                     },
                     child: Container(
                         margin:
@@ -101,5 +103,13 @@ class SelectAccountDialog extends StatelessWidget {
 }
 
 class SelectAccountController extends GetxController {
+  SelectAccountController(String? account) {
+    if (account == null) {
+      allChecked.value = true;
+    } else {
+      allChecked.value = false;
+    }
+  }
+
   var allChecked = true.obs;
 }

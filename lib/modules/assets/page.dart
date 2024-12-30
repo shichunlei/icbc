@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:icbc/global/date_util.dart';
 import 'package:icbc/main.dart';
 import 'package:icbc/widgets/icon_text.dart';
 import 'package:icbc/widgets/normal_appbar.dart';
-import 'package:intl/intl.dart';
 
 import 'logic.dart';
 
@@ -29,7 +29,7 @@ class AssetsPage extends StatelessWidget {
                         Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
                       Row(children: [
                         Obx(() {
-                          return Text("时间:${DateFormat("yyyy-MM-dd HH:mm:ss").format(logic.time.value)}",
+                          return Text("时间:${DateUtil.getDateTimeFromDateTime(logic.time.value, "yyyy-MM-dd HH:mm:ss")}",
                               style: const TextStyle(color: Color(0xff999999), fontSize: 12));
                         }),
                         const SizedBox(width: 5),
@@ -85,7 +85,7 @@ class AssetsPage extends StatelessWidget {
                                                     fit: BoxFit.fill,
                                                     image: AssetImage(
                                                         "assets/images/mine/icon_assets_floor__asset_unit.9.png"))),
-                                            child: const Text("十万",
+                                            child: const Text("万",
                                                 style: TextStyle(color: Color(0xffCD0000), fontSize: 10)))
                                       ]));
                                 })

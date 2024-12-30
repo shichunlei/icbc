@@ -61,8 +61,8 @@ class _AccountPageState extends State<AccountPage> with TickerProviderStateMixin
                                     Image.asset("assets/images/detail/grayweight_card.webp", width: 60, height: 40),
                                     const SizedBox(width: 5),
                                     Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                      const Text("大连 借记卡(I类)",
-                                          style: TextStyle(color: Color(0xff222222), fontSize: 14)),
+                                      Text("${Get.find<GlobalController>().address} 借记卡(I类)",
+                                          style: const TextStyle(color: Color(0xff222222), fontSize: 14)),
                                       Row(children: [
                                         const Text("6217****0554", style: TextStyle(color: Colors.black, fontSize: 15)),
                                         logic.showDetail.value
