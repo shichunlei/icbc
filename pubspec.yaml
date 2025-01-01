@@ -41,7 +41,6 @@ dependencies:
   # 启动图
   flutter_native_splash: ^2.4.1
   flutter_swiper_null_safety_flutter3: ^4.0.3
-  extended_nested_scroll_view: ^6.2.1
 
   scroll_date_picker: ^3.8.0
 
@@ -50,6 +49,7 @@ dependencies:
   webview_flutter: ^4.8.0
   # json 注解
   json_annotation: ^4.9.0
+  realm: ^20.0.0
 
 dev_dependencies:
   flutter_test:

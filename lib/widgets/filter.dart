@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:icbc/global/enum.dart';
+import 'package:icbc/global/tools.dart';
 
 class FilterDialog extends StatelessWidget {
   const FilterDialog({super.key});
@@ -13,23 +15,26 @@ class FilterDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
         color: Colors.black12,
-        child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-          Container(
-              color: Colors.white,
-              child: Column(mainAxisSize: MainAxisSize.min, children: [
-                SizedBox(
-                    height: 50,
-                    child: Stack(children: [
-                      const Center(child: Text("筛选", style: TextStyle(color: Colors.black, fontSize: 17))),
-                      GestureDetector(
-                          onTap: Get.back,
-                          child: Container(
-                              alignment: Alignment.center,
-                              height: 50,
-                              width: 40,
-                              child: Image.asset("assets/images/detail/my_detail_suspend_layer_close.png", width: 25)))
-                    ])),
-                const Divider(height: 0, color: Color(0xffdddddd)),
+        child: Container(
+            color: Colors.white,
+            height: .7.sh,
+            child: Column(children: [
+              SizedBox(
+                  height: 50,
+                  child: Stack(children: [
+                    const Center(child: Text("筛选", style: TextStyle(color: Colors.black, fontSize: 17))),
+                    GestureDetector(
+                        onTap: Get.back,
+                        child: Container(
+                            alignment: Alignment.center,
+                            height: 50,
+                            width: 40,
+                            child: Image.asset("assets/images/detail/my_detail_suspend_layer_close.png", width: 25)))
+                  ])),
+              const Divider(height: 0, color: Color(0xffdddddd)),
+              Expanded(
+                  child: SingleChildScrollView(
+                      child: Column(mainAxisSize: MainAxisSize.min, children: [
                 Container(
                     height: 50,
                     alignment: Alignment.centerLeft,
@@ -47,6 +52,7 @@ class FilterDialog extends StatelessWidget {
                                   } else {
                                     logic.incomeExpenditureType.value = item;
                                   }
+                                  logic.tradeTypeText.clear();
                                 }, child: Obx(() {
                                   return Container(
                                       width: 60,
@@ -67,30 +73,65 @@ class FilterDialog extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     padding: const EdgeInsets.only(left: 15),
                     child: const Text("交易类型")),
-                GridView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4, mainAxisSpacing: 10, crossAxisSpacing: 10, childAspectRatio: 2.5),
-                    itemBuilder: (BuildContext context, int index) {
-                      return GestureDetector(onTap: () {
-                        logic.tradeTypeIndex.value = index;
-                      }, child: Obx(() {
-                        return Container(
-                            width: 60,
-                            alignment: Alignment.center,
-                            height: 30,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4),
-                                color: logic.tradeTypeIndex.value == index
-                                    ? const Color(0xffFD7B7B)
-                                    : const Color(0xfff4f4f4)),
-                            child: Text(logic.tradeType[index],
-                                style: TextStyle(color: logic.tradeTypeIndex.value == index ? Colors.white : null)));
-                      }));
-                    },
-                    itemCount: logic.tradeType.length),
+                Obx(() {
+                  return GridView.builder(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 4, mainAxisSpacing: 5, crossAxisSpacing: 10, childAspectRatio: 2.5),
+                      itemBuilder: (BuildContext context, int index) {
+                        if (index == logic.length.value) {
+                          return GestureDetector(
+                              onTap: () {
+                                logic.showMore.toggle();
+                                if (logic.showMore.value) {
+                                  logic.length.value = 34;
+                                } else {
+                                  logic.length.value = 7;
+                                }
+                              },
+                              child: Container(
+                                  width: 60,
+                                  alignment: Alignment.center,
+                                  height: 30,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(4),
+                                      border: Border.all(width: .5, color: const Color(0xffFD7B7B)),
+                                      color: Colors.white),
+                                  child: Text(logic.showMore.value ? "收起" : "展开",
+                                      style: const TextStyle(color: Color(0xffFD7B7B)))));
+                        }
+
+                        return GestureDetector(onTap: () {
+                          logic.incomeExpenditureType.value = null;
+                          if (logic.tradeTypeText.contains(tradeType[index])) {
+                            logic.tradeTypeText.remove(tradeType[index]);
+                          } else {
+                            if (logic.tradeTypeText.length >= 3) {
+                              EasyLoading.showToast("最多选择3个条件");
+                              return;
+                            }
+                            logic.tradeTypeText.add(tradeType[index]);
+                          }
+                          logic.tradeTypeText.refresh();
+                        }, child: Obx(() {
+                          return Container(
+                              width: 60,
+                              alignment: Alignment.center,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(4),
+                                  color: logic.tradeTypeText.contains(tradeType[index])
+                                      ? const Color(0xffFD7B7B)
+                                      : const Color(0xfff4f4f4)),
+                              child: Text(tradeType[index],
+                                  style: TextStyle(
+                                      color: logic.tradeTypeText.contains(tradeType[index]) ? Colors.white : null)));
+                        }));
+                      },
+                      itemCount: logic.length.value + 1);
+                }),
                 Container(
                     height: 50,
                     alignment: Alignment.centerLeft,
@@ -193,6 +234,7 @@ class FilterDialog extends StatelessWidget {
                               style:
                                   const TextStyle(color: Color(0xff333333), fontSize: 13, fontWeight: FontWeight.w500),
                               decoration: const InputDecoration(
+                                  isDense: true,
                                   contentPadding: EdgeInsets.zero,
                                   border: InputBorder.none,
                                   hintText: "最小金额",
@@ -205,7 +247,7 @@ class FilterDialog extends StatelessWidget {
                   Expanded(
                       child: Container(
                           height: 35,
-                          alignment: Alignment.center,
+                          alignment: Alignment.centerLeft,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
                               border: Border.all(color: const Color(0xffdddddd), width: 1)),
@@ -220,6 +262,7 @@ class FilterDialog extends StatelessWidget {
                               decoration: const InputDecoration(
                                   contentPadding: EdgeInsets.zero,
                                   border: InputBorder.none,
+                                  isDense: true,
                                   hintText: "最大金额",
                                   hintStyle: TextStyle(color: Color(0xff999999), fontSize: 13))))),
                   const SizedBox(width: 15)
@@ -234,10 +277,19 @@ class FilterDialog extends StatelessWidget {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4, mainAxisSpacing: 10, crossAxisSpacing: 10, childAspectRatio: 2.5),
+                        crossAxisCount: 4, mainAxisSpacing: 5, crossAxisSpacing: 10, childAspectRatio: 2.5),
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(onTap: () {
-                        logic.currencyIndexs.add(index) ;
+                        if (logic.currencyIndex.contains(index)) {
+                          logic.currencyIndex.remove(index);
+                        } else {
+                          if (logic.currencyIndex.length >= 3) {
+                            EasyLoading.showToast("最多可以选择三个条件");
+                            return;
+                          }
+                          logic.currencyIndex.add(index);
+                        }
+                        logic.currencyIndex.refresh();
                       }, child: Obx(() {
                         return Container(
                             width: 60,
@@ -245,15 +297,15 @@ class FilterDialog extends StatelessWidget {
                             height: 30,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(4),
-                                color: logic.currencyIndex.value == index
+                                color: logic.currencyIndex.contains(index)
                                     ? const Color(0xffFD7B7B)
                                     : const Color(0xfff4f4f4)),
-                            child: Text(logic.currency[index],
+                            child: Text(currency[index],
                                 style: TextStyle(
-                                    color: logic.currencyIndex.value == index ? Colors.white : null, fontSize: 12)));
+                                    color: logic.currencyIndex.contains(index) ? Colors.white : null, fontSize: 12)));
                       }));
                     },
-                    itemCount: logic.currency.length),
+                    itemCount: currency.length),
                 const SizedBox(height: 10),
                 const Divider(height: 0, color: Color(0xffdddddd), indent: 15, endIndent: 15),
                 const SizedBox(height: 5),
@@ -265,36 +317,37 @@ class FilterDialog extends StatelessWidget {
                   CupertinoSwitch(value: logic.switchValue.value, onChanged: (value) => logic.switchValue.toggle()),
                   const SizedBox(width: 10)
                 ]),
-                const SizedBox(height: 10),
-                Row(children: [
-                  Expanded(
-                      child: GestureDetector(
-                          onTap: logic.submit,
-                          child: Container(
-                              margin: EdgeInsets.only(
-                                  bottom: 10 + MediaQuery.of(context).padding.bottom, left: 15, right: 5),
-                              height: 45,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(4),
-                                  border: Border.all(color: Colors.red, width: 1)),
-                              child: const Text("重置", style: TextStyle(color: Colors.red, fontSize: 18))))),
-                  Expanded(
-                      child: GestureDetector(
-                          onTap: logic.submit,
-                          child: Container(
-                              margin: EdgeInsets.only(
-                                  bottom: 10 + MediaQuery.of(context).padding.bottom, left: 5, right: 15),
-                              height: 45,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(4),
-                                  border: Border.all(color: Colors.red, width: 1)),
-                              child: const Text("确定", style: TextStyle(color: Colors.white, fontSize: 18)))))
-                ])
-              ]))
-        ]));
+                const SizedBox(height: 10)
+              ]))),
+              const SizedBox(height: 10),
+              Row(children: [
+                Expanded(
+                    child: GestureDetector(
+                        onTap: logic.submit,
+                        child: Container(
+                            margin:
+                                EdgeInsets.only(bottom: 10 + MediaQuery.of(context).padding.bottom, left: 15, right: 5),
+                            height: 45,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                border: Border.all(color: Colors.red, width: 1)),
+                            child: const Text("重置", style: TextStyle(color: Colors.red, fontSize: 18))))),
+                Expanded(
+                    child: GestureDetector(
+                        onTap: logic.submit,
+                        child: Container(
+                            margin:
+                                EdgeInsets.only(bottom: 10 + MediaQuery.of(context).padding.bottom, left: 5, right: 15),
+                            height: 45,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(4),
+                                border: Border.all(color: Colors.red, width: 1)),
+                            child: const Text("确定", style: TextStyle(color: Colors.white, fontSize: 18)))))
+              ])
+            ])));
   }
 }
 
@@ -303,52 +356,13 @@ class FilterController extends GetxController {
   Rx<IncomeExpenditureType?> incomeExpenditureType = Rx<IncomeExpenditureType?>(null);
 
   /// 交易类型
-  var tradeTypeIndex = (-1).obs;
+  var tradeTypeText = RxList<String>([]);
 
   var moneyType = (-1).obs;
   var minMoney = 0.obs;
   var maxMoney = (-1).obs;
 
-  List<String> currency = ["人民币", "美元", "港币", "欧元", "英镑", "瑞士法郎", "新加坡元", "日元", "加拿大元", "澳大利亚元"];
-
-  List<String> tradeType = [
-    "消费",
-    "贷款",
-    "工资",
-    "信用卡",
-    "还款",
-    "支付宝",
-    "财付通",
-    "京东",
-    "美团",
-    "转账",
-    "餐饮",
-    "交通",
-    "缴费",
-    "ETC",
-    "教育",
-    "医疗",
-    "代扣",
-    "基金",
-    "理财",
-    "保险",
-    "贵金属",
-    "公积金",
-    "社保",
-    "养老金",
-    "税",
-    "报销",
-    "退款",
-    "现金",
-    "取现",
-    "购汇",
-    "结汇",
-    "销户",
-    "冲正",
-    "其他"
-  ];
-
-  RxList<int> currencyIndexs = RxList<int>([]);
+  var currencyIndex = RxList<int>([]);
 
   late TextEditingController minEditingController;
   late TextEditingController maxEditingController;
@@ -392,6 +406,10 @@ class FilterController extends GetxController {
     Get.back();
   }
 
+  var showMore = false.obs;
+
+  var length = 7.obs;
+
   @override
   void onClose() {
     minEditingController.dispose();
@@ -399,3 +417,42 @@ class FilterController extends GetxController {
     super.onClose();
   }
 }
+
+List<String> currency = ["人民币", "美元", "港币", "欧元", "英镑", "瑞士法郎", "新加坡元", "日元", "加拿大元", "澳大利亚元"];
+
+List<String> tradeType = [
+  "消费",
+  "贷款",
+  "工资",
+  "信用卡",
+  "还款",
+  "支付宝",
+  "财付通",
+  "京东",
+  "美团",
+  "转账",
+  "餐饮",
+  "交通",
+  "缴费",
+  "ETC",
+  "教育",
+  "医疗",
+  "代扣",
+  "基金",
+  "理财",
+  "保险",
+  "贵金属",
+  "公积金",
+  "社保",
+  "养老金",
+  "税",
+  "报销",
+  "退款",
+  "现金",
+  "取现",
+  "购汇",
+  "结汇",
+  "销户",
+  "冲正",
+  "其他"
+];

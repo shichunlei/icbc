@@ -22,9 +22,9 @@ class NormalAppbar extends StatelessWidget implements PreferredSizeWidget {
         title: Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Color(0xff5F7484))),
         actions: actions ??
             [
-              Image.asset("assets/images/base_im_icon_service.png", width: 25),
+              Image.asset("assets/images/base_im_icon_service.png", width: 20),
               const SizedBox(width: 15),
-              Image.asset("assets/images/base_im_icon_more.png", width: 25),
+              Image.asset("assets/images/base_im_icon_more.png", width: 20),
               const SizedBox(width: 10)
             ],
         centerTitle: true);

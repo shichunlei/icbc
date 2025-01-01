@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:icbc/global/date_util.dart';
+import 'package:icbc/global/enum.dart';
 import 'package:icbc/main.dart';
+import 'package:icbc/router/router.dart';
 import 'package:icbc/widgets/filter.dart';
 import 'package:icbc/widgets/filter_bottom.dart';
 import 'package:icbc/widgets/select_account.dart';
 import 'package:icbc/widgets/select_time.dart';
 import 'package:icbc/widgets/select_user.dart';
+import 'package:intl/intl.dart';
 
 import 'logic.dart';
 
@@ -35,7 +39,7 @@ class IncomeExpenditurePage extends StatelessWidget {
                       width: double.infinity,
                       margin: const EdgeInsets.only(right: 15),
                       decoration:
-                          BoxDecoration(borderRadius: BorderRadius.circular(30), color: const Color(0xffdddddd)),
+                          BoxDecoration(borderRadius: BorderRadius.circular(30), color: const Color(0xffF4F4F4)),
                       child: Row(children: [
                         const SizedBox(width: 8),
                         Image.asset("assets/images/icon_search_b.png", width: 15, height: 15),
@@ -44,12 +48,13 @@ class IncomeExpenditurePage extends StatelessWidget {
                       ]))),
               centerTitle: true,
               actions: [
-                Image.asset("assets/images/base_im_icon_service.png", width: 25),
+                Image.asset("assets/images/base_im_icon_service.png", width: 20),
                 const SizedBox(width: 15),
-                Image.asset("assets/images/base_im_icon_more.png", width: 25),
+                Image.asset("assets/images/base_im_icon_more.png", width: 20),
                 const SizedBox(width: 10)
               ],
               bottom: FilterBottomView(
+                  index: logic.selectIndex.value,
                   onFilter: () {
                     logic.selectIndex.value = 1;
                     Get.bottomSheet(const FilterDialog(), isScrollControlled: true).then((value) {
@@ -107,7 +112,189 @@ class IncomeExpenditurePage extends StatelessWidget {
                     });
                   },
                   userName: Get.find<GlobalController>().starName)),
-          body: Column(children: []));
+          body: CustomScrollView(slivers: [
+            logic.isLoading.value
+                ? SliverToBoxAdapter(child: Container(alignment: Alignment.center, height: 200, child: Text("正在加载数据")))
+                : logic.records.isNotEmpty
+                    ? SliverList.builder(
+                        itemBuilder: (_, index) {
+                          return Column(children: [
+                            Stack(children: [
+                              Image.asset(
+                                  index == 0
+                                      ? "assets/images/detail/my_detail_${logic.records[index].month}ths_bg_max.webp"
+                                      : "assets/images/detail/my_detail_${logic.records[index].month}ths_bg.webp",
+                                  width: double.infinity,
+                                  fit: BoxFit.fitWidth),
+                              Column(mainAxisSize: MainAxisSize.min, children: [
+                                Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 15, right: 15, bottom: index == 0 ? 15 : 5, top: index == 0 ? 20 : 10),
+                                    child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+                                      Image.asset("${logic.records[index].monthIcon}", width: 35),
+                                      const Spacer(),
+                                      RichText(
+                                          text: TextSpan(
+                                              children: logic.records[index].days.isEmpty
+                                                  ? [
+                                                      const TextSpan(text: "本月无交易数据", style: TextStyle(fontSize: 12)),
+                                                    ]
+                                                  : [
+                                                      ...index == 0
+                                                          ? [
+                                                              WidgetSpan(
+                                                                  child: Image.asset("assets/images/icon_tip_red.webp",
+                                                                      width: 14))
+                                                            ]
+                                                          : [],
+                                                      const TextSpan(text: " 收 ", style: TextStyle(fontSize: 12)),
+                                                      TextSpan(
+                                                          text:
+                                                              "￥${NumberFormat("#,##0.00", "en_US").format(logic.records[index].income)}",
+                                                          style: const TextStyle(color: Color(0xffC84C41)))
+                                                    ],
+                                              style: const TextStyle(color: Color(0xff333333), fontSize: 14)))
+                                    ])),
+                                Padding(
+                                    padding: const EdgeInsets.only(left: 15, right: 15),
+                                    child: Row(children: [
+                                      ...index == 0
+                                          ? [
+                                              Image.asset("assets/images/detail/my_detail_analyzes.webp", width: 18),
+                                              const SizedBox(width: 5),
+                                              const Text("收支分析",
+                                                  style: TextStyle(color: Color(0xff333333), fontSize: 13))
+                                            ]
+                                          : [],
+                                      const Spacer(),
+                                      Visibility(
+                                          visible: logic.records[index].expenditure > 0,
+                                          child: RichText(
+                                              text: TextSpan(children: [
+                                            const TextSpan(text: "支 ", style: TextStyle(fontSize: 12)),
+                                            TextSpan(
+                                                text:
+                                                    "￥${NumberFormat("#,##0.00", "en_US").format(logic.records[index].expenditure)}",
+                                                style: const TextStyle(color: Color(0xff3A837A)))
+                                          ], style: const TextStyle(color: Color(0xff333333), fontSize: 14))))
+                                    ]))
+                              ])
+                            ]),
+                            Container(
+                                color: const Color(0xffFBFBFB),
+                                child: ListView.separated(
+                                    padding: EdgeInsets.zero,
+                                    shrinkWrap: true,
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    itemBuilder: (_, dayIndex) {
+                                      return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                        Container(
+                                            padding: const EdgeInsets.only(top: 15),
+                                            width: 60,
+                                            child: Column(children: [
+                                              Text("${logic.records[index].days[dayIndex].day}",
+                                                  style: TextStyle(
+                                                      color: DateUtil.getWeekDayColor(
+                                                          logic.records[index].days[dayIndex].date!),
+                                                      fontSize: 20,
+                                                      fontWeight: FontWeight.w600)),
+                                              const SizedBox(height: 1),
+                                              Text(DateUtil.getWeekDay(logic.records[index].days[dayIndex].date!),
+                                                  style: TextStyle(
+                                                      color: DateUtil.getWeekDayColor(
+                                                          logic.records[index].days[dayIndex].date!),
+                                                      fontSize: 14))
+                                            ])),
+                                        Expanded(
+                                            child: Container(
+                                                color: Colors.white,
+                                                child: ListView.separated(
+                                                    padding: EdgeInsets.zero,
+                                                    shrinkWrap: true,
+                                                    physics: const NeverScrollableScrollPhysics(),
+                                                    itemBuilder: (_, i) {
+                                                      return GestureDetector(
+                                                          behavior: HitTestBehavior.translucent,
+                                                          onTap: () {
+                                                            Get.toNamed(
+                                                                AppRouter.minePages.incomeExpenditureDetailRoute.name,
+                                                                arguments: {
+                                                                  "ITEM": logic.records[index].days[dayIndex].items[i]
+                                                                });
+                                                          },
+                                                          child: Container(
+                                                              padding: const EdgeInsets.only(
+                                                                  left: 15, right: 15, top: 15, bottom: 10),
+                                                              child: Column(
+                                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                                  children: [
+                                                                    Row(children: [
+                                                                      Text(
+                                                                          "${logic.records[index].days[dayIndex].items[i].summary}",
+                                                                          style: const TextStyle(
+                                                                              fontWeight: FontWeight.w500,
+                                                                              color: Colors.black,
+                                                                              fontSize: 14)),
+                                                                      const Spacer(),
+                                                                      Text(
+                                                                          "${logic.records[index].days[dayIndex].items[i].type == IncomeExpenditureType.income ? "+" : "-"}${NumberFormat("#,##0.00", "en_US").format(logic.records[index].days[dayIndex].items[i].money)}",
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.w500,
+                                                                              color: logic.records[index].days[dayIndex]
+                                                                                          .items[i].type ==
+                                                                                      IncomeExpenditureType.income
+                                                                                  ? const Color(0xffC84C41)
+                                                                                  : const Color(0xff3A837A),
+                                                                              fontSize: 20))
+                                                                    ]),
+                                                                    Text(
+                                                                        "${logic.records[index].days[dayIndex].items[i].place}",
+                                                                        style: const TextStyle(
+                                                                            color: Color(0xff555555), fontSize: 14)),
+                                                                    const SizedBox(height: 5),
+                                                                    Row(children: [
+                                                                      Text(
+                                                                          "${logic.records[index].days[dayIndex].items[i].bankName} ",
+                                                                          style: const TextStyle(
+                                                                              color: Color(0xff666666), fontSize: 12)),
+                                                                      Text(
+                                                                          DateUtil.getTimeFromString(
+                                                                              logic.records[index].days[dayIndex]
+                                                                                  .items[i].time!,
+                                                                              "HH:mm:ss"),
+                                                                          style: const TextStyle(
+                                                                              color: Color(0xff999999), fontSize: 12)),
+                                                                      const Spacer(),
+                                                                      const Text("余额:",
+                                                                          style: TextStyle(
+                                                                              color: Color(0xff666666), fontSize: 12)),
+                                                                      Text(
+                                                                          NumberFormat("#,##0.00", "en_US").format(logic
+                                                                              .records[index]
+                                                                              .days[dayIndex]
+                                                                              .items[i]
+                                                                              .balance),
+                                                                          style: const TextStyle(
+                                                                              color: Color(0xff666666), fontSize: 13))
+                                                                    ])
+                                                                  ])));
+                                                    },
+                                                    separatorBuilder: (_, index) {
+                                                      return const Divider(height: 0, color: Color(0xffeeeeee));
+                                                    },
+                                                    itemCount: logic.records[index].days[dayIndex].items.length)))
+                                      ]);
+                                    },
+                                    separatorBuilder: (_, index) {
+                                      return const Divider(height: 0, color: Color(0xffeeeeee));
+                                    },
+                                    itemCount: logic.records[index].days.length))
+                          ]);
+                        },
+                        itemCount: logic.records.length)
+                    : SliverToBoxAdapter(
+                        child: Container(alignment: Alignment.center, height: 200, child: Text("暂无数据")))
+          ]));
     });
   }
 }

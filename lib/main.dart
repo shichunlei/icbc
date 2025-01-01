@@ -88,8 +88,11 @@ class GlobalController extends GetxController {
   /// 登录状态
   var isLogin = false.obs;
 
+  /// 总负债
+  var liabilities = 0;
+
   /// 全局余额
-  num _balance = 13452.00;
+  num _balance = 95288.35;
 
   var balanceStr = "0.00".obs;
 

@@ -44,24 +44,29 @@ class QueryDetailsPage extends StatelessWidget {
                           decoration:
                               BoxDecoration(color: const Color(0xffFFFDF4), borderRadius: BorderRadius.circular(8)),
                           child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                            const Text("当页汇总笔数：20", style: TextStyle(fontSize: 12, color: Color(0xff666666))),
+                            Text("当页汇总笔数：${logic.count.value}",
+                                style: const TextStyle(fontSize: 12, color: Color(0xff666666))),
                             Expanded(
                                 child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
                               Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                                 Image.asset("assets/images/tip_image_blue.png", width: 13),
                                 const SizedBox(width: 5),
                                 RichText(
-                                    text: const TextSpan(children: [
-                                  TextSpan(text: "收"),
-                                  TextSpan(text: "￥1,232,131.09", style: TextStyle(color: Color(0xffC84C41)))
-                                ], style: TextStyle(fontSize: 12, color: Color(0xff666666))))
+                                    text: TextSpan(children: [
+                                  const TextSpan(text: "收"),
+                                  TextSpan(
+                                      text: "￥${NumberFormat("#,##0.00", "en_US").format(logic.income.value)}",
+                                      style: const TextStyle(color: Color(0xffC84C41)))
+                                ], style: const TextStyle(fontSize: 12, color: Color(0xff666666))))
                               ]),
                               const SizedBox(height: 10),
                               RichText(
-                                  text: const TextSpan(children: [
-                                TextSpan(text: "支"),
-                                TextSpan(text: "￥1,232,131.09", style: TextStyle(color: Color(0xff3A837A)))
-                              ], style: TextStyle(fontSize: 12, color: Color(0xff666666))))
+                                  text: TextSpan(children: [
+                                const TextSpan(text: "支"),
+                                TextSpan(
+                                    text: "￥${NumberFormat("#,##0.00", "en_US").format(logic.expenditure.value)}",
+                                    style: const TextStyle(color: Color(0xff3A837A)))
+                              ], style: const TextStyle(fontSize: 12, color: Color(0xff666666))))
                             ]))
                           ]))
                     ]))),
@@ -193,13 +198,15 @@ class QueryDetailsPage extends StatelessWidget {
                         itemCount: logic.records.length)
                     : SliverToBoxAdapter(
                         child: Container(alignment: Alignment.center, height: 200, child: Text("暂无数据"))),
-            SliverToBoxAdapter(
-                child: Container(
-                    height: 200,
-                    padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
-                    alignment: Alignment.topCenter,
-                    child: const Text("以上为您近一个月的账户交易明细，如需查询更长时间范围的明细，请点击右上角“更多查询”。",
-                        textAlign: TextAlign.center, style: TextStyle(color: Color(0xff687379)))))
+            // SliverToBoxAdapter(
+            //     child: Container(
+            //         height: 200,
+            //         padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
+            //         alignment: Alignment.topCenter,
+            //         child: const Text("以上为您近一个月的账户交易明细，如需查询更长时间范围的明细，请点击右上角“更多查询”。",
+            //             textAlign: TextAlign.center, style: TextStyle(color: Color(0xff687379)))))
+
+            const SliverToBoxAdapter(child: SizedBox(height: 30))
           ]);
         }));
   }

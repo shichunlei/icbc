@@ -18,9 +18,10 @@ class IncomeExpenditureDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: NormalAppbar(title: "收支详情", actions: [
-          Image.asset("assets/images/base_im_icon_service.png", width: 25),
+          Image.asset("assets/images/base_im_icon_service.png", width: 20),
           const SizedBox(width: 5),
-          Image.asset("assets/images/base_im_icon_download.webp", width: 45)
+          Image.asset("assets/images/base_im_icon_download.webp", width: 40),
+          const SizedBox(width: 10)
         ]),
         body: SingleChildScrollView(
             child: Column(children: [
@@ -33,7 +34,9 @@ class IncomeExpenditureDetailPage extends StatelessWidget {
                         Text(
                             "${logic.bean!.type == IncomeExpenditureType.income ? "+" : "-"}${NumberFormat("#,##0.00", "en_US").format(logic.bean!.money)}",
                             style: TextStyle(
-                                color: logic.bean!.type == IncomeExpenditureType.income ? const Color(0xffC84C41) : const Color(0xff3A837A),
+                                color: logic.bean!.type == IncomeExpenditureType.income
+                                    ? const Color(0xffC84C41)
+                                    : const Color(0xff3A837A),
                                 fontSize: 32,
                                 fontWeight: FontWeight.w500)),
                         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -86,21 +89,27 @@ class IncomeExpenditureDetailPage extends StatelessWidget {
                           Text("${logic.bean!.summary}", style: const TextStyle(color: Colors.blue, fontSize: 14)),
                           const SizedBox(width: 15)
                         ]),
+                        ...null != logic.bean!.place && "" != logic.bean!.place
+                            ? [
+                                const SizedBox(height: 12),
+                                Row(children: [
+                                  const SizedBox(width: 15),
+                                  const Text("交易场所", style: TextStyle(color: Color(0xff666666), fontSize: 14)),
+                                  const Spacer(),
+                                  Text("${logic.bean!.place}",
+                                      style: const TextStyle(color: Color(0xff333333), fontSize: 14)),
+                                  const SizedBox(width: 15)
+                                ])
+                              ]
+                            : [],
                         const SizedBox(height: 12),
                         Row(children: [
                           const SizedBox(width: 15),
-                          const Text("交易场所", style: TextStyle(color: Color(0xff666666), fontSize: 14)),
+                          const Text("交易金额", style: TextStyle(color: Color(0xff666666), fontSize: 14)),
                           const Spacer(),
-                          Text("${logic.bean!.place}", style: const TextStyle(color: Color(0xff333333), fontSize: 14)),
+                          Text(NumberFormat("#,##0.00", "en_US").format(logic.bean!.money),
+                              style: const TextStyle(color: Color(0xff333333), fontSize: 14)),
                           const SizedBox(width: 15)
-                        ]),
-                        const SizedBox(height: 12),
-                        const Row(children: [
-                          SizedBox(width: 15),
-                          Text("交易金额", style: TextStyle(color: Color(0xff666666), fontSize: 14)),
-                          Spacer(),
-                          Text("29.13", style: TextStyle(color: Color(0xff333333), fontSize: 14)),
-                          SizedBox(width: 15)
                         ]),
 
                         /// 收起后隐藏
@@ -117,12 +126,13 @@ class IncomeExpenditureDetailPage extends StatelessWidget {
                                 const SizedBox(width: 15)
                               ]),
                               const SizedBox(height: 12),
-                              const Row(children: [
-                                SizedBox(width: 15),
-                                Text("记账金额", style: TextStyle(color: Color(0xff666666), fontSize: 14)),
-                                Spacer(),
-                                Text("29.13", style: TextStyle(color: Color(0xff333333), fontSize: 14)),
-                                SizedBox(width: 15)
+                              Row(children: [
+                                const SizedBox(width: 15),
+                                const Text("记账金额", style: TextStyle(color: Color(0xff666666), fontSize: 14)),
+                                const Spacer(),
+                                Text(NumberFormat("#,##0.00", "en_US").format(logic.bean!.accountingAmount),
+                                    style: const TextStyle(color: Color(0xff333333), fontSize: 14)),
+                                const SizedBox(width: 15)
                               ]),
                               const SizedBox(height: 12),
                               Row(children: [
@@ -208,20 +218,25 @@ class IncomeExpenditureDetailPage extends StatelessWidget {
                   Image.asset("assets/images/detail/icon_type_转账.png", width: 25),
                   const SizedBox(width: 5),
                   Text("${logic.bean!.subTypeText}", style: const TextStyle(fontSize: 14, color: Color(0xff333333))),
+                  const SizedBox(width: 5),
                   Image.asset("assets/images/arrow_right.png", width: 10),
                   const SizedBox(width: 5)
                 ]),
                 const SizedBox(height: 15),
                 const Divider(height: 0, color: Color(0xffeeeeee), endIndent: 5),
-                const SizedBox(height: 15),
-                Row(children: [
-                  const Text("订单咨询", style: TextStyle(fontSize: 13, color: Color(0xff999999))),
-                  const Spacer(),
-                  Image.asset("assets/images/arrow_right.png", width: 10),
-                  const SizedBox(width: 5)
-                ]),
-                const SizedBox(height: 15),
-                const Divider(height: 0, color: Color(0xffeeeeee), endIndent: 5),
+                ...logic.bean!.isOrder
+                    ? [
+                        const SizedBox(height: 15),
+                        Row(children: [
+                          const Text("订单咨询", style: TextStyle(fontSize: 13, color: Color(0xff999999))),
+                          const Spacer(),
+                          Image.asset("assets/images/arrow_right.png", width: 10),
+                          const SizedBox(width: 5)
+                        ]),
+                        const SizedBox(height: 15),
+                        const Divider(height: 0, color: Color(0xffeeeeee), endIndent: 5)
+                      ]
+                    : [],
                 const SizedBox(height: 8),
                 Row(children: [
                   const Text("不计入收支", style: TextStyle(color: Color(0xff999999), fontSize: 14)),

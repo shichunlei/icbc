@@ -68,7 +68,7 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                                     child: Column(children: [
                                   Text("银行卡", style: TextStyle(color: Color(0xff999999), fontSize: 10)),
                                   SizedBox(height: 7),
-                                  Text("0", style: TextStyle(color: Colors.black, fontSize: 20))
+                                  Text("1", style: TextStyle(color: Colors.black, fontSize: 20))
                                 ])),
                                 Expanded(
                                     child: Column(children: [
@@ -380,8 +380,8 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                                                   fit: BoxFit.fill,
                                                   image: AssetImage(
                                                       "assets/images/mine/icon_assets_floor__asset_unit.9.png"))),
-                                          child: const Text("万",
-                                              style: TextStyle(color: Color(0xffCD0000), fontSize: 10)))
+                                          child:
+                                              const Text("万", style: TextStyle(color: Color(0xffCD0000), fontSize: 10)))
                                     ]))
                               ]))),
                       Expanded(
@@ -399,7 +399,10 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                                   Padding(
                                       padding: const EdgeInsets.only(left: 5),
-                                      child: Text(logic.showAssetsValue.value ? "1,000.02" : "****",
+                                      child: Text(
+                                          logic.showAssetsValue.value
+                                              ? "${Get.find<GlobalController>().liabilities}"
+                                              : "****",
                                           textAlign: TextAlign.end,
                                           style: const TextStyle(color: Colors.black, fontSize: 20))),
                                   Visibility(
@@ -408,7 +411,8 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                                       maintainState: true,
                                       visible: logic.showRightButton.value &&
                                           logic.showAssetsMore.value &&
-                                          logic.showAssetsValue.value,
+                                          logic.showAssetsValue.value &&
+                                          Get.find<GlobalController>().liabilities > 0,
                                       child: Row(mainAxisSize: MainAxisSize.min, children: [
                                         Container(
                                             height: 20,
