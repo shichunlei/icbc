@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
@@ -7,9 +8,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:icbc/db_helper/record_db_helper.dart';
 import 'package:icbc/router/router.dart';
 import 'package:intl/intl.dart';
 
+import 'beans/income_expenditure_record.dart';
+import 'db_helper/realm_manager.dart';
 import 'global/tools.dart';
 
 void main() {
@@ -107,9 +111,21 @@ class GlobalController extends GetxController {
   /// 登录时间
   Rx<DateTime?> loginTime = Rx<DateTime?>(null);
 
-  void login() {
+  void login() async {
+    EasyLoading.show(status: "正在登录...");
+    List<IncomeExpenditureRecord> list = await RecordDbHelper().queryAllRecords();
+    if (list.isEmpty) {
+      String response = await rootBundle.loadString("assets/data/records_items.json");
+      List<IncomeExpenditureRecord> _list =
+          (json.decode(response) as List).map((item) => IncomeExpenditureRecord.fromJson(item)).toList();
+
+      for (var item in _list) {
+        await RecordDbHelper().upsert(entityToRealm(item));
+      }
+    }
     isLogin.value = true;
     loginTime.value = DateTime.now();
+    EasyLoading.dismiss();
   }
 
   void logout() {
@@ -123,4 +139,10 @@ class GlobalController extends GetxController {
   String starName = "*汉林";
 
   String address = "大连";
+
+  @override
+  void onClose() {
+    RealmManager().close();
+    super.onClose();
+  }
 }

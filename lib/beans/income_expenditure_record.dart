@@ -1,4 +1,5 @@
 import 'package:icbc/global/enum.dart';
+import 'package:icbc/realm/records.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'income_expenditure_record.g.dart';
@@ -102,4 +103,66 @@ class IncomeExpenditureRecord {
   factory IncomeExpenditureRecord.fromJson(Map<String, dynamic> json) => _$IncomeExpenditureRecordFromJson(json);
 
   Map<String, dynamic> toJson() => _$IncomeExpenditureRecordToJson(this);
+}
+
+IncomeExpenditureRecord realmToEntity(Records record) {
+  return IncomeExpenditureRecord(
+    id: record.recordId,
+    title: record.title,
+    type: $enumDecodeNullable(_$IncomeExpenditureTypeEnumMap, record.type),
+    info: record.info,
+    postscript: record.postscript,
+    remark: record.remark,
+    accountingAmount: record.accountingAmount,
+    isOrder: record.isOrder,
+    place: record.place,
+    summary: record.summary,
+    includedIncomeExpenditure: record.includedIncomeExpenditure,
+    currency: record.currency,
+    counterpartBankName: record.counterpartBankName,
+    counterpartName: record.counterpartName,
+    counterpartAccount: record.counterpartAccount,
+    counterpartCardNumber: record.counterpartCardNumber,
+    time: record.time,
+    bankName: record.bankName,
+    mineCardNumber: record.mineCardNumber,
+    mineName: record.mineName,
+    account: record.account,
+    money: record.money,
+    balance: record.balance,
+    icon: record.icon,
+    subTypeText: record.subTypeText,
+    subType: record.subType,
+  );
+}
+
+Records entityToRealm(IncomeExpenditureRecord record) {
+  return Records(
+      recordId: record.id,
+      title: record.title,
+      type: record.type?.name,
+      info: record.info,
+      postscript: record.postscript,
+      remark: record.remark,
+      accountingAmount: record.accountingAmount,
+      isOrder: record.isOrder,
+      place: record.place,
+      summary: record.summary,
+      includedIncomeExpenditure: record.includedIncomeExpenditure,
+      currency: record.currency,
+      counterpartBankName: record.counterpartBankName,
+      counterpartName: record.counterpartName,
+      counterpartAccount: record.counterpartAccount,
+      counterpartCardNumber: record.counterpartCardNumber,
+      time: record.time,
+      bankName: record.bankName,
+      mineCardNumber: record.mineCardNumber,
+      mineName: record.mineName,
+      account: record.account,
+      money: record.money,
+      balance: record.balance,
+      icon: record.icon,
+      subTypeText: record.subTypeText,
+      subType: record.subType,
+      timestamp: record.time == null ? 0 : DateTime.parse(record.time!).millisecondsSinceEpoch);
 }
