@@ -206,31 +206,60 @@ class SelectTimeDialog extends StatelessWidget {
                           SizedBox(height: logic.showScrollDatePicker.value ? 0 : 20)
                         ]
                       : [],
-                  ...logic.showScrollDatePicker.value || logic.selectTabIndex.value == 0
+                  ...logic.selectTabIndex.value == 0
                       ? [
                           SizedBox(
                               height: 200,
                               child: ScrollDatePicker(
                                   minimumDate: DateTime(2010, 1, 1),
                                   maximumDate: DateTime.now(),
-                                  viewType: [
-                                    DatePickerViewType.year,
-                                    DatePickerViewType.month,
-                                    ...logic.selectTabIndex.value == 1 ? [DatePickerViewType.day] : []
-                                  ],
+                                  viewType: [DatePickerViewType.year, DatePickerViewType.month],
                                   selectedDate: logic.initDateTime.value,
                                   locale: const Locale('zh'),
                                   onDateTimeChanged: (DateTime value) {
-                                    if (logic.selectTabIndex.value == 0) {
-                                      logic.selectMonth.value = value;
-                                    } else {
-                                      if (logic.selectStartDate.value) {
-                                        logic.startDate.value = value;
-                                      }
-                                      if (logic.selectStopDate.value) {
-                                        logic.stopDate.value = value;
-                                      }
+                                    logic.initDateTime.value = value;
+                                    logic.selectMonth.value = value;
+                                  },
+                                  indicator: Container(
+                                      height: 50,
+                                      margin: const EdgeInsets.symmetric(horizontal: 15),
+                                      decoration: const BoxDecoration(
+                                          border: Border(
+                                              top: BorderSide(color: Color(0xffdddddd)),
+                                              bottom: BorderSide(color: Color(0xffdddddd))))),
+                                  options: const DatePickerOptions(
+                                      isLoop: false, itemExtent: 50, backgroundColor: Colors.white),
+                                  scrollViewOptions: const DatePickerScrollViewOptions(
+                                      year: ScrollViewDetailOptions(
+                                          selectedTextStyle: TextStyle(fontSize: 16),
+                                          isLoop: false,
+                                          margin: EdgeInsets.symmetric(horizontal: 30),
+                                          label: "年"),
+                                      month: ScrollViewDetailOptions(
+                                          selectedTextStyle: TextStyle(fontSize: 16),
+                                          isLoop: false,
+                                          margin: EdgeInsets.symmetric(horizontal: 30),
+                                          label: "月"))))
+                        ]
+                      : [],
+                  ...logic.showScrollDatePicker.value && logic.selectTabIndex.value == 1
+                      ? [
+                          SizedBox(
+                              height: 200,
+                              child: ScrollDatePicker(
+                                  minimumDate: DateTime(2010, 1, 1),
+                                  maximumDate: DateTime.now(),
+                                  viewType: [DatePickerViewType.year, DatePickerViewType.month, DatePickerViewType.day],
+                                  selectedDate: logic.initDateTime.value,
+                                  locale: const Locale('zh'),
+                                  onDateTimeChanged: (DateTime value) {
+                                    if (logic.selectStartDate.value) {
+                                      logic.startDate.value = value;
                                     }
+                                    if (logic.selectStopDate.value) {
+                                      logic.stopDate.value = value;
+                                    }
+                                    logic.initDateTime.value = value;
                                   },
                                   indicator: Container(
                                       height: 50,
@@ -297,7 +326,7 @@ class SelectTimeController extends GetxController with GetSingleTickerProviderSt
   SelectTimeController({String? minTime, String? maxTime, String? selectMonth}) {
     if (selectMonth != null) {
       selectTabIndex.value = 0;
-      initDateTime.value = DateTime.parse(selectMonth);
+      initDateTime.value = DateTime.parse("$selectMonth-01");
     } else if (maxTime != null && minTime != null) {
       selectTabIndex.value = 1;
       startDate.value = DateTime.parse(minTime);

@@ -1,5 +1,6 @@
 import 'package:icbc/beans/income_expenditure_record.dart';
 import 'package:icbc/db_helper/realm_manager.dart';
+import 'package:icbc/global/enum.dart';
 import 'package:icbc/realm/records.dart';
 import 'package:realm/realm.dart';
 
@@ -29,6 +30,39 @@ class RecordDbHelper {
   Future<List<IncomeExpenditureRecord>> queryAllRecords() async {
     try {
       return _realm.all<Records>().map((item) => realmToEntity(item)).toList();
+    } catch (e) {
+      // Log.e(e.toString());
+      return [];
+    }
+  }
+
+  /// 查询所有记录
+  Future<List<IncomeExpenditureRecord>> queryRecordsByTime(
+      {int? startTime, int? endTime, IncomeExpenditureType? type, double minMoney = 0, double? maxMoney}) async {
+    try {
+      if (startTime != null && endTime != null && type == null) {
+        return _realm
+            .all<Records>()
+            .query(r"timestamp >= $0 AND timestamp <= $1 AND money >= $2 AND TRUEPREDICATE SORT(timestamp DESC)",
+                [startTime, endTime, minMoney])
+            .map((item) => realmToEntity(item))
+            .toList();
+      } else if (startTime == null && endTime == null && type != null) {
+        return _realm
+            .all<Records>()
+            .query(r"type == $0 AND TRUEPREDICATE SORT(timestamp DESC)", [type.name])
+            .map((item) => realmToEntity(item))
+            .toList();
+      } else if (startTime != null && endTime != null && type != null) {
+        return _realm
+            .all<Records>()
+            .query(r"timestamp >= $0 AND timestamp <= $1 AND type == $2 AND TRUEPREDICATE SORT(timestamp DESC)",
+                [startTime, endTime, type.name])
+            .map((item) => realmToEntity(item))
+            .toList();
+      } else {
+        return queryAllRecords();
+      }
     } catch (e) {
       // Log.e(e.toString());
       return [];

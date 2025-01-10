@@ -18,6 +18,8 @@ class IncomeExpenditureLogic extends GetxController {
   Rx<String?> minTime = Rx<String?>(null);
   Rx<String?> selectMonth = Rx<String?>(null);
 
+  IncomeExpenditureType? type;
+
   RxList<RecordDateTime> records = RxList<RecordDateTime>([]);
 
   List<RecordDateTime> days = [];
@@ -26,13 +28,32 @@ class IncomeExpenditureLogic extends GetxController {
     getListData();
   }
 
+  var defaultView = true.obs;
+
   var isLoading = false.obs;
 
   void getListData() async {
+    int? startTime = minTime.value != null
+        ? DateTime(DateTime.parse(minTime.value!).year, DateTime.parse(minTime.value!).month,
+                DateTime.parse(minTime.value!).day)
+            .millisecondsSinceEpoch
+        : selectMonth.value != null
+            ? DateUtil.getFirstDayOfCurrentMonth(DateTime.parse("${selectMonth.value}-01"))
+            : null;
+    int? endTime = maxTime.value != null
+        ? DateTime(DateTime.parse(maxTime.value!).year, DateTime.parse(maxTime.value!).month,
+                DateTime.parse(maxTime.value!).day, 23, 59, 59)
+            .millisecondsSinceEpoch
+        : selectMonth.value != null
+            ? DateUtil.getLastDayOfCurrentMonth(DateTime.parse("${selectMonth.value}-01"))
+            : null;
+
     isLoading.value = true;
     EasyLoading.show(status: '加载中...');
-
-    List<IncomeExpenditureRecord> items = await RecordDbHelper().queryAllRecords();
+    days.clear();
+    records.clear();
+    List<IncomeExpenditureRecord> items =
+        await RecordDbHelper().queryRecordsByTime(startTime: startTime, endTime: endTime, type: type);
     for (var item in items) {
       if (days.isNotEmpty) {
         if (DateUtil.isSameDay(DateTime.parse(days.last.date!), DateTime.parse(item.time!))) {

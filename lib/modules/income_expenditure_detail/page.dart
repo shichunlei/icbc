@@ -215,7 +215,11 @@ class IncomeExpenditureDetailPage extends StatelessWidget {
                 Row(children: [
                   const Text("分类", style: TextStyle(fontSize: 13, color: Color(0xff999999))),
                   const Spacer(),
-                  Image.asset("assets/images/detail/icon_type_转账.png", width: 25),
+                  Image.asset(
+                      logic.bean!.icon == null || logic.bean!.icon == ""
+                          ? "assets/images/detail/icon_type_expenditure_wechat.webp"
+                          : "${logic.bean!.icon}",
+                      width: 25),
                   const SizedBox(width: 5),
                   Text("${logic.bean!.subTypeText}", style: const TextStyle(fontSize: 14, color: Color(0xff333333))),
                   const SizedBox(width: 5),

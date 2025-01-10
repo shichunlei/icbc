@@ -34,6 +34,7 @@ class FilterBottomView extends StatelessWidget implements PreferredSizeWidget {
           const SizedBox(width: 15),
           GestureDetector(
               onTap: onSelectUser?.call,
+              behavior: HitTestBehavior.translucent,
               child: Row(mainAxisSize: MainAxisSize.min, children: [
                 Text(userName ?? Get.find<GlobalController>().starName,
                     style: const TextStyle(color: Colors.black, fontSize: 12)),
@@ -41,6 +42,7 @@ class FilterBottomView extends StatelessWidget implements PreferredSizeWidget {
               ])),
           const SizedBox(width: 5),
           GestureDetector(
+              behavior: HitTestBehavior.translucent,
               onTap: onSelectAccount?.call,
               child: Row(children: [
                 Text(account ?? "全部账户",
@@ -53,6 +55,7 @@ class FilterBottomView extends StatelessWidget implements PreferredSizeWidget {
               ])),
           const SizedBox(width: 5),
           GestureDetector(
+              behavior: HitTestBehavior.translucent,
               onTap: onFilter?.call,
               child: Row(children: [
                 Text("筛选",
@@ -68,6 +71,7 @@ class FilterBottomView extends StatelessWidget implements PreferredSizeWidget {
               ])),
           const SizedBox(width: 5),
           GestureDetector(
+              behavior: HitTestBehavior.translucent,
               onTap: onSelectTime?.call,
               child: Row(children: [
                 Text(time ?? "选择时间",

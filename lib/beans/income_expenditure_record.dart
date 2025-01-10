@@ -133,6 +133,7 @@ IncomeExpenditureRecord realmToEntity(Records record) {
     icon: record.icon,
     subTypeText: record.subTypeText,
     subType: record.subType,
+    country: record.country,
   );
 }
 
@@ -148,6 +149,7 @@ Records entityToRealm(IncomeExpenditureRecord record) {
       isOrder: record.isOrder,
       place: record.place,
       summary: record.summary,
+      country: record.country,
       includedIncomeExpenditure: record.includedIncomeExpenditure,
       currency: record.currency,
       counterpartBankName: record.counterpartBankName,

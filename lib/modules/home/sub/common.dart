@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
 import 'package:get/get.dart';
+import 'package:icbc/main.dart';
 import 'package:icbc/modules/home/logic.dart';
 import 'package:icbc/modules/webview/page.dart';
 import 'package:icbc/router/router.dart';
@@ -31,7 +33,11 @@ class CommonView extends StatelessWidget {
                   Expanded(
                       child: GestureDetector(
                           onTap: () {
-                            Get.toNamed(AppRouter.minePages.accountRoute.name);
+                            if (Get.find<GlobalController>().isLogin.value) {
+                              Get.toNamed(AppRouter.minePages.accountRoute.name);
+                            } else {
+                              EasyLoading.showToast("请先登录");
+                            }
                           },
                           child: Image.asset("assets/images/home/biz_groupview_kingten_account_1.webp",
                               width: double.infinity, fit: BoxFit.fitWidth))),
@@ -39,7 +45,11 @@ class CommonView extends StatelessWidget {
                   Expanded(
                       child: GestureDetector(
                           onTap: () {
-                            Get.toNamed(AppRouter.minePages.incomeExpenditureRoute.name);
+                            if (Get.find<GlobalController>().isLogin.value) {
+                              Get.toNamed(AppRouter.minePages.incomeExpenditureRoute.name);
+                            } else {
+                              EasyLoading.showToast("请先登录");
+                            }
                           },
                           child: Image.asset("assets/images/home/biz_groupview_kingten_personalacctsearch.webp",
                               width: double.infinity, fit: BoxFit.fitWidth))),
