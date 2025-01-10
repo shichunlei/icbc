@@ -381,7 +381,7 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                                                   image: AssetImage(
                                                       "assets/images/mine/icon_assets_floor__asset_unit.9.png"))),
                                           child:
-                                              const Text("万", style: TextStyle(color: Color(0xffCD0000), fontSize: 10)))
+                                              const Text("十万", style: TextStyle(color: Color(0xffCD0000), fontSize: 10)))
                                     ]))
                               ]))),
                       Expanded(

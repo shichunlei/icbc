@@ -6,19 +6,19 @@ part 'income_expenditure_record.g.dart';
 
 @JsonSerializable()
 class RecordDateTime {
-  final int year;
-  final int month;
-  final int day;
-  final String? date;
-  final num income;
-  final num expenditure;
-  final String? monthIcon;
-  final String? monthBgImage;
-  final List<RecordDateTime> months;
-  final List<RecordDateTime> days;
-  final List<IncomeExpenditureRecord> items;
+  int year;
+  int month;
+  int day;
+  String? date;
+  num income;
+  num expenditure;
+  String? monthIcon;
+  String? monthBgImage;
+  List<RecordDateTime> months;
+  List<RecordDateTime> days;
+  List<IncomeExpenditureRecord> items;
 
-  const RecordDateTime(
+  RecordDateTime(
       {this.year = 2024,
       this.month = 1,
       this.day = 1,
@@ -38,37 +38,37 @@ class RecordDateTime {
 
 @JsonSerializable()
 class IncomeExpenditureRecord {
-  final String? id;
-  final String? title;
-  final IncomeExpenditureType? type;
-  final String? subType;
-  final String? subTypeText;
-  final String? icon;
-  final num money;
-  final num balance;
-  final String? account;
-  final String? mineCardNumber;
-  final String? mineName;
-  final String? bankName;
-  final String? time;
-  final String? counterpartAccount;
-  final String? counterpartCardNumber;
-  final String? counterpartName;
-  final String? counterpartBankName;
-  final String? country;
-  final String? currency;
-  final bool isOrder;
-  final bool includedIncomeExpenditure;
-  final String? summary;
-  final String? place;
-  final num accountingAmount;
-  final String? remark;
-  final List<String> remarkImages;
-  final List<dynamic> recommend;
-  final String? info;
-  final String? postscript;
+  String? id;
+  String? title;
+  IncomeExpenditureType? type;
+  String? subType;
+  String? subTypeText;
+  String? icon;
+  double money;
+  double balance;
+  String? account;
+  String? mineCardNumber;
+  String? mineName;
+  String? bankName;
+  String? time;
+  String? counterpartAccount;
+  String? counterpartCardNumber;
+  String? counterpartName;
+  String? counterpartBankName;
+  String? country;
+  String? currency;
+  bool isOrder;
+  bool includedIncomeExpenditure;
+  String? summary;
+  String? place;
+  double accountingAmount;
+  String? remark;
+  List<String> remarkImages;
+  List<dynamic> recommend;
+  String? info;
+  String? postscript;
 
-  const IncomeExpenditureRecord({
+  IncomeExpenditureRecord({
     this.id,
     this.title,
     this.type,

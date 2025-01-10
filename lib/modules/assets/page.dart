@@ -85,7 +85,7 @@ class AssetsPage extends StatelessWidget {
                                                     fit: BoxFit.fill,
                                                     image: AssetImage(
                                                         "assets/images/mine/icon_assets_floor__asset_unit.9.png"))),
-                                            child: const Text("万",
+                                            child: const Text("十万",
                                                 style: TextStyle(color: Color(0xffCD0000), fontSize: 10)))
                                       ]));
                                 })

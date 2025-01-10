@@ -6,6 +6,8 @@ import 'package:realm/realm.dart';
 class RecordDbHelper {
   final Realm _realm;
 
+  int i = 0;
+
   RecordDbHelper() : _realm = RealmManager().realm {
     if (_realm.isClosed) {
       throw Exception("RealmManager has not been properly initialized.");
@@ -13,9 +15,14 @@ class RecordDbHelper {
   }
 
   Future upsert(Records record) async {
-    await safeWrite(() {
-      _realm.add(record, update: true);
-    });
+    print("--->${record.toEJson()}");
+    try {
+      await safeWrite(() {
+        _realm.add(record, update: false);
+      });
+    } catch (e) {
+      print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@${e.toString()}");
+    }
   }
 
   /// 查询所有记录

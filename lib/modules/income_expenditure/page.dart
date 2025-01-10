@@ -167,16 +167,14 @@ class IncomeExpenditurePage extends StatelessWidget {
                                             ]
                                           : [],
                                       const Spacer(),
-                                      Visibility(
-                                          visible: logic.records[index].expenditure > 0,
-                                          child: RichText(
-                                              text: TextSpan(children: [
-                                            const TextSpan(text: "支 ", style: TextStyle(fontSize: 12)),
-                                            TextSpan(
-                                                text:
-                                                    "￥${NumberFormat("#,##0.00", "en_US").format(logic.records[index].expenditure)}",
-                                                style: const TextStyle(color: Color(0xff3A837A)))
-                                          ], style: const TextStyle(color: Color(0xff333333), fontSize: 14))))
+                                      RichText(
+                                          text: TextSpan(children: [
+                                        const TextSpan(text: "支 ", style: TextStyle(fontSize: 12)),
+                                        TextSpan(
+                                            text:
+                                                "￥${NumberFormat("#,##0.00", "en_US").format(logic.records[index].expenditure)}",
+                                            style: const TextStyle(color: Color(0xff3A837A)))
+                                      ], style: const TextStyle(color: Color(0xff333333), fontSize: 14)))
                                     ]))
                               ])
                             ]),

@@ -17,8 +17,8 @@ class Records extends _Records with RealmEntity, RealmObjectBase, RealmObject {
     String? subType,
     String? subTypeText,
     String? icon,
-    num money = .0,
-    num balance = .0,
+    double money = .0,
+    double balance = .0,
     String? account,
     String? mineCardNumber,
     String? mineName,
@@ -34,7 +34,7 @@ class Records extends _Records with RealmEntity, RealmObjectBase, RealmObject {
     bool includedIncomeExpenditure = false,
     String? summary,
     String? place,
-    num accountingAmount = .0,
+    double accountingAmount = .0,
     String? remark,
     String? info,
     String? postscript,
@@ -118,14 +118,14 @@ class Records extends _Records with RealmEntity, RealmObjectBase, RealmObject {
   set icon(String? value) => RealmObjectBase.set(this, 'icon', value);
 
   @override
-  num get money => RealmObjectBase.get<num>(this, 'money') as num;
+  double get money => RealmObjectBase.get<double>(this, 'money') as double;
   @override
-  set money(num value) => RealmObjectBase.set(this, 'money', value);
+  set money(double value) => RealmObjectBase.set(this, 'money', value);
 
   @override
-  num get balance => RealmObjectBase.get<num>(this, 'balance') as num;
+  double get balance => RealmObjectBase.get<double>(this, 'balance') as double;
   @override
-  set balance(num value) => RealmObjectBase.set(this, 'balance', value);
+  set balance(double value) => RealmObjectBase.set(this, 'balance', value);
 
   @override
   String? get account =>
@@ -221,10 +221,10 @@ class Records extends _Records with RealmEntity, RealmObjectBase, RealmObject {
   set place(String? value) => RealmObjectBase.set(this, 'place', value);
 
   @override
-  num get accountingAmount =>
-      RealmObjectBase.get<num>(this, 'accountingAmount') as num;
+  double get accountingAmount =>
+      RealmObjectBase.get<double>(this, 'accountingAmount') as double;
   @override
-  set accountingAmount(num value) =>
+  set accountingAmount(double value) =>
       RealmObjectBase.set(this, 'accountingAmount', value);
 
   @override

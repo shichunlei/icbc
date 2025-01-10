@@ -10,8 +10,8 @@ class _Records {
   String? subType;
   String? subTypeText;
   String? icon;
-  num money = .0;
-  num balance = .0;
+  double money = .0;
+  double balance = .0;
   String? account;
   String? mineCardNumber;
   String? mineName;
@@ -27,7 +27,7 @@ class _Records {
   bool includedIncomeExpenditure = false;
   String? summary;
   String? place;
-  num accountingAmount = .0;
+  double accountingAmount = .0;
   String? remark;
   String? info;
   String? postscript;

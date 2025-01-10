@@ -6,7 +6,7 @@ class SelectAccountDialog extends StatelessWidget {
 
   const SelectAccountDialog({super.key, this.account});
 
-  SelectAccountController get logic => Get.put(SelectAccountController(this.account));
+  SelectAccountController get logic => Get.put(SelectAccountController(account));
 
   @override
   Widget build(BuildContext context) {

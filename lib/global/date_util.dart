@@ -71,4 +71,8 @@ class DateUtil {
     // 默认返回前一年的同一天
     return DateTime(previousYear, month, day);
   }
+
+  static bool isSameDay(DateTime date1, DateTime date2) {
+    return date1.year == date2.year && date1.month == date2.month && date1.day == date2.day;
+  }
 }

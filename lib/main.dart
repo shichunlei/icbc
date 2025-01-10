@@ -96,7 +96,7 @@ class GlobalController extends GetxController {
   var liabilities = 0;
 
   /// 全局余额
-  num _balance = 95288.35;
+  final num _balance = 0;
 
   var balanceStr = "0.00".obs;
 
@@ -123,6 +123,9 @@ class GlobalController extends GetxController {
         await RecordDbHelper().upsert(entityToRealm(item));
       }
     }
+
+    updateBalance(await RecordDbHelper().queryLastRecords() as double);
+
     isLogin.value = true;
     loginTime.value = DateTime.now();
     EasyLoading.dismiss();
