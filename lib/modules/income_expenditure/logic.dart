@@ -18,7 +18,10 @@ class IncomeExpenditureLogic extends GetxController {
   Rx<String?> minTime = Rx<String?>(null);
   Rx<String?> selectMonth = Rx<String?>(null);
 
-  IncomeExpenditureType? type;
+  Rx<IncomeExpenditureType?> type = Rx<IncomeExpenditureType?>(null);
+
+  Rx<int?> minMoney = Rx<int?>(null);
+  Rx<int?> maxMoney = Rx<int?>(null);
 
   RxList<RecordDateTime> records = RxList<RecordDateTime>([]);
 
@@ -31,6 +34,9 @@ class IncomeExpenditureLogic extends GetxController {
   var defaultView = true.obs;
 
   var isLoading = false.obs;
+
+  var currencyIndex = RxList<String>([]);
+  var tradeTypeText = RxList<String>([]);
 
   void getListData() async {
     int? startTime = minTime.value != null
@@ -52,8 +58,24 @@ class IncomeExpenditureLogic extends GetxController {
     EasyLoading.show(status: '加载中...');
     days.clear();
     records.clear();
-    List<IncomeExpenditureRecord> items =
-        await RecordDbHelper().queryRecordsByTime(startTime: startTime, endTime: endTime, type: type);
+    if (number.value > 0 || minTime.value != null || maxTime.value != null) {
+      defaultView.value = false;
+    } else {
+      defaultView.value = true;
+    }
+    List<IncomeExpenditureRecord> items = await RecordDbHelper().queryRecordsByTime(
+        startTime: startTime,
+        endTime: endTime,
+        type: type.value,
+        maxMoney: maxMoney.value,
+        minMoney: minMoney.value ?? 0,
+        currencyIndex: currencyIndex,
+        tradeTypeText: tradeTypeText);
+
+    if (maxMoney.value != null) {
+      items = items.where((item) => item.money <= maxMoney.value!).toList();
+    }
+
     for (var item in items) {
       if (days.isNotEmpty) {
         if (DateUtil.isSameDay(DateTime.parse(days.last.date!), DateTime.parse(item.time!))) {
@@ -118,5 +140,11 @@ class IncomeExpenditureLogic extends GetxController {
 
     isLoading.value = false;
     EasyLoading.dismiss();
+  }
+
+  @override
+  void onClose() {
+    EasyLoading.dismiss();
+    super.onClose();
   }
 }

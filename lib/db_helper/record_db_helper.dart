@@ -2,6 +2,7 @@ import 'package:icbc/beans/income_expenditure_record.dart';
 import 'package:icbc/db_helper/realm_manager.dart';
 import 'package:icbc/global/enum.dart';
 import 'package:icbc/realm/records.dart';
+import 'package:icbc/widgets/filter.dart';
 import 'package:realm/realm.dart';
 
 class RecordDbHelper {
@@ -38,30 +39,70 @@ class RecordDbHelper {
 
   /// 查询所有记录
   Future<List<IncomeExpenditureRecord>> queryRecordsByTime(
-      {int? startTime, int? endTime, IncomeExpenditureType? type, double minMoney = 0, double? maxMoney}) async {
+      {int? startTime,
+      int? endTime,
+      IncomeExpenditureType? type,
+      int minMoney = 0,
+      int? maxMoney,
+      List<String> currencyIndex = const [],
+      List<String> tradeTypeText = const []}) async {
+    print("startTime------$startTime");
+    print("endTime------$endTime");
+    print("type------$type");
+    print("minMoney------$minMoney");
+    print("maxMoney------$maxMoney");
+
+    List<String> _currency = [];
+
+    if (currencyIndex.isNotEmpty) {
+      _currency.addAll(currencyIndex);
+    } else {
+      _currency.addAll(currency);
+    }
+
+    print("--------------->${_currency.length}=================>${_currency.toList()}");
+
+    List<String> _tradeTypeText = [];
+
+    if (tradeTypeText.isNotEmpty) {
+      _tradeTypeText.addAll(tradeTypeText);
+    } else {
+      _tradeTypeText.addAll(tradeType);
+    }
+
     try {
       if (startTime != null && endTime != null && type == null) {
         return _realm
             .all<Records>()
             .query(r"timestamp >= $0 AND timestamp <= $1 AND money >= $2 AND TRUEPREDICATE SORT(timestamp DESC)",
                 [startTime, endTime, minMoney])
+            .where((item) => _currency.any((m) => m == item.currency) && _tradeTypeText.any((m) => m == item.subType))
             .map((item) => realmToEntity(item))
             .toList();
       } else if (startTime == null && endTime == null && type != null) {
         return _realm
             .all<Records>()
-            .query(r"type == $0 AND TRUEPREDICATE SORT(timestamp DESC)", [type.name])
+            .query(r"type == $0 AND money >= $1 AND TRUEPREDICATE SORT(timestamp DESC)", [type.name, minMoney])
+            .where((item) => _currency.any((m) => m == item.currency) && _tradeTypeText.any((m) => m == item.subType))
             .map((item) => realmToEntity(item))
             .toList();
       } else if (startTime != null && endTime != null && type != null) {
         return _realm
             .all<Records>()
-            .query(r"timestamp >= $0 AND timestamp <= $1 AND type == $2 AND TRUEPREDICATE SORT(timestamp DESC)",
-                [startTime, endTime, type.name])
+            .query(
+                r"timestamp >= $0 AND timestamp <= $1 AND type == $2 AND money >= $3 AND TRUEPREDICATE SORT(timestamp DESC)",
+                [startTime, endTime, type.name, minMoney])
+            .where((item) => _currency.any((m) => m == item.currency) && _tradeTypeText.any((m) => m == item.subType))
             .map((item) => realmToEntity(item))
             .toList();
       } else {
-        return queryAllRecords();
+        List<IncomeExpenditureRecord> list = await queryAllRecords();
+        return list
+            .where((item) =>
+                _currency.any((m) => m == item.currency) &&
+                item.money >= minMoney &&
+                _tradeTypeText.any((m) => m == item.subType))
+            .toList();
       }
     } catch (e) {
       // Log.e(e.toString());

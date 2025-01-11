@@ -56,16 +56,8 @@ class IncomeExpenditurePage extends StatelessWidget {
               ],
               bottom: FilterBottomView(
                   index: logic.selectIndex.value,
-                  onFilter: () {
-                    logic.selectIndex.value = 1;
-                    Get.bottomSheet(const FilterDialog(), isScrollControlled: true).then((value) {
-                      logic.selectIndex.value = 0;
-                      logic.number.value = 2;
-                    });
-                  },
-                  filterNumber: logic.number.value,
                   onSelectAccount: () {
-                    logic.selectIndex.value = 2;
+                    logic.selectIndex.value = 1;
                     Get.bottomSheet(SelectAccountDialog(account: logic.account.value), isScrollControlled: true)
                         .then((value) {
                       logic.selectIndex.value = 0;
@@ -78,6 +70,31 @@ class IncomeExpenditurePage extends StatelessWidget {
                       }
                     });
                   },
+                  onFilter: () {
+                    logic.selectIndex.value = 2;
+                    Get.bottomSheet(
+                            FilterDialog(
+                                type: logic.type.value,
+                                maxMoney: logic.maxMoney.value,
+                                minMoney: logic.minMoney.value,
+                                currencyIndex: logic.currencyIndex,
+                                tradeTypeText: logic.tradeTypeText),
+                            isScrollControlled: true)
+                        .then((value) {
+                      logic.selectIndex.value = 0;
+                      if (value != null) {
+                        logic.tradeTypeText.value = value["tradeType"];
+                        logic.number.value = value["count"];
+                        logic.type.value = value["type"];
+                        logic.minMoney.value = value["minMoney"];
+                        logic.maxMoney.value = value["maxMoney"];
+                        logic.currencyIndex.value = value["currencyIndex"] ?? [];
+                        print("type = ${value["type"]}-----------count ========${value["count"]}");
+                        logic.getListData();
+                      }
+                    });
+                  },
+                  filterNumber: logic.number.value,
                   account: logic.account.value,
                   onSelectTime: () {
                     logic.selectIndex.value = 3;
@@ -96,7 +113,6 @@ class IncomeExpenditurePage extends StatelessWidget {
                           logic.minTime.value = null;
                           logic.maxTime.value = null;
                           print("===${logic.selectMonth.value}");
-                          logic.defaultView.value = true;
                           logic.getListData();
                         }
                         if (value["startDate"] != null && value["stopDate"] != null) {
@@ -104,7 +120,6 @@ class IncomeExpenditurePage extends StatelessWidget {
                           logic.selectMonth.value = null;
                           logic.minTime.value = value["startDate"];
                           logic.maxTime.value = value["stopDate"];
-                          logic.defaultView.value = false;
                           logic.getListData();
                         }
                       }

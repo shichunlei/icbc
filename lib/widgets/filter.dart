@@ -7,9 +7,28 @@ import 'package:icbc/global/enum.dart';
 import 'package:icbc/global/tools.dart';
 
 class FilterDialog extends StatelessWidget {
-  const FilterDialog({super.key});
+  final IncomeExpenditureType? type;
+  final int? minMoney;
+  final int? maxMoney;
+  final List<String> tradeTypeText;
+  final List<String> currencyIndex;
 
-  FilterController get logic => Get.put(FilterController());
+  const FilterDialog(
+      {super.key,
+      this.type,
+      this.minMoney,
+      this.maxMoney,
+      this.tradeTypeText = const [],
+      this.currencyIndex = const []});
+
+  FilterController get logic => Get.put(
+      FilterController(
+          type: type,
+          minMoney: minMoney,
+          maxMoney: maxMoney,
+          tradeTypeText: tradeTypeText,
+          currencyIndex: currencyIndex),
+      permanent: true);
 
   @override
   Widget build(BuildContext context) {
@@ -280,29 +299,27 @@ class FilterDialog extends StatelessWidget {
                         crossAxisCount: 4, mainAxisSpacing: 5, crossAxisSpacing: 10, childAspectRatio: 2.5),
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(onTap: () {
-                        if (logic.currencyIndex.contains(index)) {
-                          logic.currencyIndex.remove(index);
+                        if (logic.currencyIndex.contains(currency[index])) {
+                          logic.currencyIndex.remove(currency[index]);
                         } else {
                           if (logic.currencyIndex.length >= 3) {
                             EasyLoading.showToast("最多可以选择三个条件");
                             return;
                           }
-                          logic.currencyIndex.add(index);
+                          logic.currencyIndex.add(currency[index]);
                         }
                         logic.currencyIndex.refresh();
                       }, child: Obx(() {
+                        final isSelected = logic.currencyIndex.contains(currency[index]);
                         return Container(
                             width: 60,
                             alignment: Alignment.center,
                             height: 30,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(4),
-                                color: logic.currencyIndex.contains(index)
-                                    ? const Color(0xffFD7B7B)
-                                    : const Color(0xfff4f4f4)),
+                                color: isSelected ? const Color(0xffFD7B7B) : const Color(0xfff4f4f4)),
                             child: Text(currency[index],
-                                style: TextStyle(
-                                    color: logic.currencyIndex.contains(index) ? Colors.white : null, fontSize: 12)));
+                                style: TextStyle(color: isSelected ? Colors.white : null, fontSize: 12)));
                       }));
                     },
                     itemCount: currency.length),
@@ -323,7 +340,14 @@ class FilterDialog extends StatelessWidget {
               Row(children: [
                 Expanded(
                     child: GestureDetector(
-                        onTap: logic.submit,
+                        onTap: () {
+                          logic.currencyIndex.clear();
+                          logic.moneyType.value = -1;
+                          logic.minEditingController.text = "";
+                          logic.maxEditingController.text = "";
+                          logic.tradeTypeText.clear();
+                          logic.incomeExpenditureType.value = null;
+                        },
                         child: Container(
                             margin:
                                 EdgeInsets.only(bottom: 10 + MediaQuery.of(context).padding.bottom, left: 15, right: 5),
@@ -362,13 +386,32 @@ class FilterController extends GetxController {
   var minMoney = 0.obs;
   var maxMoney = (-1).obs;
 
-  var currencyIndex = RxList<int>([]);
+  var currencyIndex = RxList<String>([]);
 
-  late TextEditingController minEditingController;
-  late TextEditingController maxEditingController;
+  TextEditingController minEditingController = TextEditingController();
+  TextEditingController maxEditingController = TextEditingController();
 
-  FilterController() {
-    minEditingController = TextEditingController()
+  FilterController(
+      {IncomeExpenditureType? type,
+      int? minMoney,
+      int? maxMoney,
+      List<String> tradeTypeText = const [],
+      List<String> currencyIndex = const []}) {
+    print("FilterController@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    incomeExpenditureType.value = type;
+    if (maxMoney != null) {
+      this.maxMoney.value = maxMoney;
+    }
+    if (minMoney != null) {
+      this.minMoney.value = minMoney;
+    }
+    if (currencyIndex.isNotEmpty) {
+      this.currencyIndex.value = currencyIndex;
+    }
+    if (tradeTypeText.isNotEmpty) {
+      this.tradeTypeText.value = tradeTypeText;
+    }
+    minEditingController
       ..addListener(() {
         if (minEditingController.text == "0" && maxEditingController.text == "5000") {
           moneyType.value = 0;
@@ -382,8 +425,9 @@ class FilterController extends GetxController {
           moneyType.value = -1;
         }
         update();
-      });
-    maxEditingController = TextEditingController()
+      })
+      ..text = minMoney != null ? "$minMoney" : "";
+    maxEditingController
       ..addListener(() {
         if (minEditingController.text == "0" && maxEditingController.text == "5000") {
           moneyType.value = 0;
@@ -397,13 +441,35 @@ class FilterController extends GetxController {
           moneyType.value = -1;
         }
         update();
-      });
+      })
+      ..text = maxMoney != null ? "$maxMoney" : "";
   }
 
   var switchValue = true.obs;
 
   void submit() async {
-    Get.back();
+    int count = 0;
+    if (incomeExpenditureType.value != null) {
+      count += 1;
+    }
+    if (tradeTypeText.isNotEmpty) {
+      count += tradeTypeText.length;
+    }
+    if (currencyIndex.isNotEmpty) {
+      count += currencyIndex.length;
+    }
+    if (minEditingController.text.isNotEmpty) {
+      count += 1;
+    }
+
+    Get.back(result: {
+      "type": incomeExpenditureType.value,
+      "tradeType": tradeTypeText,
+      "minMoney": minEditingController.text.isEmpty ? null : int.parse(minEditingController.text),
+      "maxMoney": maxEditingController.text.isEmpty ? null : int.parse(maxEditingController.text),
+      "currencyIndex": currencyIndex,
+      "count": count
+    });
   }
 
   var showMore = false.obs;
