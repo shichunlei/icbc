@@ -256,7 +256,7 @@ class FilterDialog extends StatelessWidget {
                                   isDense: true,
                                   contentPadding: EdgeInsets.zero,
                                   border: InputBorder.none,
-                                  hintText: "最小金额",
+                                  hintText: "最低金额",
                                   hintStyle: TextStyle(color: Color(0xff999999), fontSize: 13))))),
                   Container(
                       width: 20,
@@ -282,7 +282,7 @@ class FilterDialog extends StatelessWidget {
                                   contentPadding: EdgeInsets.zero,
                                   border: InputBorder.none,
                                   isDense: true,
-                                  hintText: "最大金额",
+                                  hintText: "最高金额",
                                   hintStyle: TextStyle(color: Color(0xff999999), fontSize: 13))))),
                   const SizedBox(width: 15)
                 ]),
