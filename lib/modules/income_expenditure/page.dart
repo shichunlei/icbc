@@ -313,7 +313,14 @@ class IncomeExpenditurePage extends StatelessWidget {
                                                                                               fontSize: 20))
                                                                                     ]),
                                                                                     Text(
-                                                                                        "${logic.records[index].days[dayIndex].items[i].place}",
+                                                                                        logic
+                                                                                                    .records[index]
+                                                                                                    .days[dayIndex]
+                                                                                                    .items[i]
+                                                                                                    .subType ==
+                                                                                                "工资"
+                                                                                            ? "${logic.records[index].days[dayIndex].items[i].counterpartName}"
+                                                                                            : "${logic.records[index].days[dayIndex].items[i].place}",
                                                                                         style: const TextStyle(
                                                                                             color: Color(0xff555555),
                                                                                             fontSize: 14)),
@@ -446,7 +453,11 @@ class IncomeExpenditurePage extends StatelessWidget {
                                                                                         : const Color(0xff3A837A),
                                                                                     fontSize: 20))
                                                                           ]),
-                                                                          Text("${item.days[dayIndex].items[i].place}",
+                                                                          Text(
+                                                                              item.days[dayIndex].items[i].subType ==
+                                                                                      "工资"
+                                                                                  ? "${item.days[dayIndex].items[i].counterpartName}"
+                                                                                  : "${item.days[dayIndex].items[i].place}",
                                                                               style: const TextStyle(
                                                                                   color: Color(0xff555555),
                                                                                   fontSize: 14)),

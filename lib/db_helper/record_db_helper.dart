@@ -76,14 +76,14 @@ class RecordDbHelper {
             .all<Records>()
             .query(r"timestamp >= $0 AND timestamp <= $1 AND money >= $2 AND TRUEPREDICATE SORT(timestamp DESC)",
                 [startTime, endTime, minMoney])
-            .where((item) => _currency.any((m) => m == item.currency) && _tradeTypeText.any((m) => m == item.subType))
+            .where((item) => _currency.any((m) => m == item.currency) && _tradeTypeText.any((m) => m == item.title))
             .map((item) => realmToEntity(item))
             .toList();
       } else if (startTime == null && endTime == null && type != null) {
         return _realm
             .all<Records>()
             .query(r"type == $0 AND money >= $1 AND TRUEPREDICATE SORT(timestamp DESC)", [type.name, minMoney])
-            .where((item) => _currency.any((m) => m == item.currency) && _tradeTypeText.any((m) => m == item.subType))
+            .where((item) => _currency.any((m) => m == item.currency) && _tradeTypeText.any((m) => m == item.title))
             .map((item) => realmToEntity(item))
             .toList();
       } else if (startTime != null && endTime != null && type != null) {
@@ -92,7 +92,7 @@ class RecordDbHelper {
             .query(
                 r"timestamp >= $0 AND timestamp <= $1 AND type == $2 AND money >= $3 AND TRUEPREDICATE SORT(timestamp DESC)",
                 [startTime, endTime, type.name, minMoney])
-            .where((item) => _currency.any((m) => m == item.currency) && _tradeTypeText.any((m) => m == item.subType))
+            .where((item) => _currency.any((m) => m == item.currency) && _tradeTypeText.any((m) => m == item.title))
             .map((item) => realmToEntity(item))
             .toList();
       } else {
@@ -101,7 +101,7 @@ class RecordDbHelper {
             .where((item) =>
                 _currency.any((m) => m == item.currency) &&
                 item.money >= minMoney &&
-                _tradeTypeText.any((m) => m == item.subType))
+                _tradeTypeText.any((m) => m == item.title))
             .toList();
       }
     } catch (e) {

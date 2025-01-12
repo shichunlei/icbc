@@ -8203,7 +8203,7 @@
   },
   {
     "id": "0001",
-    "title": "邮寄费",
+    "title": "其他",
     "type": "expenditure",
     "subType": "其他",
     "subTypeText": "其他",
@@ -8224,7 +8224,7 @@
     "isOrder": false,
     "includedIncomeExpenditure": false,
     "summary": "邮寄费",
-    "place": "手机银行",
+    "place": "",
     "accountingAmount": 12.00
   },
   {
