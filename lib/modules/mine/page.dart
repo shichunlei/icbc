@@ -239,41 +239,66 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
           Obx(() {
             return Row(children: [
               Expanded(
-                  child: Text(logic.showExpenditureValue.value ? "${logic.inComeMoney}" : "****",
-                      textAlign: TextAlign.start, style: const TextStyle(color: Colors.black, fontSize: 20))),
+                  child: Text(
+                      logic.showExpenditureValue.value
+                          ? Get.find<GlobalController>().inComeMoney.value.toStringAsFixed(2)
+                          : "****",
+                      textAlign: TextAlign.start,
+                      style: const TextStyle(color: Colors.black, fontSize: 20))),
               Expanded(
-                  child: Text(logic.showExpenditureValue.value ? "${logic.expenditureMoney}" : "****",
-                      textAlign: TextAlign.end, style: const TextStyle(color: Colors.black, fontSize: 20)))
+                  child: Text(
+                      logic.showExpenditureValue.value
+                          ? Get.find<GlobalController>().expenditureMoney.value.toStringAsFixed(2)
+                          : "****",
+                      textAlign: TextAlign.end,
+                      style: const TextStyle(color: Colors.black, fontSize: 20)))
             ]);
           }),
           logic.showExpenditureValue.value
-              ? Container(
-                  margin: const EdgeInsets.symmetric(vertical: 5),
-                  height: 2,
-                  width: double.infinity,
-                  color: const Color(0xffCD0000),
-                  child: Row(children: [
-                    Container(
-                        height: 2,
-                        width: (1.sw - 50) / (logic.inComeMoney + logic.expenditureMoney) * logic.inComeMoney,
-                        color: const Color(0xffCD0000)),
-                    Expanded(child: Container(height: 2, width: double.infinity, color: const Color(0xff378179)))
-                  ]))
+              ? Obx(() {
+                  return Container(
+                      margin: const EdgeInsets.symmetric(vertical: 5),
+                      height: 2,
+                      width: double.infinity,
+                      color: const Color(0xffCD0000),
+                      child: Row(children: [
+                        Container(
+                            height: 2,
+                            width: Get.find<GlobalController>().inComeMoney.value == 0 &&
+                                    Get.find<GlobalController>().expenditureMoney.value == 0
+                                ? .5.sw - 25
+                                : Get.find<GlobalController>().inComeMoney.value == 0 &&
+                                        Get.find<GlobalController>().expenditureMoney.value > 0
+                                    ? 0
+                                    : (1.sw - 50) /
+                                        (Get.find<GlobalController>().inComeMoney.value +
+                                            Get.find<GlobalController>().expenditureMoney.value) *
+                                        Get.find<GlobalController>().inComeMoney.value,
+                            color: const Color(0xffCD0000)),
+                        Expanded(child: Container(height: 2, width: double.infinity, color: const Color(0xff378179)))
+                      ]));
+                })
               : const SizedBox.shrink(),
           logic.showExpenditureValue.value
-              ? Align(
-                  alignment: Alignment.centerRight,
-                  child: RichText(
-                      text: TextSpan(children: [
-                    const TextSpan(text: "本月结余 "),
-                    TextSpan(
-                        text: (logic.inComeMoney - logic.expenditureMoney).toStringAsFixed(2),
-                        style: TextStyle(
-                            color: logic.inComeMoney - logic.expenditureMoney > 0
-                                ? const Color(0xffCD0000)
-                                : const Color(0xff378179),
-                            fontSize: 14))
-                  ], style: const TextStyle(color: Color(0xff999999), fontSize: 12))))
+              ? Obx(() {
+                  return Align(
+                      alignment: Alignment.centerRight,
+                      child: RichText(
+                          text: TextSpan(children: [
+                        const TextSpan(text: "本月结余 "),
+                        TextSpan(
+                            text: (Get.find<GlobalController>().inComeMoney.value -
+                                    Get.find<GlobalController>().expenditureMoney.value)
+                                .toStringAsFixed(2),
+                            style: TextStyle(
+                                color: Get.find<GlobalController>().inComeMoney.value -
+                                            Get.find<GlobalController>().expenditureMoney.value >
+                                        0
+                                    ? const Color(0xffCD0000)
+                                    : const Color(0xff378179),
+                                fontSize: 14))
+                      ], style: const TextStyle(color: Color(0xff999999), fontSize: 12))));
+                })
               : const SizedBox.shrink()
         ]));
   }
@@ -362,7 +387,8 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                                             ? "${Get.find<GlobalController>().balanceStr}"
                                             : "****",
                                         textAlign: TextAlign.start,
-                                        style: const TextStyle(color: Colors.black, fontSize: 20))),
+                                        style: const TextStyle(
+                                            color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold))),
                                 Visibility(
                                     maintainSize: true,
                                     maintainAnimation: true,
@@ -380,8 +406,8 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                                                   fit: BoxFit.fill,
                                                   image: AssetImage(
                                                       "assets/images/mine/icon_assets_floor__asset_unit.9.png"))),
-                                          child:
-                                              const Text("十万", style: TextStyle(color: Color(0xffCD0000), fontSize: 10)))
+                                          child: const Text("十万",
+                                              style: TextStyle(color: Color(0xffCD0000), fontSize: 10)))
                                     ]))
                               ]))),
                       Expanded(
@@ -401,10 +427,11 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
                                       padding: const EdgeInsets.only(left: 5),
                                       child: Text(
                                           logic.showAssetsValue.value
-                                              ? "${Get.find<GlobalController>().liabilities}"
+                                              ? Get.find<GlobalController>().liabilities.toStringAsFixed(2)
                                               : "****",
                                           textAlign: TextAlign.end,
-                                          style: const TextStyle(color: Colors.black, fontSize: 20))),
+                                          style: const TextStyle(
+                                              color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold))),
                                   Visibility(
                                       maintainSize: true,
                                       maintainAnimation: true,

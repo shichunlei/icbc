@@ -37,12 +37,12 @@ dependencies:
   #loding
   flutter_easyloading: ^3.0.5
   #持久化
-  shared_preferences: ^2.3.5
+  shared_preferences: ^2.5.1
   flutter_swiper_null_safety_flutter3: ^4.0.3
-  flutter_sticky_header: any
+  flutter_sticky_header: ^0.7.0
   scroll_date_picker: ^3.8.0
 
-  device_info_plus: ^11.2.0
+  device_info_plus: ^11.3.0
   # webview
   webview_flutter: ^4.10.0
   # json 注解

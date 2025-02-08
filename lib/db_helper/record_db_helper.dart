@@ -32,7 +32,7 @@ class RecordDbHelper {
     try {
       return _realm.all<Records>().map((item) => realmToEntity(item)).toList();
     } catch (e) {
-      // Log.e(e.toString());
+      print(e.toString());
       return [];
     }
   }
@@ -105,7 +105,23 @@ class RecordDbHelper {
             .toList();
       }
     } catch (e) {
-      // Log.e(e.toString());
+      print(e.toString());
+      return [];
+    }
+  }
+
+  /// 查询所有记录
+  Future<List<IncomeExpenditureRecord>> queryCurrentMothRecords() async {
+    DateTime now = DateTime.now();
+    try {
+      return _realm
+          .all<Records>()
+          .query(r"timestamp >= $0 AND TRUEPREDICATE SORT(timestamp DESC)",
+              [DateTime(now.year, now.month).millisecondsSinceEpoch])
+          .map((item) => realmToEntity(item))
+          .toList();
+    } catch (e) {
+      print(e.toString());
       return [];
     }
   }
@@ -120,7 +136,7 @@ class RecordDbHelper {
     try {
       await _realm.writeAsync(action);
     } catch (e) {
-      // Log.e("Realm Write Error: $e");
+      print("Realm Write Error: ${e.toString()}");
       // 可以在这里添加日志上报或其他错误处理逻辑
     }
   }

@@ -14,6 +14,7 @@ import 'package:intl/intl.dart';
 
 import 'beans/income_expenditure_record.dart';
 import 'db_helper/realm_manager.dart';
+import 'global/enum.dart';
 import 'global/tools.dart';
 
 void main() {
@@ -126,6 +127,8 @@ class GlobalController extends GetxController {
 
     updateBalance(await RecordDbHelper().queryLastRecords() as double);
 
+    await updateCurrentMoth();
+
     isLogin.value = true;
     loginTime.value = DateTime.now();
     EasyLoading.dismiss();
@@ -143,9 +146,26 @@ class GlobalController extends GetxController {
 
   String address = "大连";
 
+  var expenditureMoney = .0.obs;
+  var inComeMoney = .0.obs;
+
   @override
   void onClose() {
     RealmManager().close();
     super.onClose();
+  }
+
+  Future updateCurrentMoth() async {
+    List<IncomeExpenditureRecord> list = await RecordDbHelper().queryCurrentMothRecords();
+
+    inComeMoney.value = 0;
+    list.where((item) => item.type == IncomeExpenditureType.income).toList().forEach((i) {
+      inComeMoney.value += i.money;
+    });
+
+    expenditureMoney.value = 0;
+    list.where((item) => item.type == IncomeExpenditureType.expenditure).toList().forEach((i) {
+      expenditureMoney.value += i.money;
+    });
   }
 }

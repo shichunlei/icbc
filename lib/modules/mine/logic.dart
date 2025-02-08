@@ -38,9 +38,6 @@ class MineLogic extends GetxController {
   /// 是否显示本月支出金额
   var showExpenditureValue = false.obs;
 
-  double expenditureMoney = 7660.42;
-  double inComeMoney = 7655.45;
-
   /// 是否显示资产负债金额
   var showAssetsValue = false.obs;
 
