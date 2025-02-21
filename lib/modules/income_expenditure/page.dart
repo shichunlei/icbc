@@ -259,30 +259,34 @@ class IncomeExpenditurePage extends StatelessWidget {
                                                                         padding: const EdgeInsets.only(
                                                                             left: 15, right: 15, top: 15, bottom: 10),
                                                                         child: Row(
-                                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                                          children: [
-                                                                            Padding(
-                                                                                padding: const EdgeInsets.only(
-                                                                                    right: 8, top: 10),
-                                                                                child: Image.asset(
-                                                                                    logic.records[index].days[dayIndex]
-                                                                                                    .items[i].icon ==
-                                                                                                null ||
-                                                                                            logic
-                                                                                                    .records[index]
-                                                                                                    .days[dayIndex]
-                                                                                                    .items[i]
-                                                                                                    .icon ==
-                                                                                                ""
-                                                                                        ? "assets/images/detail/icon_type_expenditure_wechat.webp"
-                                                                                        : "${logic.records[index].days[dayIndex].items[i].icon}",
-                                                                                    width: 30,
-                                                                                    height: 30)),
-                                                                            Expanded(
-                                                                              child: Column(
-                                                                                  crossAxisAlignment:
-                                                                                      CrossAxisAlignment.start,
-                                                                                  children: [
+                                                                            crossAxisAlignment:
+                                                                                CrossAxisAlignment.start,
+                                                                            children: [
+                                                                              Padding(
+                                                                                  padding: const EdgeInsets.only(
+                                                                                      right: 8, top: 10),
+                                                                                  child: Image.asset(
+                                                                                      logic
+                                                                                                      .records[index]
+                                                                                                      .days[dayIndex]
+                                                                                                      .items[i]
+                                                                                                      .icon ==
+                                                                                                  null ||
+                                                                                              logic
+                                                                                                      .records[index]
+                                                                                                      .days[dayIndex]
+                                                                                                      .items[i]
+                                                                                                      .icon ==
+                                                                                                  ""
+                                                                                          ? "assets/images/detail/icon_type_expenditure_wechat.webp"
+                                                                                          : "${logic.records[index].days[dayIndex].items[i].icon}",
+                                                                                      width: 30,
+                                                                                      height: 30)),
+                                                                              Expanded(
+                                                                                  child: Column(
+                                                                                      crossAxisAlignment:
+                                                                                          CrossAxisAlignment.start,
+                                                                                      children: [
                                                                                     Row(children: [
                                                                                       Text(
                                                                                           "${logic.records[index].days[dayIndex].items[i].summary}",
@@ -326,43 +330,61 @@ class IncomeExpenditurePage extends StatelessWidget {
                                                                                             fontSize: 14)),
                                                                                     const SizedBox(height: 5),
                                                                                     Row(children: [
-                                                                                      Text(
-                                                                                          "${logic.records[index].days[dayIndex].items[i].bankName} ",
-                                                                                          style: const TextStyle(
-                                                                                              color: Color(0xff666666),
-                                                                                              fontSize: 12)),
-                                                                                      Text(
-                                                                                          DateUtil.getTimeFromString(
-                                                                                              logic
-                                                                                                  .records[index]
-                                                                                                  .days[dayIndex]
-                                                                                                  .items[i]
-                                                                                                  .time!,
-                                                                                              "HH:mm:ss"),
-                                                                                          style: const TextStyle(
-                                                                                              color: Color(0xff999999),
-                                                                                              fontSize: 12)),
-                                                                                      const Spacer(),
-                                                                                      const Text("余额:",
-                                                                                          style: TextStyle(
-                                                                                              color: Color(0xff666666),
-                                                                                              fontSize: 12)),
-                                                                                      Text(
-                                                                                          NumberFormat(
-                                                                                                  "#,##0.00", "en_US")
-                                                                                              .format(logic
-                                                                                                  .records[index]
-                                                                                                  .days[dayIndex]
-                                                                                                  .items[i]
-                                                                                                  .balance),
-                                                                                          style: const TextStyle(
-                                                                                              color: Color(0xff666666),
-                                                                                              fontSize: 13))
+                                                                                      Expanded(
+                                                                                          child: RichText(
+                                                                                              text: TextSpan(
+                                                                                                  children: [
+                                                                                                    TextSpan(
+                                                                                                        text:
+                                                                                                            "${logic.records[index].days[dayIndex].items[i].bankName} ",
+                                                                                                        style: const TextStyle(
+                                                                                                            color: Color(
+                                                                                                                0xff666666))),
+                                                                                                    TextSpan(
+                                                                                                        text: DateUtil.getTimeFromString(
+                                                                                                            logic
+                                                                                                                .records[
+                                                                                                                    index]
+                                                                                                                .days[
+                                                                                                                    dayIndex]
+                                                                                                                .items[
+                                                                                                                    i]
+                                                                                                                .time!,
+                                                                                                            "HH:mm:ss"))
+                                                                                                  ],
+                                                                                                  style: const TextStyle(
+                                                                                                      color: Color(
+                                                                                                          0xff999999),
+                                                                                                      fontSize: 12)),
+                                                                                              maxLines: 1,
+                                                                                              overflow: TextOverflow
+                                                                                                  .ellipsis)),
+                                                                                      RichText(
+                                                                                          text: TextSpan(children: [
+                                                                                            TextSpan(
+                                                                                                text: "余额:",
+                                                                                                style: TextStyle(
+                                                                                                    color: Color(
+                                                                                                        0xff666666),
+                                                                                                    fontSize: 12)),
+                                                                                            TextSpan(
+                                                                                                text: NumberFormat(
+                                                                                                        "#,##0.00",
+                                                                                                        "en_US")
+                                                                                                    .format(logic
+                                                                                                        .records[index]
+                                                                                                        .days[dayIndex]
+                                                                                                        .items[i]
+                                                                                                        .balance),
+                                                                                                style: const TextStyle(
+                                                                                                    color: Color(
+                                                                                                        0xff666666),
+                                                                                                    fontSize: 13))
+                                                                                          ]),
+                                                                                          maxLines: 1)
                                                                                     ])
-                                                                                  ]),
-                                                                            ),
-                                                                          ],
-                                                                        )));
+                                                                                  ]))
+                                                                            ])));
                                                               },
                                                               separatorBuilder: (_, index) {
                                                                 return const Divider(
@@ -463,31 +485,48 @@ class IncomeExpenditurePage extends StatelessWidget {
                                                                                   fontSize: 14)),
                                                                           const SizedBox(height: 5),
                                                                           Row(children: [
-                                                                            Text(
-                                                                                "${item.days[dayIndex].items[i].bankName} ",
-                                                                                style: const TextStyle(
-                                                                                    color: Color(0xff666666),
-                                                                                    fontSize: 12)),
-                                                                            Text(
-                                                                                DateUtil.getTimeFromString(
-                                                                                    item.days[dayIndex].items[i].time!,
-                                                                                    "HH:mm:ss"),
-                                                                                style: const TextStyle(
-                                                                                    color: Color(0xff999999),
-                                                                                    fontSize: 12)),
-                                                                            const Spacer(),
-                                                                            const Text("余额:",
-                                                                                style: TextStyle(
-                                                                                    color: Color(0xff666666),
-                                                                                    fontSize: 12)),
-                                                                            Text(
-                                                                                NumberFormat("#,##0.00", "en_US")
-                                                                                    .format(item.days[dayIndex].items[i]
-                                                                                        .balance),
-                                                                                style: const TextStyle(
-                                                                                    fontWeight: FontWeight.w500,
-                                                                                    color: Color(0xff666666),
-                                                                                    fontSize: 14))
+                                                                            Expanded(
+                                                                                child: RichText(
+                                                                                    text: TextSpan(
+                                                                                        children: [
+                                                                                          TextSpan(
+                                                                                              text:
+                                                                                                  "${item.days[dayIndex].items[i].bankName} ",
+                                                                                              style: const TextStyle(
+                                                                                                  color: Color(
+                                                                                                      0xff666666))),
+                                                                                          TextSpan(
+                                                                                              text: DateUtil
+                                                                                                  .getTimeFromString(
+                                                                                                      item
+                                                                                                          .days[
+                                                                                                              dayIndex]
+                                                                                                          .items[i]
+                                                                                                          .time!,
+                                                                                                      "HH:mm:ss"))
+                                                                                        ],
+                                                                                        style: const TextStyle(
+                                                                                            color: Color(0xff999999),
+                                                                                            fontSize: 12)),
+                                                                                    maxLines: 1,
+                                                                                    overflow: TextOverflow.ellipsis)),
+                                                                            RichText(
+                                                                                text: TextSpan(children: [
+                                                                                  TextSpan(
+                                                                                      text: "余额:",
+                                                                                      style: TextStyle(
+                                                                                          color: Color(0xff666666),
+                                                                                          fontSize: 12)),
+                                                                                  TextSpan(
+                                                                                      text: NumberFormat(
+                                                                                              "#,##0.00", "en_US")
+                                                                                          .format(item.days[dayIndex]
+                                                                                              .items[i].balance),
+                                                                                      style: const TextStyle(
+                                                                                          color: Color(0xff666666),
+                                                                                          fontSize: 13))
+                                                                                ]),
+                                                                                maxLines: 1)
                                                                           ])
                                                                         ])));
                                                           },

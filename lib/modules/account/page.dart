@@ -45,7 +45,7 @@ class _AccountPageState extends State<AccountPage> with TickerProviderStateMixin
                           decoration:
                               BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.white, boxShadow: [
                             BoxShadow(
-                                color: Colors.black.withValues(alpha: 0.1), // 阴影颜色
+                                color: Colors.black.withOpacity(.1), // 阴影颜色
                                 offset: const Offset(0, 0),
                                 blurRadius: 3,
                                 spreadRadius: 1)
@@ -147,7 +147,7 @@ class _AccountPageState extends State<AccountPage> with TickerProviderStateMixin
                               height: 30,
                               decoration: BoxDecoration(color: Theme.of(context).scaffoldBackgroundColor, boxShadow: [
                                 BoxShadow(
-                                    color: Colors.black.withValues(alpha: 0.1),
+                                    color: Colors.black.withOpacity(.1),
                                     offset: const Offset(0, -2),
                                     blurRadius: 1,
                                     spreadRadius: 1)

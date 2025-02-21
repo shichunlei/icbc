@@ -16,7 +16,7 @@ class HomeAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       Container(
-          color: Colors.white.withValues(alpha: opacity),
+          color: Colors.white.withOpacity(opacity),
           height: kToolbarHeight + ScreenUtils.statusBarHeight,
           padding: EdgeInsets.only(top: ScreenUtils.statusBarHeight),
           child: Obx(() {
@@ -44,8 +44,8 @@ class HomeAppBar extends StatelessWidget {
                       height: 30,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: const Color(0xffF2F2F2).withValues(alpha: opacity),
-                          border: Border.all(width: .5, color: Colors.white.withValues(alpha: 1 - opacity))),
+                          color: const Color(0xffF2F2F2).withOpacity(opacity),
+                          border: Border.all(width: .5, color: Colors.white.withOpacity(1 - opacity))),
                       child: Row(children: [
                         const SizedBox(width: 8),
                         Image.asset("assets/images/icon_search_b.png", width: 15, height: 15),

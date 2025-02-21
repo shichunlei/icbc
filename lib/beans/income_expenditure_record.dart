@@ -38,30 +38,30 @@ class RecordDateTime {
 
 @JsonSerializable()
 class IncomeExpenditureRecord {
-  String? id;
-  String? title;
-  IncomeExpenditureType? type;
-  String? subType;
-  String? subTypeText;
-  String? icon;
-  double money;
-  double balance;
-  String? account;
-  String? mineCardNumber;
-  String? mineName;
-  String? bankName;
-  String? time;
-  String? counterpartAccount;
-  String? counterpartCardNumber;
-  String? counterpartName;
-  String? counterpartBankName;
-  String? country;
-  String? currency;
-  bool isOrder;
+  String? id; // ID
+  String? title;// 消费
+  IncomeExpenditureType? type; // 类型 收入 income /支出 expenditure
+  String? subType;// 交易类型枚举  财付通
+  String? subTypeText;// 交易类型文字说明  微信转账
+  String? icon;// 图标
+  double money;// 金额
+  double accountingAmount;// 实际交易金额
+  double balance;// 余额
+  String? account;// // 当前账户 3400****3455
+  String? mineCardNumber;// 当前用户卡号 6217****0554
+  String? mineName; // 当前用户名字 张三
+  String? bankName;// 当前用户银行名称 工银借记卡0554
+  String? time; // 交易时间 yyyy-MM-dd HH:mm:ss
+  String? counterpartAccount; // 对方账号 2433****0133
+  String? counterpartCardNumber; // 对方卡号 2433****0133
+  String? counterpartName;// 对方名字 深圳市财付通支付科技有限公司
+  String? counterpartBankName;// 对方银行名称  财付通-备付金账户
+  String? country;// 国家 例如：CHN
+  String? currency;// 币种 例如：人民币
+  bool isOrder;// 是否为订单
   bool includedIncomeExpenditure;
-  String? summary;
-  String? place;
-  double accountingAmount;
+  String? summary;// 摘要  消费
+  String? place;// 交易场所  财付通-牛七爷全牛火锅
   String? remark;
   List<String> remarkImages;
   List<dynamic> recommend;
