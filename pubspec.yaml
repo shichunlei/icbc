@@ -33,11 +33,11 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  get: ^4.6.6
+  get: ^4.7.2
   #loding
   flutter_easyloading: ^3.0.5
   #持久化
-  shared_preferences: ^2.5.1
+  shared_preferences: ^2.5.2
   flutter_swiper_null_safety_flutter3: ^4.0.3
   flutter_sticky_header: ^0.7.0
   scroll_date_picker: ^3.8.0
